@@ -1,0 +1,28 @@
+var myApp = {
+  results : [(a+b); (a-b); (a*b); (a/b)],
+  
+  functions : {
+    add : function(a, b){
+      myApp.results.push(a + b);
+    }
+    
+    subtract : function(a, b){
+      myApp.results.push(a - b);
+    }
+    
+    multiply : function(a, b){
+      myApp.results.push(a * b);
+    }
+
+    divide : function(a, b){
+      myApp.results.push(a / b);
+    }
+  }
+	
+  add(a+b);
+  subtract(a-b);
+  multiply(a*b);
+  divide(a/b);
+  console.log(results);
+
+};
