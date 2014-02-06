@@ -29,7 +29,7 @@ var myCalculator = {
   result: [],
   shove : function(thing) {
     this.result.push(thing)
-  }	;
+  };
   zeroDivision: {
   name: 'zero division',
   expression: "Sorry, you can't divide a number by 0!"
