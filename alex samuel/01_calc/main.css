@@ -8,6 +8,7 @@
 	padding-left: 12px;
 }
 
+
 #calculator input {
 	width:  150px;
 	font: 50px 'Orbitron', sans-serif;
@@ -21,6 +22,7 @@
 	border-style: solid;
 	border-color: #000000;
 }
+
 
 #calculator select {
 
