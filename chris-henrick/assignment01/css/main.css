@@ -36,9 +36,10 @@ p {
 	border-radius: 10%;
 }
 
-input {
+input, select {
 	display: block;
 	margin: 0 auto;
+	margin-top: 10px;
 }
 
 #result {

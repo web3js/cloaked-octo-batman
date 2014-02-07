@@ -5,7 +5,7 @@ var calculator = {
 	name: 'Bo-Ris da calculator',
 	version: 0.1,
 
-	addd: function(v1,v2){
+	add: function(v1,v2){
 		this.shove(v1 + v2);
 	},
 	subtract: function(v1,v2){
@@ -41,7 +41,7 @@ var calculator = {
 		},
 
 		numCheck: function(callback) {
-			var option = $('#option').val(),
+			var option = $('#option').find(":selected").val(),
 				val1 = $('#value1').val(),
 				val2 = $('#value2').val();
 
@@ -58,7 +58,7 @@ var calculator = {
 
 		if (typeof v1 === "number" && typeof v2 === "number"){
 			switch(option) {
-				case "add" : this.addd(v1,v2); break;
+				case "add" : this.add(v1,v2); break;
 				case "subtract" : this.subtract(v1,v2); break;
 				case "multiply" : this.multiply(v1,v2); break;
 				case "divide" : this.divide(v1,v2); break;

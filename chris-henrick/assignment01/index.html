@@ -24,12 +24,18 @@
 			<h1>The Calculator</h1>
 			<form id="myForm">
 				<p>Select an option</p>	
-				<input type="text" id="option">
-				<p>Enter a value</p>
+				<select id="option">
+					<option value="add">+</option>
+					<option value="subtract">-</option>
+					<option value="multiply">*</option>
+					<option value="divide">/</option>
+					<option value="remainder">%</option>
+				</select>
+				<p>Enter a number</p>
 				<input type="text" id="value1">
-				<p>Enter another value</p>
+				<p>Enter another number</p>
 				<input type="text" id="value2">
-				<a href="#" class="button">Click to Run</a>
+				<a href="#" class="button">Calculate!</a>
 			</form>
 
 			<div id="result"></div>
