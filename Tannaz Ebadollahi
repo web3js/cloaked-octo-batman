@@ -1,28 +1,28 @@
-var myApp = {
-  results : [(a+b); (a-b); (a*b); (a/b)],
+var calculator = {
+  results : [],
   
-  functions : {
-    add : function(a, b){
-      myApp.results.push(a + b);
-    }
+  calculate : {
     
-    subtract : function(a, b){
-      myApp.results.push(a - b);
-    }
+    add : function(num1, num2){
+      this.results.push(num1 + num2);
+    },
     
-    multiply : function(a, b){
-      myApp.results.push(a * b);
+    subtract : function(num1, num2){
+      this.results.push(num1 - num2);
+    },
+  
+    multiply : function(num1, num2){
+      this.results.push(num1 * num2);
+    },
+
+    devide : function(num1, num2){
+      this.results.push(num1 / num2);
+    },
+
+    remainder : function(num1, num2){
+      this.results.push(num1 % num2);
     }
 
-    divide : function(a, b){
-      myApp.results.push(a / b);
-    }
   }
-	
-  add(a+b);
-  subtract(a-b);
-  multiply(a*b);
-  divide(a/b);
-  console.log(results);
 
 };
