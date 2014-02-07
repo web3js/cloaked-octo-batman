@@ -58,12 +58,12 @@ var calculator = {
 
 		if (typeof v1 === "number" && typeof v2 === "number"){
 			switch(option) {
-				case "add" : this.add(v1,v2); break;
-				case "subtract" : this.subtract(v1,v2); break;
-				case "multiply" : this.multiply(v1,v2); break;
-				case "divide" : this.divide(v1,v2); break;
-				case "remainder" : this.remainder(v1,v2); break;
-				default: throw this.optionException.message; break;
+				case "add" : calculator.add(v1,v2); break;
+				case "subtract" : calculator.subtract(v1,v2); break;
+				case "multiply" : calculator.multiply(v1,v2); break;
+				case "divide" : calculator.divide(v1,v2); break;
+				case "remainder" : calculator.remainder(v1,v2); break;
+				default: throw calculator.optionException.message; break;
 			}
 
 		} else {
@@ -74,7 +74,7 @@ var calculator = {
 	
 	shove : function(result){
 		this.data.push(result);
-		$('#result').text(result);
+		$('#result').html('<p>' + ' ' + calculator.data + '</p></br>');
 	},
 
 	data : []

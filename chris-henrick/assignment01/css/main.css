@@ -1,5 +1,6 @@
 body, html {
 	width: 100%;
+	height: 100%;
 	margin: 0px;
 }
 
@@ -43,5 +44,5 @@ input, select {
 }
 
 #result {
-
+	margin: 0 auto;
 }
