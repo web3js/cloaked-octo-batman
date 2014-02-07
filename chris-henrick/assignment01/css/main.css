@@ -1,0 +1,47 @@
+body, html {
+	width: 100%;
+	margin: 0px;
+}
+
+#wrapper {
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 10%;
+/*	border: 1px solid red;
+*/}
+
+h1, p, a {
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+/*	border: 1px solid blue;
+*/}
+
+p {
+	padding-top: 2%;
+}
+
+.button {
+	display: block;
+	height: 2%;
+	width: 10%;
+	margin-top: 3%;
+	background: hsl(50,100,100);
+
+	text-decoration: none;
+	font: bold 1em sans-serif;
+	color: rgba(0,0,0,0.55);
+
+	border: 2px solid rgba(33, 68, 72, 0.6);
+	border-radius: 10%;
+}
+
+input, select {
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+#result {
+
+}
