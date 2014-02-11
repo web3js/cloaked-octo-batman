@@ -27,6 +27,7 @@ p {
 	height: 2%;
 	width: 10%;
 	margin-top: 3%;
+	padding: 5px;
 	background: hsl(50,100,100);
 
 	text-decoration: none;
@@ -34,7 +35,7 @@ p {
 	color: rgba(0,0,0,0.55);
 
 	border: 2px solid rgba(33, 68, 72, 0.6);
-	border-radius: 10%;
+	border-radius: 5%;
 }
 
 input, select {

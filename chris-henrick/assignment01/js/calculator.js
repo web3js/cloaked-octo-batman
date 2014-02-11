@@ -5,20 +5,22 @@ var calculator = {
 	name: 'Bo-Ris da calculator',
 	version: 0.1,
 
-	add: function(v1,v2){
-		this.shove(v1 + v2);
-	},
-	subtract: function(v1,v2){
-		this.shove(v1 - v2);
-	},
-	multiply: function(v1,v2){
-		this.shove(v1 * v2);
-	},
-	divide: function(v1,v2){
-		this.shove(v1 / v2);
-	},
-	remainder: function(v1,v2){
-		this.shove(v1 % v2);
+	functions: {
+		add: function(v1,v2){
+			calculator.shove(v1 + v2);
+		},
+		subtract: function(v1,v2){
+			calculator.shove(v1 - v2);
+		},
+		multiply: function(v1,v2){
+			calculator.shove(v1 * v2);
+		},
+		divide: function(v1,v2){
+			calculator.shove(v1 / v2);
+		},
+		remainder: function(v1,v2){
+			calculator.shove(v1 % v2);
+		},
 	},
 
 	numException: {
@@ -58,12 +60,12 @@ var calculator = {
 
 		if (typeof v1 === "number" && typeof v2 === "number"){
 			switch(option) {
-				case "add" : calculator.add(v1,v2); break;
-				case "subtract" : calculator.subtract(v1,v2); break;
-				case "multiply" : calculator.multiply(v1,v2); break;
-				case "divide" : calculator.divide(v1,v2); break;
-				case "remainder" : calculator.remainder(v1,v2); break;
-				default: throw calculator.optionException.message; break;
+				case "add" : calculator.functions.add(v1,v2); break;
+				case "subtract" : calculator.functions.subtract(v1,v2); break;
+				case "multiply" : calculator.functions.multiply(v1,v2); break;
+				case "divide" : calculator.functions.divide(v1,v2); break;
+				case "remainder" : calculator.functions.remainder(v1,v2); break;
+				//default throw calculator.optionException.message; break;
 			}
 
 		} else {
