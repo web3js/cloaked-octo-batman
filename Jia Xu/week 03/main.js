@@ -92,7 +92,7 @@ var app = (function(w, d) { // scroll down and see how we are passind "window" a
 			 
 				that.liked = !that.liked;
 				if (that.liked==true){
-					that.likeButton.className += " liked";//addClass()?
+					that.likeButton.className += "liked";//addClass()?
 				}
 				if (that.liked==false){
 					that.likeButton.className = "like icon-heart";
