@@ -12,15 +12,20 @@
 		<form class="write-note-form" action="">
 			<input type="text" class="write-note">
 			<input type="submit" class="submit-note" value="Add">
+			<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+
 		</form>
 	</div>
+
+	<div id="map"></div>
 
 	<div class="read">
 		<ul class="notes">
 			<!-- content coming from main.js -->
 		</ul>
 	</div>
-	
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>	
 	<script type="text/javascript" src="stdlib.js"></script>
 	<script type="text/javascript" src="second.js"></script>
 </body>

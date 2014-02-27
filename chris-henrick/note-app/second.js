@@ -24,6 +24,11 @@ var app = (function(w,d){
 		});
 	};
 
+	// map stuff
+	var map = L.map('map').setView([40.67,-73.94],10);
+	var layer = new L.StamenTileLayer("toner");
+	map.addLayer(layer);
+
 	// note constructor
 	var Note = function(noteBodyText) {
 		// note text to be added to note list
@@ -77,6 +82,9 @@ var app = (function(w,d){
 			this.likeButton.addEventListener('click', this.like);
 			this.removeButton.addEventListener('click', this.remove);
 		};
+		this.geoLocation = function(latLon){
+			this.map.panTo(latLon);
+		}
 		// function that instantiates a Note
 		this.init = function(){
 			this.attachEvents();
