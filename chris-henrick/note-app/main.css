@@ -118,6 +118,14 @@ body {
 	width: 85%;
 
 }
+
+.note h3 {
+	margin: 15px 5% 15px 0;
+	float: left;
+	width: 85%;
+	font-style: italic;
+}
+
 .note:hover {
 	border-left-width: 8px;
 	padding-left: 14px;

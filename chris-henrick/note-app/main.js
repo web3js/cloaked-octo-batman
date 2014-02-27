@@ -77,16 +77,22 @@ var app = (function(w, d) { // scroll down and see how we are passind "window" a
 	// Take a look at the html. We have a <ul></ul> element that keeps all the notes. We pass that as an argument to the constructor.
 	// every object created using new Note(); syntax will have:
 	var Note = function(id, text, list) {
+		// add the note as a list item containing a <p> for text and <ul> for like & delete buttons
 		this.id = id; // unique identifier
 		this.text = text; // body text
 		this.list = list; // a list to append itself into
 		this.listItem = d.createElement('li'); // a list item. we can create HTML elements using document.createElement(nameOfElement);
+		this.title = d.createElement('h1'); // title for the note
+		this.dateTime = d.createElement('h3'); // date the note was created
 		this.paragraph = d.createElement('p'); // a paragraph element to hold the text
 		this.actions = d.createElement('ul'); // a <ul> element to hold the "like" and "remove" buttons.
 		this.likeButton = d.createElement('li'); // an <li> button for like buttons
 		this.removeButton = d.createElement('li'); // an <li> for remove buttons
 		this.liked = false; // a boolean that is set to false by default. It indicates whether our post has been liked or not. 
 		
+		var now = new Date().format("M/d/20y h:m");
+		this.noteTime = d.createElement('h3');
+		this.noteTime.innerHTML
 		// var that = this; please blindly accept this from me now. 
 		// I will explain why we do this. 
 		var that = this; // We will use this var in like(); and remove(); method. 
@@ -98,29 +104,22 @@ var app = (function(w, d) { // scroll down and see how we are passind "window" a
 				Will explain this in class Thursday
 			 */
 
-
-
-			
-
 			 /* HOMEWORK: */
 			
 			// implement the method logic.
 			// This method should:
 			// 1 - Toggle the class ".liked" to the like button.
 			// 2 - Toggle the "liked" boolean.
-
-
-			if (that.liked === false){
-				that.likeButton.className += " liked";								
-				that.liked = true;
-			} else if (that.liked === true) {
-				that.likeButton.className = "like icon-heart";
-				that.liked = false;
-			} 
-
-
-
-
+			// if (that.liked === false){
+			// 	that.likeButton.className += " liked";								
+			// 	that.liked = true;
+			// } else if (that.liked === true) {
+			// 	that.likeButton.className = "like icon-heart";
+			// 	that.liked = false;
+			// } 
+			/* simpler way of doing the above ^*/
+			that.liked = !that.liked;
+			that.likeButton.classList.toggle('liked');
 		};
 		this.remove = function() {
 			/* 	NOTE: in the context of this function
@@ -139,46 +138,39 @@ var app = (function(w, d) { // scroll down and see how we are passind "window" a
 			// This method should:
 			// 1 - Delete the note from the screen
 			// 2 - Delete the note from the "notes" array
-			var i = 0;
-				//len = notes.length;
-			for (i; i<notes.length; i++){
-				console.log(notes[i]);
+			// var i = 0;
+			// 	//len = notes.length;
+			// for (i; i<notes.length; i++){
+			// 	console.log(notes[i]);
 
-				if (that === notes[i]){
-					notes.splice(notes[i],1);
+			// 	if (that === notes[i]){
+			// 		notes.splice(notes[i],1);
 
-					console.log('match!');
-					console.log('notes[i]: ', notes[i]);
-				}
-			}
-			//notes.slice(that.note);
+			// 		console.log('match!');
+			// 		console.log('notes[i]: ', notes[i]);
+			// 	}
+			// }
+			notes.splice(notes.indexOf(that),1);
+			DOM.notes.removeChild(that.listItem);
 
 			// that.listItem.removeChild(that.paragraph);
 			// that.listItem.removeChild(that.actions);
-			that.list.removeChild(that.listItem);
+			// that.list.removeChild(that.listItem);
 
 		};
+
 		this.attachEvents = function() {
 			// every note object also has an "attach events" function
 			// that takes care of handling all the events (like the one we had at the top)
 			this.likeButton.addEventListener('click', function() {
-				
-			
-
 				/* HOMEWORK */
 				// Call the like method here.
 				that.like();
-
-
 			});
 			this.removeButton.addEventListener('click', function() {
-			
-
 				/* HOMEWORK */
 				// Call the remove method here.
 				that.remove();
-			
-
 			});
 		};
 
@@ -187,6 +179,7 @@ var app = (function(w, d) { // scroll down and see how we are passind "window" a
 		// to get make the new note appear on screen.
 		this.init = function() {
 			this.listItem.className += 'note'; // add the class 'note' to out note <li> element
+			this.dateTime = this.noteTime;
 			this.paragraph.innerHTML = this.text; // take the text we got from the form and put it in this note's paragraph.
 			this.listItem.appendChild(this.paragraph); // take the paragraph and append it to the list item for this note
 			this.actions.className += 'actions'; // add the class '.actions' to the <ul> element in this note that holds the "like" and "remove" button
@@ -194,6 +187,7 @@ var app = (function(w, d) { // scroll down and see how we are passind "window" a
 			this.removeButton.className += 'remove icon-cancel'; // add two classes to the remove button. Checkout these classes in main.css
 			this.actions.appendChild(this.removeButton); // append the remove button to the ".actions" list
 			this.actions.appendChild(this.likeButton); // append the like button to the ".actions" list
+			this.listItem.appendChild(this.dateTime); // append the date & time (chris)
 			this.listItem.appendChild(this.paragraph);  // append the paragraph to this note's list item
 			this.listItem.appendChild(this.actions); // append the ".actions" <ul> element to the note.
 			this.list.appendChild(this.listItem); // append the note to the notes list.
@@ -201,7 +195,7 @@ var app = (function(w, d) { // scroll down and see how we are passind "window" a
 			return this; // in the end, return the note object to us. 
 		}
 
-	};
+	}; // end note
 
 	var notes = []; // the array to keep all the notes. we do notes.push(); at the top of the file.
 
