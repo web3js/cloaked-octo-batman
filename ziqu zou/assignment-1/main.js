@@ -79,7 +79,9 @@ var avator={
 
 }
 
-//console.log('test'+avator.weapon.gun.damage);
+
 console.log(avator.creatPeople('Wa',90));
 console.log(avator.power('Laser','Sword'));
+
+//test github
 
