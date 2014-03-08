@@ -1,12 +1,10 @@
-// to do:
-// randomly style hood fills so that they stand out from one another?
-// make a functionality that asks user for input and checks against geojson data
-// make a functionality that keeps track of user's score in localstorage
+// map stuff here
 
 var app = app || {};
 
 app.map = (function(){
 
+	// globals for app.map to reference
 	var elements = {
 		map : null,
 		hoods : null,
@@ -16,6 +14,7 @@ app.map = (function(){
 		popup_submit : document.querySelector('.submit-answer')
 	};
 
+	// set up Leaflet map
 	var renderMap = function(){
 		console.log('renderMap() called');
 
@@ -35,6 +34,7 @@ app.map = (function(){
 		elements.map.setView(config.initLatLng, config.initZoom);
 	};
 
+	// info to display in polygon pop up when clicked on
 	var createPopupContent = function(){
 		var form = document.createElement('FORM');
 		//'<form class=\"write-answer-form\"> <input type=\"text\" class=\"write-answer\"> <input type=\"submit\" class=\"submit-answer\" value=\"add\"> </form>',
@@ -53,6 +53,7 @@ app.map = (function(){
 		return form;
 	};
 
+	// styles for coloring polygons' stroke and fill
 	var style = {
 		h : {
 			color: "#ffffff",
@@ -105,8 +106,9 @@ app.map = (function(){
 		}																		
 	};
 
+	// function to style polygon features from geojson data
 	var styleData = function(feature) {
-		console.log('feature color_id: ', feature.properties.color_id);
+		//console.log('feature color_id: ', feature.properties.color_id);
 		switch(feature.properties.color_id) {
 			case 0 : return style.one; break;
 			case 1 : return style.two; break;
@@ -118,6 +120,7 @@ app.map = (function(){
 		
 	}
 
+	// highlight feature on mouse-over
 	var highlightFeature = function(e) {
 		    var layer = e.target;
 
@@ -128,45 +131,31 @@ app.map = (function(){
 		    }
 	};
 
+	// reset style to default on mouse out
 	var resetHighlight = function(e) {
 		    elements.hoods.resetStyle(e.target);
 	};
 
-	var styleFeature = function(f) {
-		switch(f.name) {
-			case elements.target : return style.h; break;
-			default : return style.d;
-		}
-	};
-
+	// pan and zoom to the polygon when clicked
 	var zoomToFeature =	function(e) {
 			console.log(e.target.feature.properties.NTAName);
 		    elements.map.fitBounds(e.target.getBounds());
 	};
 
+	// add event listeners for pop-up form
 	var attachEvents = function(){
 	    $('.submit-answer').on('click', function(evt) {
 	    	evt.preventDefault();
 	        console.log('here');
     	});
-
-	
-		// elements.popup_wrapper.addEventListener('click', function(e) {
-		// 	e.preventDefault();
-		// 	var fieldValue = elements.answerField.value;
-		// 	console.log('fieldValue: ', fieldValue);
-		// 	// var newAnswer = new Model(fieldValue, answers).save();
-		// 	// new View(newAnswer, elements.answerList).init();
-		// 	elements.answerField.value = '';
-		// });
 	};
 
+	// add user interaction and pop-ups to geojson data
 	var onEachFeature = function(f,l){
 		//console.log('feature: ', f, ' layer: ', l);
 		if (f.properties.NTAName) {
 			//l.bindPopup("<p>Your Guess???</p></br>" + '<form class=\"write-answer-form\"> <input type=\"text\" class=\"write-answer\"> <input type=\"submit\" class=\"submit-answer\" value=\"add\"> </form>');			
 			l.bindPopup(createPopupContent());
-			// attachEvents();
 		}	
 
 		l.on({
@@ -176,6 +165,7 @@ app.map = (function(){
 		});
 	};
 
+	// load the geojson using ajax
 	var fetchData = function(){
 		$.getJSON('./data/nyc_planning_hoods.geojson', function(d){
 			console.log('hood data: ', d);
@@ -190,6 +180,7 @@ app.map = (function(){
 		})
 	};
 
+	// initialize the map
 	var init = function() {
 		console.log('app.map init called');
 		renderMap();

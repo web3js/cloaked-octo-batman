@@ -1,3 +1,8 @@
+// game stuff here
+// to do:
+// make a functionality that asks user for input and checks against geojson data
+// make a functionality that keeps track of user's score in localstorage
+
 var app = app || {};
 
 app.game = (function(){
