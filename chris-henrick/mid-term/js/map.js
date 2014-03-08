@@ -46,7 +46,7 @@ app.map = (function(){
 		var input2 = document.createElement('input');
 		input2.type = "submit";
 		input2.className = "submit-answer";
-		input2.value = "Add";
+		input2.value = "Guess";
 		form.appendChild(input);
 		form.appendChild(input2);
 
@@ -56,19 +56,67 @@ app.map = (function(){
 	var style = {
 		h : {
 			color: "#ffffff",
-			weight: 3,
-			opacity: .7,
-			fillOpacity: 0.5,
+			weight: 5,
+			opacity: .8,
+			fillOpacity: 0.6,
 			fillColor: "#0066cc"
 		},
 		d : {
 			color: "#FF530D",
 			weight: 1.5,
 			opacity: .7,
-			fillOpacity: 0.5,
+			fillOpacity: 0.6,
 			fillColor: "#FF530D"			
-		}
+		},
+		one : {
+			color: "#FF530D",
+			weight: 1.5,
+			opacity: .7,
+			fillOpacity: 0.6,
+			fillColor: "#b3e2cd"			
+		},
+		two : {
+			color: "#FF530D",
+			weight: 1.5,
+			opacity: .7,
+			fillOpacity: 0.6,
+			fillColor: "#fdcdac"			
+		},
+		three : {
+			color: "#FF530D",
+			weight: 1.5,
+			opacity: .7,
+			fillOpacity: 0.6,
+			fillColor: "#cbd5e8"			
+		},
+		four : {
+			color: "#FF530D",
+			weight: 1.5,
+			opacity: .7,
+			fillOpacity: 0.6,
+			fillColor: "#f4cae4"			
+		},
+		five : {
+			color: "#FF530D",
+			weight: 1.5,
+			opacity: .7,
+			fillOpacity: 0.6,
+			fillColor: "#e6f5c9"			
+		}																		
 	};
+
+	var styleData = function(feature) {
+		console.log('feature color_id: ', feature.properties.color_id);
+		switch(feature.properties.color_id) {
+			case 0 : return style.one; break;
+			case 1 : return style.two; break;
+			case 2 : return style.three; break;
+			case 3 : return style.four; break;
+			case 4 : return style.five; break;
+			default : return style.d;
+		}
+		
+	}
 
 	var highlightFeature = function(e) {
 		    var layer = e.target;
@@ -133,7 +181,7 @@ app.map = (function(){
 			console.log('hood data: ', d);
 
 			elements.hoods = L.geoJson(d, {
-				style: style.d,
+				style: styleData,
 				onEachFeature: onEachFeature,
 			}).addTo(elements.map);
 		})
