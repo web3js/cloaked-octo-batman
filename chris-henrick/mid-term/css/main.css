@@ -12,5 +12,30 @@ html, body {
 
 #map {
 	height: 100%;
-	width: 100%;
+	width: 75%;
+	float: right;
+}
+
+.answer-div {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 25%;
+	float: left;
+}
+
+.no-answers-found {
+	font: 20pt Helvetica, sans-serif bold;
+	text-align: center;
+	margin-top: 30px;
+	padding: 0px 10px 30px 10px;
+	color: rgba(0,0,0,1);
+	animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	-webkit-animation: fadein 1s;
+	-o-animation: fadein 1s;	
+}
+
+.hidden {
+	display: none;
 }
