@@ -36,8 +36,12 @@ app.map = (function(){
 
 	// info to display in polygon pop up when clicked on
 	var createPopupContent = function(){
-		var form = document.createElement('FORM');
+		var formTitle = document.createElement('h3'),
+			form = document.createElement('FORM');
+
 		//'<form class=\"write-answer-form\"> <input type=\"text\" class=\"write-answer\"> <input type=\"submit\" class=\"submit-answer\" value=\"add\"> </form>',
+		formTitle.className = 'write-answer-form-title';
+		formTitle.innerHTML = "What neighborhood is this?";
 		form.className ='write-answer-form';
 		form.action = "";
 		var input = document.createElement('input');
@@ -60,49 +64,49 @@ app.map = (function(){
 			weight: 5,
 			opacity: .8,
 			fillOpacity: 0.6,
-			fillColor: "#0066cc"
+			fillColor: "#ffff00"
 		},
 		d : {
 			color: "#FF530D",
-			weight: 1.5,
-			opacity: .7,
+			weight: 0,
+			opacity: 0,
 			fillOpacity: 0.6,
-			fillColor: "#FF530D"			
+			fillColor: "#bfbfbf"			
 		},
 		one : {
 			color: "#FF530D",
 			weight: 1.5,
 			opacity: .7,
 			fillOpacity: 0.6,
-			fillColor: "#b3e2cd"			
+			fillColor: "#66c2a5"			
 		},
 		two : {
 			color: "#FF530D",
 			weight: 1.5,
 			opacity: .7,
 			fillOpacity: 0.6,
-			fillColor: "#fdcdac"			
+			fillColor: "#fc8d62"			
 		},
 		three : {
 			color: "#FF530D",
 			weight: 1.5,
 			opacity: .7,
 			fillOpacity: 0.6,
-			fillColor: "#cbd5e8"			
+			fillColor: "#8da0cb"			
 		},
 		four : {
 			color: "#FF530D",
 			weight: 1.5,
 			opacity: .7,
 			fillOpacity: 0.6,
-			fillColor: "#f4cae4"			
+			fillColor: "#e78ac3"			
 		},
 		five : {
 			color: "#FF530D",
 			weight: 1.5,
 			opacity: .7,
 			fillOpacity: 0.6,
-			fillColor: "#e6f5c9"			
+			fillColor: "#a6d854"			
 		}																		
 	};
 
@@ -139,15 +143,8 @@ app.map = (function(){
 	// pan and zoom to the polygon when clicked
 	var zoomToFeature =	function(e) {
 			console.log(e.target.feature.properties.NTAName);
+			elements.target = e.target.feature.properties.NTAName;
 		    elements.map.fitBounds(e.target.getBounds());
-	};
-
-	// add event listeners for pop-up form
-	var attachEvents = function(){
-	    $('.submit-answer').on('click', function(evt) {
-	    	evt.preventDefault();
-	        console.log('here');
-    	});
 	};
 
 	// add user interaction and pop-ups to geojson data
@@ -185,11 +182,12 @@ app.map = (function(){
 		console.log('app.map init called');
 		renderMap();
 		fetchData();
-		attachEvents();
 	};
 
 	return {
 		init : init,
+		elements : elements,
+		style : style
 	};
 
 })();
