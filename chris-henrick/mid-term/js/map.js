@@ -19,9 +19,9 @@ app.map = (function(){
 		console.log('renderMap() called');
 
 		var config = {
-			baselayer : new L.StamenTileLayer('toner'),
+			baselayer : new L.StamenTileLayer('toner-lite'),
 			initLatLng : new L.LatLng(40.7, -74),
-			initZoom : 12,
+			initZoom : 11,
 			minZoom : 4,
 			maxZoom : 16,
 			zoomControl : true,
@@ -113,12 +113,12 @@ app.map = (function(){
 	// function to style polygon features from geojson data
 	var styleData = function(feature) {
 		//console.log('feature color_id: ', feature.properties.color_id);
-		switch(feature.properties.color_id) {
-			case 0 : return style.one; break;
-			case 1 : return style.two; break;
-			case 2 : return style.three; break;
-			case 3 : return style.four; break;
-			case 4 : return style.five; break;
+		switch(feature.properties.borough) {
+			case "Manhattan" : return style.one; break;
+			case "Bronx" : return style.two; break;
+			case "Brooklyn" : return style.three; break;
+			case "Queens" : return style.four; break;
+			case "Staten Island" : return style.five; break;
 			default : return style.d;
 		}
 		
@@ -142,15 +142,15 @@ app.map = (function(){
 
 	// pan and zoom to the polygon when clicked
 	var zoomToFeature =	function(e) {
-			console.log(e.target.feature.properties.NTAName);
-			elements.target = e.target.feature.properties.NTAName;
+			console.log(e.target.feature.properties.neighborho);
+			elements.target = e.target.feature.properties.neighborho;
 		    elements.map.fitBounds(e.target.getBounds());
 	};
 
 	// add user interaction and pop-ups to geojson data
 	var onEachFeature = function(f,l){
 		//console.log('feature: ', f, ' layer: ', l);
-		if (f.properties.NTAName) {
+		if (f.properties.neighborho) {
 			//l.bindPopup("<p>Your Guess???</p></br>" + '<form class=\"write-answer-form\"> <input type=\"text\" class=\"write-answer\"> <input type=\"submit\" class=\"submit-answer\" value=\"add\"> </form>');			
 			l.bindPopup(createPopupContent());
 		}	
@@ -164,7 +164,7 @@ app.map = (function(){
 
 	// load the geojson using ajax
 	var fetchData = function(){
-		$.getJSON('./data/nyc_planning_hoods.geojson', function(d){
+		$.getJSON('./data/nyc-hoods-pediacities.geojson', function(d){
 			console.log('hood data: ', d);
 
 			elements.hoods = L.geoJson(d, {

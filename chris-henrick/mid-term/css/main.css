@@ -8,42 +8,47 @@ html, body {
 #wrapper {
 	height: 100%;
 	width: 100%;
-}
-
-.title {
-	position: absolute;
-	display: block;
-	height: 10%;
-	width: 25%;
-	float: left;
-	/*border: 1px solid orange;*/
-}
-
-.title h1 {
-	font: bold italic 16pt Helvetica, sans-serif;
-	letter-spacing: 1px;
-	text-align: center;
-	text-transform: uppercase;
-	margin-top: 4%;
-}
-
-#map {
-	height: 100%;
-	width: 74%;
-	float: right;
-	border-left: 1px solid black;
+	position: relative;
 }
 
 .answer-div {
 	margin: 0;
 	padding: 0;
-	position: absolute;
+	position: relative;
 	display: block;
 	top: 10%;
 	height: 89%;
-	width: 25%;
+	width: 24.9%;
 	float: left;
 	/*border: 1px solid blue;*/
+}
+
+.title {
+	position: absolute;
+	display: table;
+	height: 6%;
+	width: 25%;
+	float: left;
+	background-color: black;
+	/*border: 1px solid orange;*/
+}
+
+.title h1 {
+	font: bold italic 16pt Helvetica, sans-serif;
+	letter-spacing: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	color: white;
+	display: table-cell; 
+	vertical-align: middle; 
+	text-align: center;	
+}
+
+#map {
+	height: 100%;
+	width: 75%;
+	float: right;
+	border-left: 1px solid black;
 }
 
 #answers-title {
@@ -71,8 +76,9 @@ html, body {
 .no-answers-found {
 	font: bold 20pt Helvetica, sans-serif;
 	text-align: center;
-	margin: 10% auto 0 auto;
-	width: 60%;
+	line-height: 30pt;
+	margin: 5% auto 0 auto;
+	width: 80%;
 	padding: 0px 10px 30px 10px;
 	color: hsla(0,0%,30%,1);
 	animation: fadein 1s;
@@ -83,4 +89,17 @@ html, body {
 
 .hidden {
 	display: none;
+}
+
+#footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	/*border: 1px solid orange;*/
+	text-align: center;	
+	font-weight: bold;
+}
+
+#footer input {
+	margin: 0 auto;
 }
