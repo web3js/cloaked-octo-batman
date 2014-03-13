@@ -1,4 +1,3 @@
-
 <?php
 ini_set('display_errors', 'On');
 
@@ -7,8 +6,8 @@ ini_set('display_errors', 'On');
 
 
 // Connect To Server
-$username = "alex";
-$password = "sql11222";
+$username = "**********";
+$password = "**********";
 $db = "main";
 /*$sql = $_GET["sql"];*/
 $sql = "SELECT hed FROM user"; 
