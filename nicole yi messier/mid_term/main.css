@@ -1,0 +1,149 @@
+/* -----------App styles -----------*/
+* {
+	margin: 0;
+}
+
+html{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 100%;
+}
+
+body{
+	margin: 0;
+	background-color: #6A02A1;
+	height: 100%;
+}
+
+div.doc{
+
+}
+
+div{
+	display: block;1
+}
+
+div#wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+
+/*-----------nav containers----------*/
+
+div.push{
+	height:60px;
+}
+div.navContainer{
+	overflow: auto;
+	background-color: #FFDBF5;
+	margin-color: #6A02A1;
+	width: 100%;
+	min-width: 480px;
+}
+
+div#top{
+	vertical-align:top; 
+}
+
+div#bottom{
+	bottom: 0;
+}
+
+img.navImage{
+	width: 30px;
+}
+
+div.navBar{
+	vertical-align:top; 
+	display: inline-block;
+	height: 60px;
+	color: white;
+	margin-left: 1%;
+	float:left;
+	width: 50%;
+}
+
+nav.left{
+	width: 90%;
+	padding: 0;
+	position: relative;
+	float: left;
+	margin-top: 2%;
+}
+
+p.credits{
+	font-size: 12px;
+	color: #6A02A1;
+	font-family: sans-serif; 
+	font-weight: 200;
+	text-align: right;
+}
+
+div.credits{
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: 0;
+	width: 40%;
+	float: right;
+	margin-right: 1%;
+	margin-top: 1%;
+}
+/*-----------sign in form----------*/
+input.signUp {
+	width: 266px;
+	height: 20px;
+	margin: 0 5% 0 0;
+	border: 2px solid #0DECBA;
+	outline: none;
+	font-size: 1em;
+	position: absolute;
+}
+/*-----------middle & sign in containers----------*/
+div.middle-card{
+	height: 328px;
+	top: 50%;
+	border-radius: 4px;
+	background-color: #FFDBF5;
+	min-width: 480px;
+}
+
+div.middle-section{
+	margin-right: 10%;
+	margin-left: 10%;
+	min-height: 400px;
+}
+
+div.middle-container{
+	margin-left: 10%;
+	margin-right: 10%;
+
+}
+
+div.front-signup{
+	position: absolute;
+	height: 110px;
+	width: 302px;
+	margin: 7px;
+}
+
+p{
+	font-size: 20px;
+	color:#6A02A1;
+	font-family: sans-serif; 
+	padding: 0px;
+}
+
+.text-signUp{
+	margin: 10px;
+	margin-left: 0px;
+}
+
+div.field{
+	height: 30px;
+	width: 276px;
+	margin-top: 10px;
+}
+
