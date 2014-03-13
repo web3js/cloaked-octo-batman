@@ -74,7 +74,7 @@
 				<section class="newsWrapper-active">	
 					<div class="newsFeed">					
 						<ul id="articleList">
-							<li class="template"> <h2></h2><h1>head</h1> </li>
+							<li class="template"> <h2><a><pub>pub</pub></a></h2><h1>head</h1> </li>
 						</ul>
 					</div>
 				</section>
