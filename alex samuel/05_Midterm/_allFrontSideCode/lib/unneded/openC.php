@@ -7,7 +7,7 @@
  */
 
 
-$apiKey = "m9ye3d9scfswa55jdmum6n98";
+$apiKey = "**********";
 
 // Content and input/output formats
 /* $content = "Microsoft has made several bids to purchase Yahoo!"; */
