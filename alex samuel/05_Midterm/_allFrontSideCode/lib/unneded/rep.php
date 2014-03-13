@@ -1,10 +1,9 @@
-
 <?php
 
 // Connect To Server
-$username = "alex";
-$password = "sql11222";
-$db = "main";
+$username = "**********";
+$password = "**********";
+$db = "**********";
 $sql = $_GET["sql"];
 /* $sql = "SELECT * FROM user"; */
 /* $sql = "INSERT INTO user (date, time, finger, geoLat, geoLon, geoNabe, geoName) VALUES ('2014-01-21', '18:06:23', '4294548156', '40.731074799999995', '-73.9585622', 'greenpoint', 'home')"; */
