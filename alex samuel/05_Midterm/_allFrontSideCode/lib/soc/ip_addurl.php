@@ -2,7 +2,7 @@
 
 require 'php-sdk/src/temboo.php';
 
-$session = new Temboo_Session('aesam', 'bodegga', '958c74b7-2e27-4c66-9');
+$session = new Temboo_Session('**********', '**********', '**********');
 
 $addURL = new Instapaper_AddURL($session);
 
