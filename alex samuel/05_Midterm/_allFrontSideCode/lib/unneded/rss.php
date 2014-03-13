@@ -1,10 +1,9 @@
-
 <?php
 
 // Connect To Server
-$username = "alex";
-$password = "sql11222";
-$db = "main";
+$username = "**********";
+$password = "**********";
+$db = "**********";
 $sql = $_GET["sql"];
 /* $sql = "SELECT * FROM user"; */
 
