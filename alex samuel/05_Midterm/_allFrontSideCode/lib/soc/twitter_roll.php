@@ -6,7 +6,7 @@ require 'php-sdk/src/temboo.php';
 $query = $_GET[q];
 
 
-$session = new Temboo_Session('aesam', 'bodegga', '958c74b7-2e27-4c66-9');
+$session = new Temboo_Session('**********', '**********', '**********');
 
 $tweets = new Twitter_Search_Tweets($session);
 
