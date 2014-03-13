@@ -1,0 +1,22 @@
+			<select class="category">
+				<option id="">Choose Your News</option>
+				<option id="NearYou">News Near You</option>
+				<option id="ArtsCulture">Arts & Culture</option>
+				<option id="Business">Business</option>
+				<option id="Education">Education</option>
+				<option id="Entertainment">Entertainment</option>
+				<option id="Environment">Environment</option>
+				<option id="Food">Food</option>
+				<option id="General News">General News</option>
+				<option id="Health">Health</option>
+				<option id="Lifestyle">Lifestyle</option>
+				<option id="Local News">Local News</option>
+				<option id="Media">Media</option>
+				<option id="Money">Money</option>
+				<option id="Politics">Politics</option>
+				<option id="Science">Science</option>
+				<option id="Sports">Sports</option>
+				<option id="Tech">Technology</option>
+				<option id="Travel">Travel</option>
+				<option id="Weird News">Weird News</option>
+			</select>

@@ -1,0 +1,2 @@
+[16-Nov-2013 11:38:26] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'lib/reader.php?url=http://www.nytimes.com' for inclusion (include_path='.:/usr/lib64/php:/usr/share/pear') in /home3/helloim3/public_html/thesis/projects/04-ux/xml/index.php on line 84
+[16-Nov-2013 11:39:41] PHP Warning:  Division by zero in /home3/helloim3/public_html/thesis/projects/04-ux/xml/index.php on line 84
