@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<title>app</title>
+	<link rel="stylesheet" type="text/css" href="font/style.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+<body>
+
+<header></header>
+
+<div id="container">
+<div id="leftside">
+	<div class="read">
+		<h3 class="no-notes-found hidden">	
+			CREATE YOUR<br><br>NEW TO-DO-LIST<br><br>HERE!
+		</h3>
+		<ul class="notes">
+			<!-- content coming from main.js -->
+		</ul>
+	</div>
+</div>
+<div id="line"></div>
+<div id="rightside">
+	<label>
+	<select class="note-type">
+  		<option value="WORK" class='WORK'>WORK</option>
+  		<option value="SCHOOL" class="SCHOOL">SCHOOL</option>
+  		<option value="HOME" class="HOME">HOME</option>
+  		<option value="FAMILY" class="FAMILY">FAMILY</option>
+  		<option value="ENTERTAINMENT" class="ENTERTAINMENT">ENTERTAINMENT</option>
+  		<option value="OTHER" class="OTHER">OTHER</option>
+	</select>
+	</label>
+	<div class="write">
+		<form class="write-note-form" action="">
+			<input type="text" class="write-note">
+			<input type="submit" class="submit-note" value="+">
+		</form>
+	</div>
+</div>
+</div>
+	
+
+
+
+	<script type="text/javascript" src="router.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+
+</body>
+</html>

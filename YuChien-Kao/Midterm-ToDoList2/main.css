@@ -1,0 +1,345 @@
+/* CSS RESET : Resets predefined browser styles. */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* apply a natural box layout model to all elements ala Paul Irish */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+/* App styles */
+* {
+	outline: none;
+}
+body {
+	margin: 0 auto;
+	padding: 0;
+	background-color: #222;
+	font-family: Helvetica, Arial, 'sans-serif';
+	font-size: 16px;
+	/*position: relative;*/
+}
+
+header{
+	position: relative;
+	width: 1278px;
+	height: 170px;
+	margin: 0 auto;
+	padding: 0px;
+	/*background-color: #999;*/
+	background-image: url(img/banner.png);
+}
+
+#container{
+	position: relative;
+	width: 1278px;
+	margin: 0 auto;
+	padding: 0px;
+	background-color: #333;
+}
+
+#leftside{
+	display: block;
+	float:left;
+	width: 300px;
+	height: 500px;
+	padding: 0px;
+	background-color: #fff;
+}
+
+#line{
+	display: block;
+	float:left;
+	width: 3px;
+	height: 500px;
+	padding: 0px;
+	background-image: url(img/line.png);
+	background-repeat: no-repeat;
+	background-color: #fff;
+}
+
+#rightside{
+	display: block;
+	float:left;
+	width: 975px;
+	height: 500px;
+	padding: 0px;
+	background-color: #fff;
+}
+
+/*-----------------*/
+
+.write {
+	float: left;
+	width: 100%;
+	height: 50px;
+	margin-top: 10px;
+	background: #fff;
+}
+.write-note-form {
+	float: left;
+	width: 90%;
+	margin: 10px 5% 0 5%;
+}
+.write-note {
+	float: left;
+	width: 80%;
+	height: 50px;
+	margin: 0 5% 0 0;
+	background: transparent;
+	border: 1px solid #999;
+	outline: none;
+	font-size: 1em;
+}
+.submit-note {
+	width: 50px;
+	height: 50px;
+	background: transparent;
+	margin: 0;
+	border: 1px solid #999;
+	font-weight: 900;
+	font-size: 1em;
+	color: #999;
+}
+
+
+/*-----------------*/
+
+.read{
+	width: 100%;
+	float: left;
+	margin-top: 50px;
+}
+.notes {
+	width: 80%;
+	margin: 50px 7% 0px 5%;
+}
+.note {
+	float: left;
+	width: 100%;
+	border-left: 1px solid #666;
+	padding: 0 0 0 20px;
+	margin: 0px 0px 10px 0px;
+	color: #000;
+	-webkit-transition: all 100ms ease-in;
+	-moz-transition: all 100ms ease-in;
+	-ms-transition: all 100ms ease-in;
+	-o-transition: all 100ms ease-in;
+	transition: all 100ms ease-in;
+	animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	-webkit-animation: fadein 1s;
+	-o-animation: fadein 1s;
+}
+.note p {
+	line-height: .5;
+	margin: 5px 5% 10px 0;
+	float: left;
+	width: 85%;
+
+}
+.note:hover {
+	border-left-width: 3px;
+	padding-left: 14px;
+}
+.note:hover .actions {
+	color: rgba(200,200,200,1);	
+}
+.actions {
+	float: left;
+	width: 10%;
+	font-size: 1em;
+	text-align: center;
+	/*color: rgba(0,0,0,0);*/
+	color: rgba(0,0,0,.5);
+	-webkit-transition: all 100ms ease-in;
+	-moz-transition: all 100ms ease-in;
+	-ms-transition: all 100ms ease-in;
+	-o-transition: all 100ms ease-in;
+	transition: all 100ms ease-in;
+}
+.actions li {
+	margin: 10px 0;
+	-webkit-transition: all 100ms ease-in;
+	-moz-transition: all 100ms ease-in;
+	-ms-transition: all 100ms ease-in;
+	-o-transition: all 100ms ease-in;
+	transition: all 100ms ease-in;
+	cursor: pointer;
+}
+.actions li:hover {
+	color: rgba(0,0,0,1);	
+}
+.liked {
+	color: rgba(255,0,100,1);
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.no-notes-found {
+	color: #666;
+	animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	-webkit-animation: fadein 1s;
+	-o-animation: fadein 1s;
+	margin-top: 50px;
+	font-size: 1.5em;
+	text-align: center;
+}
+.hidden {
+	display: none;
+}
+
+/*select---------------------*/
+
+select {
+	width: 200px;
+	margin-top: 83px;
+	margin-left: 50px; 
+    padding:3px;
+    -webkit-border-radius:0px;
+    -moz-border-radius:0px;
+    border-radius:0px;
+/*    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;*/
+    background: #f8f8f8;
+    color:#888;
+    /*border:none;*/
+    border: 1px solid #999;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:18px}
+}
+
+label {position:relative}
+label:after {
+    content:'<>';
+    font:11px "Consolas", monospace;
+    color:#aaa;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:8px; top:2px;
+    padding:0 0 2px;
+    border-bottom:1px solid #ddd;
+    position:absolute;
+    pointer-events:none;
+}
+label:before {
+    content:'';
+    right:6px; top:0px;
+    width:20px; height:20px;
+    background:#f8f8f8;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+.WORK {
+	background-color: #aab3ab;
+}
+
+.SCHOOL {
+	background-color: #c5cbb6;
+}
+
+.HOME {
+	background-color: #ecefc7;
+}
+
+.FAMILY {
+	background-color: #efe0b5;
+}
+
+.ENTERTAINMENT {
+	background-color: #e9caae;
+}
+
+.OTHER {
+	background-color: #e2d3bc;
+}
+
+/*---------------------*/
+
+
+
