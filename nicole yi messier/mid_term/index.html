@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>app</title>
+	<title>blink blink</title>
 	<link rel="stylesheet" type="text/css" href="font/style.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 
@@ -17,38 +17,44 @@
 			</div>
 		</div>
 
-		<div class = "push"></div>
 		<div class = "middle-section">
 			<div class = "middle-container">
-				<div class = "middle-card" >
+				
 					<div class = "front-signup" >
 						<p class = "text-signUp">New? Sign up </p>
 						<form class = "signUp">
 							<div class = "field">
-								<input type="text" class="signUp" placeholder = "Full Name">
+								<input type="text" id="fullName" class="signUp" placeholder = "Full Name">
 							</div>
+							<div class = "feedBack" id = "fullNameFeed"> </div>
 							<div class = "field">
-								<input type="text" class="signUp" placeholder = "Username">
+								<input type="text" id="userName" class="signUp" placeholder = "Username">
 							</div>
+							<div class = "feedBack" id = "userNameFeed"> </div>
 							<div class = "field">
-								<input type="text" class="signUp" placeholder = "E-mail">
+								<input type="text" id="e-mail" class="signUp" placeholder = "E-mail">
 							</div>
+							<div class = "feedBack" id = "e-mailFeed"> </div>
 							<div class = "field">
-								<input type="password" class="signUp" placeholder = "Password">
+								<input type="password" id="password1 "class="signUp" placeholder = "Password">
 							</div>
+							<div class = "feedBack" id = "passwordFeed"> </div>
 							<div class = "field">
-								<input type="password" class="signUp" placeholder = "Confirm Password">
+								<input type="password" id="confirmPassword" class="signUp" placeholder = "Confirm Password">
 							</div>
-							<button type="submit" class="submit-note" value="Add"></button>
+							<div class = "feedBack" id = "confirmPasswordFeed"> </div>
+							<br>
+							<button type="submit" class="submit" value="Add">Sign Up</button>
 						</form>
-					</div>
+				
 				</div>
 			</div>
 		</div>
 
 	</div>
-	<div class = "push"></div>
+
 </div>
+		
 		
 		<div class="navContainer" id = "bottom">
 
