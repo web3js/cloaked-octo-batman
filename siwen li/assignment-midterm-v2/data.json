@@ -1,0 +1,217 @@
+[
+  {
+    "name": "Apple ",
+    "unit": "(medium)",
+    "value": 72
+  },
+  {
+    "name": "Bagel",
+    "unit": "",
+    "value": 289
+  },
+  {
+    "name": "Banana ",
+    "unit": "(medium)",
+    "value": 105
+  },
+  {
+    "name": "Beer ",
+    "unit": "(regular, 12 ounces)",
+    "value": 153
+  },
+  {
+    "name": "Bread ",
+    "unit": "(one slice, wheat or white)",
+    "value": 66
+  },
+  {
+    "name": "Butter ",
+    "unit": "(salted, 1 tablespoon)",
+    "value": 102
+  },
+  {
+    "name": "Carrots ",
+    "unit": "(raw, 1 cup)",
+    "value": 52
+  },
+  {
+    "name": "Cheddar cheese ",
+    "unit": "(1 slice)",
+    "value": 113
+  },
+  {
+    "name": "Chicken breast ",
+    "unit": "(boneless, skinless, roasted, 3 ounces)",
+    "value": 142
+  },
+  {
+    "name": "Chili with beans ",
+    "unit": "(canned, 1 cup)",
+    "value": 287
+  },
+  {
+    "name": "Chocolate chip cookie ",
+    "unit": "(from packaged dough)",
+    "value": 59
+  },
+  {
+    "name": "Coffee ",
+    "unit": "(regular, brewed from grounds, black)",
+    "value": 2
+  },
+  {
+    "name": "Cola ",
+    "unit": "(12 ounces)",
+    "value": 136
+  },
+  {
+    "name": "Corn ",
+    "unit": "(canned, sweet yellow whole kernel, drained, 1 cup)",
+    "value": 180
+  },
+  {
+    "name": "Egg ",
+    "unit": "(large, scrambled)",
+    "value": 102
+  },
+  {
+    "name": "Graham cracker ",
+    "unit": "(plain, honey, or cinnamon)",
+    "value": 59
+  },
+  {
+    "name": "Green beans ",
+    "unit": "(canned, drained, 1 cup)",
+    "value": 40
+  },
+  {
+    "name": "Ground beef patty  ",
+    "unit": "(15 percent fat, 4 ounces, pan-broiled)",
+    "value": 193
+  },
+  {
+    "name": "Hot dog ",
+    "unit": "(beef and pork)",
+    "value": 137
+  },
+  {
+    "name": "Ice cream ",
+    "unit": "(vanilla, 4 ounces)",
+    "value": 145
+  },
+  {
+    "name": "Jelly doughnut",
+    "unit": "",
+    "value": 289
+  },
+  {
+    "name": "Ketchup ",
+    "unit": "(1 tablespoon)",
+    "value": 15
+  },
+  {
+    "name": "Milk ",
+    "unit": "(2 percent milk fat, 8 ounces)",
+    "value": 122
+  },
+  {
+    "name": "Mixed nuts ",
+    "unit": "(dry roasted, with peanuts, salted, 1 ounce)",
+    "value": 168
+  },
+  {
+    "name": "Mustard, yellow ",
+    "unit": "(2 teaspoons)",
+    "value": 6
+  },
+  {
+    "name": "Oatmeal ",
+    "unit": "(plain, cooked in water without salt, 1 cup)",
+    "value": 147
+  },
+  {
+    "name": "Orange juice ",
+    "unit": "(frozen concentrate, made with water, 8 ounces)",
+    "value": 112
+  },
+  {
+    "name": "Peanut butter ",
+    "unit": "(creamy, 2 tablespoons)",
+    "value": 180
+  },
+  {
+    "name": "Pizza ",
+    "unit": "(pepperoni, regular crust, one slice)",
+    "value": 298
+  },
+  {
+    "name": "Pork chop ",
+    "unit": "(center rib, boneless, broiled, 3 ounces)",
+    "value": 221
+  },
+  {
+    "name": "Potato, medium ",
+    "unit": "(baked, including skin)",
+    "value": 161
+  },
+  {
+    "name": "Potato chips ",
+    "unit": "(plain, salted, 1 ounce)",
+    "value": 155
+  },
+  {
+    "name": "Pretzels ",
+    "unit": "(hard, plain, salted, 1 ounce)",
+    "value": 108
+  },
+  {
+    "name": "Ranch salad dressing ",
+    "unit": "(2 tablespoons)",
+    "value": 146
+  },
+  {
+    "name": "Red wine ",
+    "unit": "(cabernet sauvignon, 5 ounces)",
+    "value": 123
+  },
+  {
+    "name": "Rice ",
+    "unit": "(white, long grain, cooked, 1 cup)",
+    "value": 205
+  },
+  {
+    "name": "Salsa ",
+    "unit": "(4 ounces)",
+    "value": 35
+  },
+  {
+    "name": "Shrimp ",
+    "unit": "(cooked under moist heat, 3 ounces)",
+    "value": 84
+  },
+  {
+    "name": "Spaghetti ",
+    "unit": "(cooked, enriched, without added salt, 1 cup)",
+    "value": 221
+  },
+  {
+    "name": "Spaghetti sauce ",
+    "unit": "(marinara, ready to serve, 4 ounces)",
+    "value": 92
+  },
+  {
+    "name": "Tuna ",
+    "unit": "(light, canned in water, drained, 3 ounces)",
+    "value": 100
+  },
+  {
+    "name": "White wine ",
+    "unit": "(sauvignon blanc, 5 ounces)",
+    "value": 121
+  },
+  {
+    "name": "Yellow cake with chocolate frosting ",
+    "unit": "(one piece)",
+    "value": 243
+  }
+]
