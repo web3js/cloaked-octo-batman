@@ -6,7 +6,7 @@ var W = canvas.width = document.body.offsetWidth;
 var H = canvas.height = document.body.clientHeight;
 
 // Parameters
-var particleCount = 15;
+var particleCount = 50;
 var particleRadius = 4;
 var vMin = 0.0001;
 var vMax = 3;
@@ -65,6 +65,9 @@ function init()
       p.vx+=noiseVecX;
       p.vy+=noiseVecY;
 
+      p.vx *= 0.8;
+      p.vy *= 0.8;
+
       p.x += p.vx;
       p.y += p.vy;
       
@@ -75,10 +78,10 @@ function init()
       if (p.y < 0) p.vy *= -1;
       
       // Recover lost particles
-      if (p.x > W + particleRadius) p.x = W - particleRadius;
-      if (p.x < 0 - particleRadius) p.x = particleRadius;
-      if (p.y > H + particleRadius) p.y = H - particleRadius;
-      if (p.y < 0 - particleRadius) p.y = particleRadius;
+      // if (p.x > W + particleRadius) p.x = W - particleRadius;
+      // if (p.x < 0 - particleRadius) p.x = particleRadius;
+      // if (p.y > H + particleRadius) p.y = H - particleRadius;
+      // if (p.y < 0 - particleRadius) p.y = particleRadius;
       
       // Canvas collision detection
       if( (p.x > W) || (p.x < 0) || (p.y > H) || (p.y < 0) )
