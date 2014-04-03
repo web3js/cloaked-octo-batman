@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	 <script type="text/javascript">
+        function insert(){
+
+        	var penguin=document.getElementById('penguin');
+    penguin.addEventListener('click',function(){
+       var src = document.getElementById("gamediv");
+            var img = document.createElement("img");
+            img.src = "images/penguin.png";
+            src.appendChild(img);
+
+    },false)
+            
+        };
+     </script>
+
+</head>
+<body>
+
+	<div>
+	<img id = "penguin" src="images/penguin.png" alt="penguin">
+
+	</div>
+	 <div id="gamediv">
+         <script type="text/javascript">
+             insert();
+         </script>
+     </div>
+
+</body>
+</html>
+
+
+
