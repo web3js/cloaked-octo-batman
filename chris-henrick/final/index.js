@@ -13,7 +13,7 @@ var server = (function(exports){
 	// importing modules: both ones installed with npm and ones we created
 	express = require('express');
 	http = require('http');
-	notes = require('./routes/guesses');
+	guesses = require('./routes/guesses');
 	bodyParser = require('body-parser');
 
 	// define app as express
@@ -26,11 +26,11 @@ var server = (function(exports){
 
 	// set up the routes. match routes with functions.
 	// HTTP verbs! These will come from ajax calls in main.js in public
-	app.get('/api', guesses.findAll);
+	app.get('/api/guesses/', guesses.findAll);
 	//app.get('/api/:id', guesses.findById);
-	app.post('/api/guesses', guesses.addGuess);
+	app.post('/api/guesses/', guesses.addGuess);
 	//app.put('/api/guesses/:id', guesses.updateGuess);
-	app.delete('/api', guesses.deleteGuesses);
+	app.delete('/api/guesses/', guesses.deleteAllGuesses);
 
 	// this is the initiation function. call this and everything kicks off.
 	init = function() {
