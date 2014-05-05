@@ -1,0 +1,25 @@
+{
+  "name": "final-project",
+  "version": "0.0.1",
+  "description": "NYC neighborhood guessing game",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~4.1.1",
+    "body-parser": "~1.0.2",
+    "mongodb": "~1.4.3"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/web3js/cloaked-octo-batman/tree/master/chris-henrick/mid-term"
+  },
+  "keywords": [
+    "map",
+    "leaflet",
+    "game"
+  ],
+  "author": "Chris L Henrick",
+  "license": "BSD-2-Clause"
+}

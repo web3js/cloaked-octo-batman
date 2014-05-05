@@ -1,0 +1,26 @@
+{
+  "name": "public",
+  "version": "0.0.1",
+  "homepage": "https://github.com/web3js/cloaked-octo-batman",
+  "authors": [
+    "Chris Henrick <chrishenrick@gmail.com>"
+  ],
+  "description": "Neighborhood guessing game for NYC",
+  "main": "main",
+  "keywords": [
+    "leaflet",
+    "nyc",
+    "game",
+    "neighborhoods"
+  ],
+  "dependencies": {
+    "underscore": "~1.6.0",
+    "jquery": "~2.1.1"
+  },  
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "test",
+    "tests"
+  ]
+}
