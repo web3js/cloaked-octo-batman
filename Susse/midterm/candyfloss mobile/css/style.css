@@ -1,0 +1,94 @@
+body 
+{
+	padding: 20px; 
+   font: 14px/145% "Helvetica Neue", Helvetica, Arial, Sans-serif;					
+			
+}
+a, a:link, a:visited { 
+   text-decoration: none; 
+}
+
+div.candyFloss {
+   background: linear-gradient(#FF69D6, #CC0094) ;
+}
+
+h1 {
+   padding: 2%;
+   color: #3E3A42;
+   text-align: center;
+
+}
+
+.button {
+   width: 50%;
+   height: 60px;
+   position: absolute;
+   background: darkgray;
+   z-index: 1000;
+   cursor: pointer;
+   transition: ALL 0.5s;  
+}
+
+.ui-body-c .ui-link a{ 
+   color: black;
+}
+
+form{
+  margin-top: 10%;
+}
+
+div#spin{
+   visibility: none;
+}
+
+
+div.ui-slider{
+   margin: 0;
+   width: 100%;
+   background-color: blue;
+}
+
+p#whereCandy {
+   color: #7F416E;
+   text-align: center;  
+}
+
+p#whoCandy {
+   color: white;
+   font-size: 1.2em;
+   text-align: center;
+}
+
+img#flossImg {
+   width: 35%;
+   margin-left: 35%;
+   z-index: 1;
+}
+
+img#propellerImg {
+   width: 5%;
+}
+
+div#name {
+   margin-left: 15%;
+}
+
+img#ledImg {
+   width: 5%;
+}
+
+p#instuction {
+   margin-left: 5%;
+   color: white;
+   text-align: center;
+}
+
+footer {
+   text-align: center;
+}
+
+
+
+
+
+

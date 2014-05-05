@@ -1,0 +1,224 @@
+/* CSS RESET : Resets predefined browser styles. */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: sans-serif;
+	vertical-align: baseline;
+}
+
+/* -----------App styles -----------*/
+* {
+	margin: 0;
+}
+
+html{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 100%;
+}
+
+body{
+	margin: 0;
+	background-color: #6A02A1;
+	height: 100%;
+}
+
+div.doc{
+
+}
+
+div{
+	display: block;1
+}
+
+div#wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+
+/*-----------nav containers----------*/
+a{
+	font
+}
+
+a.topNav{
+	color: #0DECBA;
+	font-size: 20px;
+	padding: 0 10px 0 10px;
+	font-family: sans-serif !important;
+	text-decoration: none;
+}
+
+a#blinkblink{
+	color: #6A02A1;
+}
+
+div.push{
+	height:60px;
+	font-size: 16px;
+	font-style: bold;
+}
+
+div.navContainer{
+	overflow: auto;
+	background-color: #FFDBF5;
+	margin-color: #6A02A1;
+	width: 100%;
+
+}
+
+div#top{
+	vertical-align:top; 
+}
+
+div#bottom{
+	/*bottom: 0;*/
+	float: left;
+	width: 100%;
+	clear: both;
+}
+
+img.navImage{
+	width: 30px;
+}
+
+div.navBar{
+	vertical-align:top; 
+	display: inline-block;
+	height: 60px;
+	color: white;
+	margin-left: 1%;
+	float:left;
+	min-Width: 389px !important;
+}
+
+nav.left{
+	width: 90%;
+	padding: 0;
+	position: relative;
+	float: left;
+	margin-top: 2%;
+}
+
+p.credits{
+	font-size: 12px;
+	color: #6A02A1;
+	font-family: sans-serif; 
+	font-weight: 200;
+	text-align: right;
+}
+
+div.credits{
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: 0;
+	width: 40%;
+	float: right;
+	margin-right: 1%;
+	margin-top: 1%;
+}
+/*-----------sign up form----------*/
+input.signUp {
+	width: 266px;
+	height: 20px;
+	margin: 0 5% 0 0;
+	border: 2px solid #0DECBA;
+	outline: none;
+	font-size: 1em;
+	position: absolute;
+	text-align: left;
+}
+form.signUp {
+	text-align: left;
+}
+/*-----------middle & sign up containers----------*/
+
+div.middle-section{
+	height: 500px;
+	text-align: center;
+	margin: 20px;
+}
+
+.middle-section:before {
+  content: '';
+  display: inline-block;
+  height: 100%; 
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+    
+ }
+
+div.middle-container{
+  display: inline-block;
+  vertical-align: middle;
+  width: 300px;
+  height: 350px;
+  padding: 10px 15px; 
+  background-color: #FFDBF5;
+
+}
+
+div.inner-middle{
+	
+	position: absolute;
+	height: 110px;
+	width: 302px;
+	margin: 7px;
+}
+
+p{
+	font-size: 20px;
+	color:#6A02A1;
+	font-family: sans-serif; 
+	padding: 0px;
+}
+
+.text-signUp{
+	margin: 10px;
+	margin-left: 0px;
+}
+
+div.field{
+	height: 30px;
+	width: 276px;
+	margin-top: 10px;
+}
+
+.submit {
+  background: #0DECBA;
+  -webkit-border-radius: 13;
+  -moz-border-radius: 13;
+  border-radius: 13px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 20px 10px 22px;
+  text-decoration: none;
+  border: #0DECBA;
+}
+
+.submit:hover {
+ background: #27BD9D;
+  text-decoration: none;
+}
+
+p.feedback{
+	font-size: 14px;
+}
