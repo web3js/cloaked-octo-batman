@@ -15,7 +15,8 @@
   ],
   "dependencies": {
     "underscore": "~1.6.0",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "leaflet": ""
   },  
   "license": "MIT",
   "ignore": [
