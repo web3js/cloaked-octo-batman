@@ -28,13 +28,12 @@ app.game = (function(){
 	var attachEvents = function(){
 		$('.submit-answer').on('click', function(e) {
 			e.preventDefault();
-			//console.log('e: ', e);
-			var fieldValue = $('.write-answer').val(); //attributes.answerField.value;
-			//console.log('fieldValue: ', fieldValue);
-
-			var newAnswer = new Model(fieldValue, answers).save().guess().checkFeature();
-			new View(newAnswer, attributes.answerList).init();
-			$('.write-answer').val('');
+			if ($('.write-answer').val() !== "") {
+				var fieldValue = $('.write-answer').val();
+				var newAnswer = new Model(fieldValue, answers).save().guess().test();
+				new View(newAnswer, attributes.answerList).init();
+				$('.write-answer').val('');				
+			} 
 		});
 	}
 
@@ -123,17 +122,36 @@ app.game = (function(){
 		// to fix; perform check to turn correct polygon grey
 		this.checkFeature = function(){
 			var layers  = app.map.elements.hoods.getLayers(),
-				len,
+				len = layers.length,
 				i = 0;
 			console.log('checkFeature layers: ', layers);
+			console.log('this.answerText: ', this.answerText);
 			for (i; i<len; i++){
 				//console.log(layers[i]);
 				if (layers[i].feature.properties.neighborho.indexOf(this.answerText) !== -1) {
-					console.log('matching layer: ', layer[i]);
-					app.map.elements.hoods._layers[i].setStyle(app.map.style.d);
+					console.log('matching layer: ', layers[i]);
+					//app.map.elements.hoods.resetStyle(e.)
 				}
 			}
 			return this;
+		}
+
+		this.test = function(){
+			//console.log("test this.answerText: ", this.answerText);
+			var answer = this.answerText;
+			var geojson = app.map.elements.hoods;
+			geojson.setStyle(function(e){
+				//console.log("setStyle e: ", e);
+				//console.log("indexOf: ", e.properties.neighborho.indexOf(this.answerText));
+				//console.log("test this.answerText: ", this.answerText);
+				//console.log('answer: ', answer);
+				if (e.properties.neighborho.indexOf(answer) !== -1) {
+					console.log('test match!');
+					//return app.map.style.d;
+				}
+			});
+			return this;
+
 		}
 	}
 

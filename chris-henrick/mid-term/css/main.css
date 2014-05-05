@@ -51,6 +51,16 @@ html, body {
 	border-left: 1px solid black;
 }
 
+.form-container {
+	padding: 5px 0 0 0;
+}
+
+.form-title {
+	font: bold 11pt Helvetica, sans-serif;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
 #answers-title {
 	font: bold 15pt Helvetica, sans-serif;
 	margin: 0 10%;

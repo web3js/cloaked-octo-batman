@@ -1,5 +1,5 @@
 //second.js
-// second try to re-write this and clean up!
+// second try to re-write this and clean it up!
 
 var app = (function(w,d){
 	var DOM = {
@@ -25,7 +25,13 @@ var app = (function(w,d){
 	};
 
 	// map stuff
-	var map = L.map('map').setView([40.67,-73.94],10);
+	var config = {
+		center : [40.7,-73.94],
+		zoom : 12,
+		maxZoom : 16,
+		minZoom : 8
+	};
+	var map = L.map('map', config);
 	var layer = new L.StamenTileLayer("toner");
 	map.addLayer(layer);
 
@@ -33,19 +39,21 @@ var app = (function(w,d){
 	var Note = function(noteBodyText) {
 		// note text to be added to note list
 		this.noteBodyText = noteBodyText;
+		// html to hold notes
 		this.listItem = d.createElement('li');
 		this.paragraph = d.createElement('p');
 		this.listItem.classList.add('note');
+		// add text to html
 		this.paragraph.innerHTML = this.noteBodyText;
 
 		// date time stuff
-		var now = new Date().format("M/d/20y h:m");
+		var now = new Date().format("M-d-20y h:m");
 		this.noteTime = d.createElement('h3');
 		this.noteTime.innerHTML = now;
 		this.listItem.appendChild(this.noteTime); //add time header
 		this.listItem.appendChild(this.paragraph); //add note text 
 
-		// buttons!
+		// button action stuff
 		this.actions = d.createElement('ul');
 		this.actions.classList.add('actions');
 		this.removeButton = d.createElement('li');
@@ -65,6 +73,9 @@ var app = (function(w,d){
 		// whether the note is liked or not
 		this.liked = false;
 
+		// marker for leaflet map!
+		this.marker;
+
 		// function to like a note
 		this.like = function() {
 			that.liked = !that.liked;
@@ -76,14 +87,31 @@ var app = (function(w,d){
 			console.log('removed');
 			notes.splice(notes.indexOf(that),1);
 			DOM.noteList.removeChild(that.listItem);
+			map.removeLayer(marker);
 		};
 		// function to add like and remove interaction
 		this.attachEvents = function() {
 			this.likeButton.addEventListener('click', this.like);
 			this.removeButton.addEventListener('click', this.remove);
+			this.getLocation();
 		};
-		this.geoLocation = function(latLon){
-			this.map.panTo(latLon);
+		this.showError = function(){
+			console.log("location nada");
+		}
+		this.getLocation = function(){
+			if (navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(this.showLocation,this.showError);
+			} else {
+				console.log('browser not supported');
+			}
+		}
+		this.showLocation = function(position){
+			var lat = position.coords.latitude,
+				lon = position.coords.longitude;
+			this.marker = new L.marker([lat,lon]).addTo(map);
+			console.log('lat: ', lat, ' lon: ', lon);
+			map.panTo([lat,lon]);
+			map.zoomIn(6);
 		}
 		// function that instantiates a Note
 		this.init = function(){

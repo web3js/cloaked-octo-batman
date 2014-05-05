@@ -9,6 +9,7 @@ app.map = (function(){
 		map : null,
 		hoods : null,
 		target : null,
+		cleared : false,
 		popup_content : document.querySelector('.leaflet-popup-content'),
 		popup_wrapper : document.querySelector('.leaflet-popup-content-wrapper'),
 		popup_submit : document.querySelector('.submit-answer')
@@ -36,11 +37,13 @@ app.map = (function(){
 
 	// info to display in polygon pop up when clicked on
 	var createPopupContent = function(){
-		var formTitle = document.createElement('h3'),
+		var formBox = document.createElement('div'),
+			formTitle = document.createElement('h3'),
 			form = document.createElement('FORM');
 
 		//'<form class=\"write-answer-form\"> <input type=\"text\" class=\"write-answer\"> <input type=\"submit\" class=\"submit-answer\" value=\"add\"> </form>',
-		formTitle.className = 'write-answer-form-title';
+		formBox.className = 'form-container'
+		formTitle.className = 'form-title';
 		formTitle.innerHTML = "What neighborhood is this?";
 		form.className ='write-answer-form';
 		form.action = "";
@@ -53,8 +56,10 @@ app.map = (function(){
 		input2.value = "Guess";
 		form.appendChild(input);
 		form.appendChild(input2);
+		formBox.appendChild(formTitle);
+		formBox.appendChild(form);
 
-		return form;
+		return formBox;
 	};
 
 	// styles for coloring polygons' stroke and fill
@@ -126,13 +131,13 @@ app.map = (function(){
 
 	// highlight feature on mouse-over
 	var highlightFeature = function(e) {
-		    var layer = e.target;
+	    var layer = e.target;
 
-		    layer.setStyle(style.h);
+	    layer.setStyle(style.h);
 
-		    if (!L.Browser.ie && !L.Browser.opera) {
-		        layer.bringToFront();
-		    }
+	    if (!L.Browser.ie && !L.Browser.opera) {
+	        layer.bringToFront();
+	    }
 	};
 
 	// reset style to default on mouse out
@@ -165,7 +170,7 @@ app.map = (function(){
 	// load the geojson using ajax
 	var fetchData = function(){
 		$.getJSON('./data/nyc-hoods-pediacities.geojson', function(d){
-			console.log('hood data: ', d);
+			//console.log('hood data: ', d);
 
 			elements.hoods = L.geoJson(d, {
 				style: styleData,
