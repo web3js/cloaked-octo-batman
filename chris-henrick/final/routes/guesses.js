@@ -10,23 +10,51 @@ var guesses = (function(exports) {
 		addGuess,
 		deleteAllGuesses;
 
-	mongo = require('mongodb');
-	Server = mongo.Server;
-	Db = mongo.Db;
-	BSON = mongo.BSONPure;
-	server = new Server('localhost', 27017, {auto_reconnect: true});
-	db = new Db('nychoods', server);
+	// mongo = require('mongodb');
+	// Server = mongo.Server;
+	// Db = mongo.Db;
+	// BSON = mongo.BSONPure;
+	// server = new Server('localhost', 27017, {auto_reconnect: true});
+	// db = new Db('nychoods', server);
 
-	db.open(function(err, db) {
-		if (!err) {
-			console.log('connected to db');
-			db.collection('guesses', {strict: true}, function(err, collection) {
-				if (err) {
-					console.log("the guesses collection doesn't exist yet. create it.");
-				}
-			});
-		}
+	var mongoose = require('mongoose');
+	mongoose.connect('mongodb://localhost/nychoods');
+
+	var db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'connection error:'));
+	db.once('open', function(){
+		console.log('opened db with mongoose');
 	});
+
+	var userSchema = mongoose.Schema({
+		name: String,
+		points: Number,
+		guesses: {
+			correct: Number,
+			incorrect: Number,
+			hoods: []
+		},
+		rank: Number,
+	});
+
+	var User = mongoose.model('User', userSchema);
+
+	var boris = new User({ name: "Bo-Ris", points: null, guesses: {correct: 0, incorrect: 0,}, rank: 0});
+	boris.save(function (err, boris) {
+		if (err) return console.log(err);
+		console.log('added boris!');
+	})
+
+	// db.open(function(err, db) {
+	// 	if (!err) {
+	// 		console.log('connected to db');
+	// 		db.collection('guesses', {strict: true}, function(err, collection) {
+	// 			if (err) {
+	// 				console.log("the guesses collection doesn't exist yet. create it.");
+	// 			}
+	// 		});
+	// 	}
+	// });
 
 	// find all guesses 
 	findAll = function(req, res) {
