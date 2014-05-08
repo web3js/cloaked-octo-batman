@@ -8,19 +8,20 @@ var app = app || {};
 
 app.game = (function(w,d,$,_){
 
+	// switched to jquery
 	var attributes = {
-		playAgain : document.querySelector('#footer'),
-		status : document.querySelector('.status'),
-		answerField : document.querySelector('.write-answer'),
-		answerSubmit : document.querySelector('.submit-answer'),
-		guessList : document.querySelector('.guesses'),
-		answerCount: document.querySelector('#answer-count'),
-		noAnswers : document.querySelector('.no-answers-found'),
-		answerListTitle : document.querySelector('#answers-title'),
-		docAnswer : document.querySelector('.answer'),
-		popup_content : document.querySelector('.leaflet-popup-content'),
-		popup_wrapper : document.querySelector('.leaflet-popup-content-wrapper'),
-		popup_submit : document.querySelector('.submit-answer')				
+		playAgain : $('#footer'),
+		status : $('.status'),
+		answerField : $('.write-answer'),
+		answerSubmit : $('.submit-answer'),
+		guessList : $('.guesses'),
+		answerCount: $('#answer-count'),
+		noAnswers : $('.no-answers-found'),
+		answerListTitle : $('#answers-title'),
+		docAnswer : $('.answer'),
+		popup_content : $('.leaflet-popup-content'),
+		popup_wrapper : $('.leaflet-popup-content-wrapper'),
+		popup_submit : $('.submit-answer')				
 	};
 
 	//var answers = JSON.parse(localStorage.getItem('answers')) || [];
@@ -36,14 +37,22 @@ app.game = (function(w,d,$,_){
 			e.preventDefault();
 			if ($('.write-answer').val() !== "") {
 				var fieldValue = $('.write-answer').val();
+				console.log('write-answer: ', fieldValue);
 				var newGuess = new Model({
 					guessBodyText: fieldValue, 
 					correct : false					
 				}, guesses).save();				
 				new View(newGuess, attributes.guessList).init();
 				
-				answerSubmit.val('');				
+				attributes.answerSubmit.val('');				
 			} 
+		});
+
+		$('#play-again').on('click', function(e){
+			console.log('play-again clicked');
+			localStorage.clear();				
+			location.reload(true);
+			var clearGuesses = new Model({}).remove();
 		});
 	}
 
@@ -54,6 +63,7 @@ app.game = (function(w,d,$,_){
 		$('#play-again').on('click', function(e){
 			console.log('play-again clicked');
 			//localStorage.clear();
+
 			location.reload(true);
 		});
 	}
@@ -81,18 +91,18 @@ app.game = (function(w,d,$,_){
 			// this.paragraph.innerHTML = answer.answerText;
 			// this.listItem.appendChild(this.paragraph);
 
-			this.$listItem = $(compiledTemplate({ guess: Model.data }));
+			this.$listItem = $(compiledTemplate({ guess: guess.data }));
 
-			if (answer.correct === true) {
-				this.paragraph.classList.add('correct');
+			if (guess.correct === true) {
+				this.paragraph.addClass('correct');
 			}			
 
 			//addAsFirstChild(attributes.answerList, this.listItem);
-			attributes.guessList.prepend(this.$listitem);			
+			attributes.guessList.prepend(this.$listItem);			
 
-			attributes.noAnswers.classList.add('hidden');
-			attributes.playAgain.classList.remove('hidden');
-			attributes.answerListTitle.classList.remove('hidden');
+			attributes.noAnswers.addClass('hidden');
+			attributes.playAgain.removeClass('hidden');
+			attributes.answerListTitle.removeClass('hidden');
 
 			return this;
 		};
@@ -118,9 +128,10 @@ app.game = (function(w,d,$,_){
 		}
 	}
 
-	var Model = function(guessBodyText, collection) {
-		this.data = guessBodyText;
+	var Model = function(guessData, collection) {
+		this.data = guessData;
 		this.correct = false;
+		var that = this;
 
 		// now an ajax call
 		this.save = function() {
@@ -239,9 +250,9 @@ app.game = (function(w,d,$,_){
 			}
 			attributes.playAgain.classList.remove('hidden');
 		} else {
-			attributes.noAnswers.classList.remove('hidden');
-			attributes.playAgain.classList.add('hidden');
-			attributes.status.classList.add('hidden');
+			attributes.noAnswers.removeClass('hidden');
+			attributes.playAgain.addClass('hidden');
+			attributes.status.addClass('hidden');
 		}
 	};
 
