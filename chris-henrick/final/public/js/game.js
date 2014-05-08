@@ -6,13 +6,15 @@
 
 var app = app || {};
 
-app.game = (function(){
+app.game = (function(w,d,$,_){
 
 	var attributes = {
 		playAgain : document.querySelector('#footer'),
+		status : document.querySelector('.status'),
 		answerField : document.querySelector('.write-answer'),
 		answerSubmit : document.querySelector('.submit-answer'),
-		answerList : document.querySelector('.answers'),
+		guessList : document.querySelector('.guesses'),
+		answerCount: document.querySelector('#answer-count'),
 		noAnswers : document.querySelector('.no-answers-found'),
 		answerListTitle : document.querySelector('#answers-title'),
 		docAnswer : document.querySelector('.answer'),
@@ -21,9 +23,12 @@ app.game = (function(){
 		popup_submit : document.querySelector('.submit-answer')				
 	};
 
-	var answers = JSON.parse(localStorage.getItem('answers')) || [];
+	//var answers = JSON.parse(localStorage.getItem('answers')) || [];
+	var guesses = [];
 
-	var correct = false;
+	//var correct = false;
+	var guessTemplate = $('.guess-template').text();
+	var compiledTemplate = _.template(guessTemplate);
 
 	// event listener for pop-up form submit
 	var attachEvents = function(){
@@ -31,17 +36,24 @@ app.game = (function(){
 			e.preventDefault();
 			if ($('.write-answer').val() !== "") {
 				var fieldValue = $('.write-answer').val();
-				var newAnswer = new Model(fieldValue, answers).save().guess().test();
-				new View(newAnswer, attributes.answerList).init();
-				$('.write-answer').val('');				
+				var newGuess = new Model({
+					guessBodyText: fieldValue, 
+					correct : false					
+				}, guesses).save();				
+				new View(newGuess, attributes.guessList).init();
+				
+				answerSubmit.val('');				
 			} 
 		});
 	}
 
+	app.events.subscribe('guess:update', updateStatus);
+	app.events.subscribe('ajax:GETcomplete', initialRender);
+
 	var playAgain = function(){
 		$('#play-again').on('click', function(e){
 			console.log('play-again clicked');
-			localStorage.clear();
+			//localStorage.clear();
 			location.reload(true);
 		});
 	}
@@ -56,24 +68,27 @@ app.game = (function(){
 		}
 	};
 
-	var View = function(answer, containerEl) {
-		var index = answers.indexOf(answer),
+	var View = function(guess, containerEl) {
+		var index = guesses.indexOf(guess),
 			that = this;
 
 		this.render = function() {
 			//console.log("answer.correct: ", answer.correct);
-			this.listItem = document.createElement('li');
-			this.paragraph = document.createElement('p');
+			// this.listItem = document.createElement('li');
+			// this.paragraph = document.createElement('p');
 
-			this.listItem.classList.add('answer');
-			this.paragraph.innerHTML = answer.answerText;
-			this.listItem.appendChild(this.paragraph);
+			// this.listItem.classList.add('answer');
+			// this.paragraph.innerHTML = answer.answerText;
+			// this.listItem.appendChild(this.paragraph);
+
+			this.$listItem = $(compiledTemplate({ guess: Model.data }));
 
 			if (answer.correct === true) {
 				this.paragraph.classList.add('correct');
 			}			
 
-			addAsFirstChild(attributes.answerList, this.listItem);
+			//addAsFirstChild(attributes.answerList, this.listItem);
+			attributes.guessList.prepend(this.$listitem);			
 
 			attributes.noAnswers.classList.add('hidden');
 			attributes.playAgain.classList.remove('hidden');
@@ -84,52 +99,107 @@ app.game = (function(){
 
 		this.guess = function(){
 			answer.guess();
+			return this;
 		}
 
 		this.checkFeature = function(){
 
 		}
 
-		this.attachEvents = function() {
+		this.attachEvents = function() {			
 			// not needed?
 		}
 
 		this.init = function() {
+			console.log('guesses are: ', guesses);
+			app.events.publish('status:update', [guesses.length,_.where(guesses,{correct: true}).length]);
 			this.render();
 			return this;
 		}
 	}
 
-	var Model = function(answerText, collection) {
-		this.answerText = answerText;
+	var Model = function(guessBodyText, collection) {
+		this.data = guessBodyText;
 		this.correct = false;
 
+		// now an ajax call
 		this.save = function() {
-			collection.push(this);
-			localStorage.setItem('answers', JSON.stringify(collection));
+			// stringify the data
+			var stringified = JSON.stringify(this.data);
+
+			// hit API with a POST request and send new guess along
+			$.ajax({
+				url : '/api/guesses/',
+				type : 'POST',
+				dataType: 'json',
+				data: { guess: stringified },
+				success : function(data, textStatus, jqXHR) {
+					that._id = data._id;
+					app.events.publish('ajax:POSTcomplete', data);
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('error', error);
+				}
+			});
+
+			return this;			
+		};
+
+		this.remove = function() {
+			ajaxUrl = '/api/guesses/';
+			$.ajax({
+				url: ajaxUrl,
+				type: 'DELETE',
+				dataType: 'json',
+				success: function(data, textStatus, jqXHR) {
+					console.log(data, 'delete success');
+				}, error: function(jqXHR, textStatus, error) {
+					console.log('ajax delete error: ', error);
+				}
+			});
 			return this;
 		}
 
 		this.guess = function() {
-			console.log('this.answerText: ', this.answerText);
-			if (app.map.elements.target.indexOf(this.answerText) !== -1) {
+			var stringified = JSON.stringify(this.data);
+			//console.log('this.answerText: ', this.answerText);
+			// do this test somewhere else?
+			if (app.map.elements.target.indexOf(this.guessBodyText) !== -1) {
 				this.correct = !this.correct;
+				this.data.correct = true;
 			}
-			localStorage.setItem('answers', JSON.stringify(collection));
+
+			var id = this['_id'],
+			ajaxUrl = '/api/guesses/';			
+			var stringifed = JSON.stringify(this.data);
+			$.ajax({
+				url: ajaxUrl,
+				type: 'PUT',
+				dataType: 'json',
+				data: { guess: stringified },
+				success: function(data, textStatus, jqXHR) {
+					app.events.publish('ajax:PUTcomplete', data);
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('ajaxPUT error: ', error);
+				}
+			});
+
+			//localStorage.setItem('answers', JSON.stringify(collection));
 			console.log('Model says: correct? ', this.correct);
 			return this;
 		}
 
-		// to fix; perform check to turn correct polygon grey
+		// !!! to fix; perform check to turn correct polygon grey !!!
 		this.checkFeature = function(){
 			var layers  = app.map.elements.hoods.getLayers(),
 				len = layers.length,
 				i = 0;
 			console.log('checkFeature layers: ', layers);
-			console.log('this.answerText: ', this.answerText);
+			console.log('this.guessBodyText: ', this.guessBodyText);
 			for (i; i<len; i++){
 				//console.log(layers[i]);
-				if (layers[i].feature.properties.neighborho.indexOf(this.answerText) !== -1) {
+				if (layers[i].feature.properties.neighborho.indexOf(this.guessBodyText) !== -1) {
 					console.log('matching layer: ', layers[i]);
 					//app.map.elements.hoods.resetStyle(e.)
 				}
@@ -139,7 +209,7 @@ app.game = (function(){
 
 		this.test = function(){
 			//console.log("test this.answerText: ", this.answerText);
-			var answer = this.answerText;
+			var answer = this.guessBodyText;
 			var geojson = app.map.elements.hoods;
 			geojson.setStyle(function(e){
 				//console.log("setStyle e: ", e);
@@ -171,8 +241,30 @@ app.game = (function(){
 		} else {
 			attributes.noAnswers.classList.remove('hidden');
 			attributes.playAgain.classList.add('hidden');
+			attributes.status.classList.add('hidden');
 		}
 	};
+
+	var initialFetch = function() {
+		$.ajax({
+			url: '/api/notes',
+			type: 'GET',
+			dataType: 'json',
+			success: function(res) {
+				console.log('res: ', res);
+				guesses = res;
+				app.events.publish('ajax:GETcomplete', notes);
+			},
+			error: function(jqXHR, textStatus, error) {
+				console.log('initialFetch error: ', error);
+			}
+		});
+	}
+
+	var updateStatus = function(counts) {
+	      //console.log('updating notes count with args', counts);
+	      elements.noteCount.text(counts[0]);      
+  	};
 
 	var init = function(){
 		console.log('app.game init called');
@@ -184,12 +276,12 @@ app.game = (function(){
 	return {
 		init : init,
 		attributes : attributes,
-		answers : answers,
+		guesses : guesses,
 		attachEvents : attachEvents,
 		playAgain : playAgain
 		//createPopupContent : createPopupContent()
 	}
 
-})();
+})(window,document,jQuery, _);
 
 window.addEventListener('DOMContentLoaded', app.game.init);
