@@ -126,6 +126,10 @@ app.map = (function(){
 			case "Staten Island" : return style.five; break;
 			default : return style.d;
 		}
+
+		if (feature.properties.guessed === true) {
+			return style.d;
+		}
 		
 	}
 
@@ -156,9 +160,10 @@ app.map = (function(){
 	var onEachFeature = function(f,l){
 		//console.log('feature: ', f, ' layer: ', l);
 		if (f.properties.neighborho) {
-			//l.bindPopup("<p>Your Guess???</p></br>" + '<form class=\"write-answer-form\"> <input type=\"text\" class=\"write-answer\"> <input type=\"submit\" class=\"submit-answer\" value=\"add\"> </form>');			
 			l.bindPopup(createPopupContent());
-		}	
+		}
+
+		f.properties.guessed = false;	
 
 		l.on({
 			mouseover : highlightFeature,
@@ -170,7 +175,7 @@ app.map = (function(){
 	// load the geojson using ajax
 	var fetchData = function(){
 		$.getJSON('./data/nyc-hoods-pediacities.geojson', function(d){
-			//console.log('hood data: ', d);
+			console.log('hood data: ', d);
 			elements.hoods = L.geoJson(d, {
 				style: styleData,
 				onEachFeature: onEachFeature,
