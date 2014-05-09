@@ -16,6 +16,7 @@ app.game = (function( w, d, $, _ ){
 		answerSubmit : $('.submit-answer'),
 		guessList : $('.guesses'),
 		answerCount: $('.status').find('#answer-count'),
+		guessesCount: $('.status').find('#guesses-count'),
 		noAnswers : $('.no-answers-found'),
 		answerListTitle : $('#answers-title'),
 		docAnswer : $('.answer'),
@@ -44,7 +45,8 @@ app.game = (function( w, d, $, _ ){
 				}, guesses).guessCheck().save();				
 				new View(newGuess, attributes.guessList).init();
 				
-				attributes.answerField.val('');				
+				attributes.answerField.val('');	
+				location.reload(true);			
 			} 
 		});
 		
@@ -291,6 +293,7 @@ app.game = (function( w, d, $, _ ){
 
 	var updateStatus = function(counts) {
 	      //console.log('updating notes count with args', counts);
+	      attributes.guessesCount.text(counts[0]);
       	attributes.answerCount.text(counts[1]);          
   	};
 

@@ -39,25 +39,43 @@ app.map = (function(){
 	var createPopupContent = function(){
 		var formBox = document.createElement('div'),
 			formTitle = document.createElement('h3'),
-			form = document.createElement('FORM');
+			form = document.createElement('FORM'),
+			hintBox = document.createElement('div'),
+			hintTitle = document.createElement('h4'),
+			hint = document.createElement('p'),
+			showHint = document.createElement('span');
 
-		//'<form class=\"write-answer-form\"> <input type=\"text\" class=\"write-answer\"> <input type=\"submit\" class=\"submit-answer\" value=\"add\"> </form>',
+		
 		formBox.className = 'form-container'
 		formTitle.className = 'form-title';
 		formTitle.innerHTML = "What neighborhood is this?";
 		form.className ='write-answer-form';
 		form.action = "";
+
 		var input = document.createElement('input');
 		input.type = "text";
 		input.className = "write-answer";
+
 		var input2 = document.createElement('input');
 		input2.type = "submit";
 		input2.className = "submit-answer";
 		input2.value = "Guess";
+
+		hintBox.className = 'hint-box';
+		hintTitle.className = 'hint-title';
+		hint.className = 'hint hidden';
+		showHint.className = 'show-hint';
+		hintTitle.innerHTML = 'need a hint? '
+		showHint.innerHTML = 'x';
+		hintTitle.appendChild(showHint);		
+		hintBox.appendChild(hintTitle);
+		hintBox.appendChild(hint);		
+
 		form.appendChild(input);
 		form.appendChild(input2);
 		formBox.appendChild(formTitle);
 		formBox.appendChild(form);
+		formBox.appendChild(hintBox);
 
 		return formBox;
 	};
