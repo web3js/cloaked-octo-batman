@@ -6,7 +6,7 @@
 
 var app = app || {};
 
-app.game = (function(w,d,$,_){
+app.game = (function( w, d, $, _ ){
 
 	// switched to jquery
 	var attributes = {
@@ -15,7 +15,7 @@ app.game = (function(w,d,$,_){
 		answerField : $('.write-answer'),
 		answerSubmit : $('.submit-answer'),
 		guessList : $('.guesses'),
-		answerCount: $('#answer-count'),
+		answerCount: $('#answer-count').find('.note-count'),
 		noAnswers : $('.no-answers-found'),
 		answerListTitle : $('#answers-title'),
 		docAnswer : $('.answer'),
@@ -41,29 +41,22 @@ app.game = (function(w,d,$,_){
 				var newGuess = new Model({
 					guessBodyText: fieldValue, 
 					correct : false					
-				}, guesses).save();				
+				}, guesses).guessCheck().save();				
 				new View(newGuess, attributes.guessList).init();
 				
-				attributes.answerSubmit.val('');				
+				$('.write-answer').val('');				
 			} 
 		});
-
-		$('#play-again').on('click', function(e){
-			console.log('play-again clicked');
-			localStorage.clear();				
-			location.reload(true);
-			var clearGuesses = new Model({}).remove();
-		});
-	}
-
-	app.events.subscribe('guess:update', updateStatus);
-	app.events.subscribe('ajax:GETcomplete', initialRender);
+		
+		app.events.subscribe('guess:update', updateStatus);
+		app.events.subscribe('ajax:GETcomplete', initialRender);		
+	};
 
 	var playAgain = function(){
 		$('#play-again').on('click', function(e){
 			console.log('play-again clicked');
 			//localStorage.clear();
-
+			var clearGuesses = new Model({guessBodyText: null, correct: null}).remove({});
 			location.reload(true);
 		});
 	}
@@ -83,18 +76,10 @@ app.game = (function(w,d,$,_){
 			that = this;
 
 		this.render = function() {
-			//console.log("answer.correct: ", answer.correct);
-			// this.listItem = document.createElement('li');
-			// this.paragraph = document.createElement('p');
-
-			// this.listItem.classList.add('answer');
-			// this.paragraph.innerHTML = answer.answerText;
-			// this.listItem.appendChild(this.paragraph);
-
-			this.$listItem = $(compiledTemplate({ guess: guess.data }));
-
-			if (guess.correct === true) {
-				this.paragraph.addClass('correct');
+			this.$listItem = $(compiledTemplate({ guess : guess.data }));
+			if (guess.data.correct === true) {
+				
+				this.$listItem.find('p').addClass('correct');
 			}			
 
 			//addAsFirstChild(attributes.answerList, this.listItem);
@@ -132,6 +117,16 @@ app.game = (function(w,d,$,_){
 		this.data = guessData;
 		this.correct = false;
 		var that = this;
+
+		// test to see if the guess matches the answer
+		this.guessCheck = function() {	
+			var target = app.map.elements.target;
+			if (target.indexOf(this.data.guessBodyText) !== -1) {
+				console.log('guess match!');
+				this.data.correct = true;
+			}
+			return this;
+		}
 
 		// now an ajax call
 		this.save = function() {
@@ -233,38 +228,58 @@ app.game = (function(w,d,$,_){
 				}
 			});
 			return this;
-
 		}
 	}
 
-	var initialRender = function(){
-		console.log('here is the saved data: ', JSON.parse(localStorage.getItem('answers')));
+	var initialRender = function(guesses){
+		// console.log('here is the saved data: ', JSON.parse(localStorage.getItem('answers')));
 
-		if(('answers' in localStorage) && (JSON.parse(localStorage.getItem('answers')).length > 0)) {
-			var savedAnswers = JSON.parse(localStorage.getItem('answers')),
-				answers = savedAnswers.slice(),
-				i = 0,
-				len = savedAnswers.length;
-			for (i; i<len; i++){
-				new View(savedAnswers[i], attributes.answerList).init();
-			}
-			attributes.playAgain.classList.remove('hidden');
+		// if(('answers' in localStorage) && (JSON.parse(localStorage.getItem('answers')).length > 0)) {
+		// 	var savedAnswers = JSON.parse(localStorage.getItem('answers')),
+		// 		answers = savedAnswers.slice(),
+		// 		i = 0,
+		// 		len = savedAnswers.length;
+		// 	for (i; i<len; i++){
+		// 		new View(savedAnswers[i], attributes.answerList).init();
+		// 	}
+		// 	attributes.playAgain.classList.remove('hidden');
+		// } else {
+		// 	attributes.noAnswers.removeClass('hidden');
+		// 	attributes.playAgain.addClass('hidden');
+		// 	attributes.status.addClass('hidden');
+		// }
+
+		if (guesses.length > 0) {
+			var i=0,
+				len = guesses.length,
+				guess,
+				data,
+				_id,
+				model;
+
+			for (i; i<len; i +=1) {
+				guess = guesses[i];
+				data = JSON.parse(guess.guess);
+				model = new Model(data, guesses);
+				model._id = guess._id;
+				console.log('initial render created this model: ', model);
+				new View(model, attributes.guessList).init();
+			} 
 		} else {
 			attributes.noAnswers.removeClass('hidden');
-			attributes.playAgain.addClass('hidden');
-			attributes.status.addClass('hidden');
+			app.events.publish('status:update',[0,0]);
 		}
 	};
 
 	var initialFetch = function() {
 		$.ajax({
-			url: '/api/notes',
+			url: '/api/guesses/',
 			type: 'GET',
 			dataType: 'json',
 			success: function(res) {
-				console.log('res: ', res);
-				guesses = res;
-				app.events.publish('ajax:GETcomplete', notes);
+				console.log('initialFetch res: ', res);
+				guesses = _.clone(res);
+				app.events.publish('ajax:GETcomplete', guesses);
 			},
 			error: function(jqXHR, textStatus, error) {
 				console.log('initialFetch error: ', error);
@@ -279,10 +294,11 @@ app.game = (function(w,d,$,_){
 
 	var init = function(){
 		console.log('app.game init called');
-		app.map.init();
-		initialRender();
+		app.map.init();		
+		initialFetch();
 		playAgain();
-	}
+		attachEvents();
+	};
 
 	return {
 		init : init,
@@ -293,6 +309,6 @@ app.game = (function(w,d,$,_){
 		//createPopupContent : createPopupContent()
 	}
 
-})(window,document,jQuery, _);
+})( window, document, jQuery, _ );
 
 window.addEventListener('DOMContentLoaded', app.game.init);

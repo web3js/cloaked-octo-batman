@@ -147,9 +147,9 @@ app.map = (function(){
 
 	// pan and zoom to the polygon when clicked
 	var zoomToFeature =	function(e) {
-			console.log(e.target.feature.properties.neighborho);
-			elements.target = e.target.feature.properties.neighborho;
-		    elements.map.fitBounds(e.target.getBounds());
+		console.log(e.target.feature.properties.neighborho);
+		elements.target = e.target.feature.properties.neighborho;
+		elements.map.fitBounds(e.target.getBounds());
 	};
 
 	// add user interaction and pop-ups to geojson data

@@ -67,12 +67,19 @@ html, body {
 	border-bottom: 1px solid black;
 }
 
-.answers {
+.status {
+	font: bold 15pt Helvetica, sans-serif;
+	color: hsl(00, 0%, 50%);
+	margin: 0 10%;
+	padding: 10px 0;	
+}
+
+.guesses {
 	margin: 0 10% 0 10%;
 	padding: 10px 0;
 }
 
-.answer {
+.guess {
 	font: bold italic 15pt Helvetica, sans-serif;
 	color: hsla(10, 100%, 50%, 1);
 	padding-bottom: 5px;
