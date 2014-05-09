@@ -73,14 +73,19 @@ html, body {
 
 .status {
 	font: 15pt Helvetica, sans-serif;
-	color: hsl(00, 0%, 50%);
-	margin: 0 10%;
+	color: hsl(0, 0%, 50%);
+	margin: 0 0 0 10%;
 	padding: 10px 0;	
 }
 
 #answer-count, #guesses-count {
 	font-weight: bolder;
 	color: hsl(0,0%,30%);
+}
+
+#hoods-to-go {
+	font-weight: bolder;
+	color: hsl(0, 70%,70%);
 }
 
 .guesses {

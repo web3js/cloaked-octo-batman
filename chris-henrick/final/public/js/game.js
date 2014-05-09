@@ -17,6 +17,7 @@ app.game = (function( w, d, $, _ ){
 		guessList : $('.guesses'),
 		answerCount: $('.status').find('#answer-count'),
 		guessesCount: $('.status').find('#guesses-count'),
+		hoodsToGo: $('#hoods-to-go '),
 		noAnswers : $('.no-answers-found'),
 		answerListTitle : $('#answers-title'),
 		docAnswer : $('.answer'),
@@ -27,6 +28,7 @@ app.game = (function( w, d, $, _ ){
 
 	//var answers = JSON.parse(localStorage.getItem('answers')) || [];
 	var guesses = [];
+	var hoodsLeft = 310;
 
 	//var correct = false;
 	var guessTemplate = $('.guess-template').text();
@@ -113,6 +115,7 @@ app.game = (function( w, d, $, _ ){
 			});
 			var correctLen = _.where(parsedArray, {correct : true}).length;
 			app.events.publish('status:update', [guesses.length, correctLen]);
+			attributes.hoodsToGo.text(hoodsLeft - correctLen);
 			return this;
 		}
 
@@ -130,12 +133,16 @@ app.game = (function( w, d, $, _ ){
 		var that = this;
 
 		// test to see if the guess matches the answer
-		this.guessCheck = function() {	
-			
-			var target = app.map.elements.target;
+		this.guessCheck = function() {				
+			var target = app.map.elements.target;			
 			if (target.indexOf(this.data.guessBodyText) !== -1) {
 				console.log('guess match!', target);
 				this.data.correct = true;
+
+				// reduce the number of hoods left to guess
+				//var numHoods = parseInt(attributes.hoodsToGo.text());
+				hoodsLeft -= 1;
+				attributes.hoodsToGo.text(hoodsLeft);
 			}
 
 			return this;
