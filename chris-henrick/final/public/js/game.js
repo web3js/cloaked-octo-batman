@@ -147,7 +147,7 @@ app.game = (function( w, d, $, _ ){
 		this.guessCheck = function() {				
 			var target = app.map.elements.target;			
 			if (target.feature.properties.neighborho.indexOf(this.data.guessBodyText) !== -1) {
-				console.log('guess match!', target);				
+				//console.log('guess match!', target);				
 				this.data.correct = true;
 				this.data.hood = target.feature.properties.neighborho;
 				this.data.boro = target.feature.properties.borough;
@@ -156,15 +156,9 @@ app.game = (function( w, d, $, _ ){
 				hoodsLeft -= 1;
 				attributes.hoodsToGo.text(hoodsLeft);
 				// grey out polygon, prevent clicking, change cursor to default;
-				target.setStyle(app.map.style.d );
-				target.closePopup();
-				target.unbindPopup();
-				target['_path'].style.cursor = 'default';			
-			} else {
-				target.setStyle(app.map.style.g);
-				target.closePopup();
-
 			}
+
+			styleGeojson(this.data);
 				
 			return this;
 		}
@@ -274,7 +268,7 @@ app.game = (function( w, d, $, _ ){
 				guess,
 				data,
 				_id,
-				model;
+				model;			
 
 			for (i; i<len; i +=1) {
 				guess = guesses[i];
@@ -282,7 +276,7 @@ app.game = (function( w, d, $, _ ){
 				model = new Model(data, guesses);
 				model._id = guess._id;
 				//console.log('initial render created this model: ', model);
-				new View(model, attributes.guessList).init();
+				new View(model, attributes.guessList).init();				
 			} 
 		} else {
 			attributes.noAnswers.removeClass('hidden');
@@ -312,6 +306,27 @@ app.game = (function( w, d, $, _ ){
 	      attributes.guessesCount.text(counts[0]);
       	attributes.answerCount.text(counts[1]);          
   	};
+
+  	// restyle hood geojson if guess is made
+	var styleGeojson = function(data) {
+		var target = app.map.elements.target;
+		var state;
+		if (target.feature.properties.neighborho.indexOf(data.guessBodyText) !== -1) {
+			state = true;
+		} else {
+			state = false;
+		}
+		if (state) {
+			target.setStyle(app.map.style.d);
+			target.closePopup();
+			target.unbindPopup();
+			target['_path'].style.cursor = 'default';
+		} else {
+			target.setStyle(app.map.style.g);
+			target.closePopup();
+		}
+		return this;
+	}  	
 
 	var init = function(){
 		console.log('app.game init called');
