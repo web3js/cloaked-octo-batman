@@ -10,6 +10,7 @@ app.map = (function(){
 		hoods : null,
 		target : null,
 		cleared : false,
+		guessedHoods: [],
 		popup_content : document.querySelector('.leaflet-popup-content'),
 		popup_wrapper : document.querySelector('.leaflet-popup-content-wrapper'),
 		popup_submit : document.querySelector('.submit-answer')
@@ -101,8 +102,7 @@ app.map = (function(){
 			weight: 1.5,
 			opacity: 7,
 			fillOpacity: 0.6,
-			fillColor: "#000",
-			clickable: false		
+			fillColor: "#000",				
 		},
 		one : {
 			color: "#FF530D",
@@ -144,9 +144,18 @@ app.map = (function(){
 	// function to style polygon features from geojson data
 	var styleData = function(feature) {
 		//console.log('feature color_id: ', feature.properties.color_id);
+
+		for (var i=0; i<elements.guessedHoods.length; i+=1) {
+			var guessedHood = elements.guessedHoods[i];
+
+			if (feature.properties.neighborho === guessedHood.hood && guessedHood.correct ===true ) {
+				return style.d;
+			} 
+		}
+
 		if (feature.properties.guessed === true) {
 			console.log('styleData guessed = true');
-			return style.d;			
+			return style.d;					
 		} else {
 			switch(feature.properties.borough) {
 			case "Manhattan" : return style.one; break;
@@ -161,7 +170,7 @@ app.map = (function(){
 
 	// highlight feature on mouse-over
 	var highlightFeature = function(e) {
-		console.log(e.target);
+		//console.log(e.target);
 		if (e.target.feature.properties.guessed !== true) {
 		    var layer = e.target;
 		    layer.setStyle(style.h);
@@ -217,11 +226,31 @@ app.map = (function(){
 		})
 	};
 
+	var runCheck = function(guesses) {
+		console.log('runCheck!', guesses);
+		var parsedArray = _.map(guesses, function(item) {
+			return JSON.parse(item.guess);
+		});
+
+		for (var i=0; i <parsedArray.length; i +=1) {
+			var guess = parsedArray[i];
+			elements.guessedHoods.push({
+				hood: guess.hood,
+				boro : guess.boro,
+				correct : guess.correct
+			});
+		}
+		console.log('parsedArray: ', parsedArray);
+		console.log('elements.guessedHoods: ', elements.guessedHoods);
+		
+	};
+
 	// initialize the map
 	var init = function() {
 		console.log('app.map init called');
+		app.events.subscribe('ajax:GETcomplete', runCheck);
 		renderMap();
-		fetchData();
+		fetchData();		
 	};
 
 	return {

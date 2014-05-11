@@ -116,7 +116,8 @@ app.game = (function( w, d, $, _ ){
 		}
 
 		this.checkFeature = function(){
-
+			model.checkFeature();
+			return this;
 		}
 
 		// whoot!
@@ -145,28 +146,22 @@ app.game = (function( w, d, $, _ ){
 
 		// test to see if the guess matches the answer
 		this.guessCheck = function() {				
-			var target = app.map.elements.target;			
+			var target = app.map.elements.target;
+			this.data.hood = target.feature.properties.neighborho;
+			this.data.boro = target.feature.properties.borough;
+			
 			if (target.feature.properties.neighborho.indexOf(this.data.guessBodyText) !== -1) {
 				//console.log('guess match!', target);				
 				this.data.correct = true;
-				this.data.hood = target.feature.properties.neighborho;
-				this.data.boro = target.feature.properties.borough;
-				target.feature.properties.guessed = true;
+				target.feature.properties.guessed = true;				
 				// reduce the number of hoods left to guess
 				hoodsLeft -= 1;
-				attributes.hoodsToGo.text(hoodsLeft);
-				// grey out polygon, prevent clicking, change cursor to default;
+				attributes.hoodsToGo.text(hoodsLeft);				
 			}
 
+			// grey out polygon, prevent clicking, change cursor to default;
 			styleGeojson(this.data);
 				
-			return this;
-		}
-
-		this.updateStatus = function() {
-			if (this.data.correct === true) {
-
-			}
 			return this;
 		}
 
@@ -213,52 +208,6 @@ app.game = (function( w, d, $, _ ){
 			return this;
 		}
 
-		this.guess = function() {
-			var stringified = JSON.stringify(this.data);
-			//console.log('this.answerText: ', this.answerText);
-			// do this test somewhere else?
-			if (app.map.elements.target.indexOf(this.guessBodyText) !== -1) {
-				this.correct = !this.correct;
-				this.data.correct = true;				
-			}
-
-			var id = this['_id'],
-			ajaxUrl = '/api/guesses/';			
-			var stringifed = JSON.stringify(this.data);
-			$.ajax({
-				url: ajaxUrl,
-				type: 'PUT',
-				dataType: 'json',
-				data: { guess: stringified },
-				success: function(data, textStatus, jqXHR) {
-					app.events.publish('ajax:PUTcomplete', data);
-				},
-				error: function(jqXHR, textStatus, error) {
-					console.log('ajaxPUT error: ', error);
-				}
-			});
-
-			//localStorage.setItem('answers', JSON.stringify(collection));
-			console.log('Model says: correct? ', this.correct);
-			return this;
-		}
-
-		this.test = function(){
-			//console.log("test this.answerText: ", this.answerText);
-			var answer = this.guessBodyText;
-			var geojson = app.map.elements.hoods;
-			geojson.setStyle(function(e){
-				//console.log("setStyle e: ", e);
-				//console.log("indexOf: ", e.properties.neighborho.indexOf(this.answerText));
-				//console.log("test this.answerText: ", this.answerText);
-				//console.log('answer: ', answer);
-				if (e.properties.neighborho.indexOf(answer) !== -1) {
-					console.log('test match!');
-					//return app.map.style.d;
-				}
-			});
-			return this;
-		}
 	}
 
 	var initialRender = function(guesses){
@@ -278,6 +227,7 @@ app.game = (function( w, d, $, _ ){
 				//console.log('initial render created this model: ', model);
 				new View(model, attributes.guessList).init();				
 			} 
+
 		} else {
 			attributes.noAnswers.removeClass('hidden');
 			app.events.publish('status:update',[0,0]);
@@ -322,7 +272,7 @@ app.game = (function( w, d, $, _ ){
 			target.unbindPopup();
 			target['_path'].style.cursor = 'default';
 		} else {
-			target.setStyle(app.map.style.g);
+			//target.setStyle(app.map.style.g);
 			target.closePopup();
 		}
 		return this;
