@@ -30,7 +30,6 @@ app.map = (function(){
 		};
 		
 		elements.map = L.map('map', config);
-
 		elements.map.addLayer(config.baselayer);
 		elements.map.setView(config.initLatLng, config.initZoom);
 	};
@@ -65,8 +64,8 @@ app.map = (function(){
 		hintTitle.className = 'hint-title';
 		hint.className = 'hint hidden';
 		showHint.className = 'show-hint';
-		hintTitle.innerHTML = 'need a hint? '
-		showHint.innerHTML = 'x';
+		hintTitle.innerHTML = 'need a '
+		showHint.innerHTML = 'hint? ';
 		hintTitle.appendChild(showHint);		
 		hintBox.appendChild(hintTitle);
 		hintBox.appendChild(hint);		
@@ -93,8 +92,17 @@ app.map = (function(){
 			color: "#FF530D",
 			weight: 0,
 			opacity: 0,
+			fillOpacity: 0,
+			fillColor: "#bfbfbf",
+			clickable: false		
+		},
+		g : {
+			color: "#FF530D",
+			weight: 1.5,
+			opacity: 7,
 			fillOpacity: 0.6,
-			fillColor: "#bfbfbf"			
+			fillColor: "#000",
+			clickable: false		
 		},
 		one : {
 			color: "#FF530D",
@@ -136,41 +144,46 @@ app.map = (function(){
 	// function to style polygon features from geojson data
 	var styleData = function(feature) {
 		//console.log('feature color_id: ', feature.properties.color_id);
-		switch(feature.properties.borough) {
+		if (feature.properties.guessed === true) {
+			console.log('styleData guessed = true');
+			return style.d;			
+		} else {
+			switch(feature.properties.borough) {
 			case "Manhattan" : return style.one; break;
 			case "Bronx" : return style.two; break;
 			case "Brooklyn" : return style.three; break;
 			case "Queens" : return style.four; break;
 			case "Staten Island" : return style.five; break;
 			default : return style.d;
-		}
-
-		if (feature.properties.guessed === true) {
-			return style.d;
-		}
-		
+			}
+		}				
 	}
 
 	// highlight feature on mouse-over
 	var highlightFeature = function(e) {
-	    var layer = e.target;
+		console.log(e.target);
+		if (e.target.feature.properties.guessed !== true) {
+		    var layer = e.target;
+		    layer.setStyle(style.h);
 
-	    layer.setStyle(style.h);
-
-	    if (!L.Browser.ie && !L.Browser.opera) {
-	        layer.bringToFront();
-	    }
+		    if (!L.Browser.ie && !L.Browser.opera) {
+		        layer.bringToFront();
+		    }
+		}
 	};
 
 	// reset style to default on mouse out
 	var resetHighlight = function(e) {
-		    elements.hoods.resetStyle(e.target);
+		if (e.target.feature.properties.guessed !== true ) {
+			elements.hoods.resetStyle(e.target);
+		}		    
 	};
 
 	// pan and zoom to the polygon when clicked
 	var zoomToFeature =	function(e) {
 		console.log(e.target.feature.properties.neighborho);
-		elements.target = e.target.feature.properties.neighborho;
+		console.log(e.target);
+		elements.target = e.target;		
 		elements.map.fitBounds(e.target.getBounds());
 	};
 
@@ -181,7 +194,7 @@ app.map = (function(){
 			l.bindPopup(createPopupContent());
 		}
 
-		f.properties.guessed = false;	
+		f.properties.guessed = false;
 
 		l.on({
 			mouseover : highlightFeature,
@@ -214,7 +227,8 @@ app.map = (function(){
 	return {
 		init : init,
 		elements : elements,
-		style : style
+		style : style,
+		styleData : styleData
 	};
 
 })();

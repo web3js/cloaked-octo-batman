@@ -51,6 +51,8 @@ html, body {
 	border-left: 1px solid black;
 }
 
+/* pop-up styles */
+
 .form-container {
 	padding: 5px 0 0 0;
 }
@@ -63,6 +65,10 @@ html, body {
 
 .hint-box {
 	padding: 5px 0 0 0;
+}
+
+.show-hint {
+	color: hsl(200, 80%, 40%);
 }
 
 #answers-title {

@@ -38,17 +38,23 @@ app.game = (function( w, d, $, _ ){
 	var attachEvents = function(){
 		$('.submit-answer').on('click', function(e) {
 			e.preventDefault();
+
 			if ($('.write-answer').val() !== "") {
 				var fieldValue = $('.write-answer').val();
 				console.log('write-answer: ', fieldValue);
 				var newGuess = new Model({
 					guessBodyText: fieldValue, 
-					correct : false					
+					correct : false,
+					hood : null,
+					boro : null															
 				}, guesses).guessCheck().save();				
 				new View(newGuess, attributes.guessList).init();
 				
-				attributes.answerField.val('');	
-				location.reload(true);			
+				$('.write-answer').val('');				
+				// close the popup if answer is correct?
+				//$('.leaflet-popup-close-button').trigger(L.closePopup);	
+								
+				//location.reload(true);			
 			} 
 		});
 		
@@ -63,7 +69,12 @@ app.game = (function( w, d, $, _ ){
 			//localStorage.clear();			
 			var clearGuesses = new Model({guessBodyText: null, correct: null}, guesses).remove();
 			new View(clearGuesses, attributes.guessList).init();
+			
+			// reset polygon colors
+
 			location.reload(true);
+
+
 		});
 	}
 
@@ -114,7 +125,7 @@ app.game = (function( w, d, $, _ ){
 				return JSON.parse(item.guess);
 			});
 			var correctLen = _.where(parsedArray, {correct : true}).length;
-			app.events.publish('status:update', [guesses.length, correctLen]);
+			app.events.publish('status:update', [guesses.length, correctLen]);			
 			attributes.hoodsToGo.text(hoodsLeft - correctLen);
 			return this;
 		}
@@ -135,16 +146,26 @@ app.game = (function( w, d, $, _ ){
 		// test to see if the guess matches the answer
 		this.guessCheck = function() {				
 			var target = app.map.elements.target;			
-			if (target.indexOf(this.data.guessBodyText) !== -1) {
-				console.log('guess match!', target);
+			if (target.feature.properties.neighborho.indexOf(this.data.guessBodyText) !== -1) {
+				console.log('guess match!', target);				
 				this.data.correct = true;
-
+				this.data.hood = target.feature.properties.neighborho;
+				this.data.boro = target.feature.properties.borough;
+				target.feature.properties.guessed = true;
 				// reduce the number of hoods left to guess
-				//var numHoods = parseInt(attributes.hoodsToGo.text());
 				hoodsLeft -= 1;
 				attributes.hoodsToGo.text(hoodsLeft);
-			}
+				// grey out polygon, prevent clicking, change cursor to default;
+				target.setStyle(app.map.style.d );
+				target.closePopup();
+				target.unbindPopup();
+				target['_path'].style.cursor = 'default';			
+			} else {
+				target.setStyle(app.map.style.g);
+				target.closePopup();
 
+			}
+				
 			return this;
 		}
 
@@ -153,6 +174,11 @@ app.game = (function( w, d, $, _ ){
 
 			}
 			return this;
+		}
+
+		// add function updateGuesses
+		this.updateGuesses = function() {
+			//$.ajax stuff.
 		}
 
 		// now an ajax call
@@ -223,23 +249,6 @@ app.game = (function( w, d, $, _ ){
 			return this;
 		}
 
-		// !!! to fix; perform check to turn correct polygon grey !!!
-		this.checkFeature = function(){
-			var layers  = app.map.elements.hoods.getLayers(),
-				len = layers.length,
-				i = 0;
-			console.log('checkFeature layers: ', layers);
-			console.log('this.guessBodyText: ', this.guessBodyText);
-			for (i; i<len; i++){
-				//console.log(layers[i]);
-				if (layers[i].feature.properties.neighborho.indexOf(this.guessBodyText) !== -1) {
-					console.log('matching layer: ', layers[i]);
-					//app.map.elements.hoods.resetStyle(e.)
-				}
-			}
-			return this;
-		}
-
 		this.test = function(){
 			//console.log("test this.answerText: ", this.answerText);
 			var answer = this.guessBodyText;
@@ -299,7 +308,7 @@ app.game = (function( w, d, $, _ ){
 	}
 
 	var updateStatus = function(counts) {
-	      //console.log('updating notes count with args', counts);
+	      console.log('updating notes count with args', counts);
 	      attributes.guessesCount.text(counts[0]);
       	attributes.answerCount.text(counts[1]);          
   	};
