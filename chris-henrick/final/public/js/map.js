@@ -2,7 +2,7 @@
 
 var app = app || {};
 
-app.map = (function(){
+app.map = ( function (w, d, $, _) {
 
 	// globals for app.map to reference
 	var elements = {
@@ -11,10 +11,13 @@ app.map = (function(){
 		target : null,
 		cleared : false,
 		guessedHoods: [],
-		popup_content : document.querySelector('.leaflet-popup-content'),
+		popup_content : $('.leaflet-popup-content'),
 		popup_wrapper : document.querySelector('.leaflet-popup-content-wrapper'),
 		popup_submit : document.querySelector('.submit-answer')
 	};
+
+	var popupTemplate = $('.leaflet-popup-form').text();
+	var compiledTemplate = _.template(popupTemplate);
 
 	// set up Leaflet map
 	var renderMap = function(){
@@ -36,48 +39,9 @@ app.map = (function(){
 	};
 
 	// info to display in polygon pop up when clicked on
-	var createPopupContent = function(){
-		var formBox = document.createElement('div'),
-			formTitle = document.createElement('h3'),
-			form = document.createElement('FORM'),
-			hintBox = document.createElement('div'),
-			hintTitle = document.createElement('h4'),
-			hint = document.createElement('p'),
-			showHint = document.createElement('span');
-
-		
-		formBox.className = 'form-container'
-		formTitle.className = 'form-title';
-		formTitle.innerHTML = "What neighborhood is this?";
-		form.className ='write-answer-form';
-		form.action = "";
-
-		var input = document.createElement('input');
-		input.type = "text";
-		input.className = "write-answer";
-
-		var input2 = document.createElement('input');
-		input2.type = "submit";
-		input2.className = "submit-answer";
-		input2.value = "Guess";
-
-		hintBox.className = 'hint-box';
-		hintTitle.className = 'hint-title';
-		hint.className = 'hint hidden';
-		showHint.className = 'show-hint';
-		hintTitle.innerHTML = 'need a '
-		showHint.innerHTML = 'hint? ';
-		hintTitle.appendChild(showHint);		
-		hintBox.appendChild(hintTitle);
-		hintBox.appendChild(hint);		
-
-		form.appendChild(input);
-		form.appendChild(input2);
-		formBox.appendChild(formTitle);
-		formBox.appendChild(form);
-		formBox.appendChild(hintBox);
-
-		return formBox;
+	var createPopupContent = function(feature){
+		popupForm = compiledTemplate({ target: feature });		
+		return popupForm;
 	};
 
 	// styles for coloring polygons' stroke and fill
@@ -200,7 +164,7 @@ app.map = (function(){
 	var onEachFeature = function(f,l){
 		//console.log('feature: ', f, ' layer: ', l);
 		if (f.properties.neighborho) {
-			l.bindPopup(createPopupContent());
+			l.bindPopup(createPopupContent(f));
 		}
 
 		f.properties.guessed = false;
@@ -260,4 +224,4 @@ app.map = (function(){
 		styleData : styleData
 	};
 
-})();
+})( window, document, jQuery, _ );
