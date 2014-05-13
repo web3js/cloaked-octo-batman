@@ -51,13 +51,12 @@ app.game = (function( w, d, $, _ ){
 
 		//show hint
 		$('.show-hint').on('click', function(e){
-			e.preventDefault();
-			// showOneLetter();
+			e.preventDefault();					
 			$('.hint').removeClass('hidden');
 		});
 		
 		app.events.subscribe('status:update', updateStatus);
-		//app.events.subscribe('ajax:POSTstatus', updateStatus);
+		app.events.subscribe('ajax:POSTstatus', updateStatus);
 		app.events.subscribe('ajax:GETcomplete', initialRender);		
 	};
 
@@ -220,7 +219,7 @@ app.game = (function( w, d, $, _ ){
 				data = JSON.parse(guess.guess);
 				model = new Model(data, guesses);
 				model._id = guess._id;
-				//console.log('initial render created this model: ', model);
+				console.log('initial render created this model: ', model);
 				new View(model, attributes.guessList).init();				
 			} 
 
@@ -272,7 +271,7 @@ app.game = (function( w, d, $, _ ){
 			target.closePopup();
 		}
 		return this;
-	}  	
+	};
 
 	var init = function(){
 		console.log('app.game init called');
@@ -288,7 +287,7 @@ app.game = (function( w, d, $, _ ){
 		guesses : guesses,
 		attachEvents : attachEvents,
 		playAgain : playAgain
-	}
+	};
 
 })( window, document, jQuery, _ );
 

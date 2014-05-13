@@ -65,7 +65,7 @@
 							What Neighborhood is this?
 						</h3>
 						<form class="write-answer-form">
-							<input type="text" class="write-answer-text">
+							<input type="text" class="write-answer">
 							<input type="submit" class="submit-answer" value="Guess">
 						</form>
 					<div class="hint-box">							
@@ -76,15 +76,24 @@
 							</span>
 						</h4>
 						<p class="hint hidden">
-							<%= target.properties.neighborho %>
-						</p>							
+						<% var hint %>
+						<% function showHint(target) {
+							var hood = target.properties.neighborho,
+								len = hood.length,
+								beginSlice = Math.random() * len,
+								endSlice = len -1;
+							//console.log(hood.slice(beginSlice, endSlice))
+							hint = hood.slice(beginSlice, endSlice);
+						} %>						
+						<% showHint(target); %>
+						<%= hint %>
+						</p>						
 					</div>
 				</script>
 
 				<div id="footer">
 					<input type="submit" value="Play Again?" id="play-again" class="hidden">
 				</div>
-
 			</div>
 			<div id="map"></div>			
 		</div>
