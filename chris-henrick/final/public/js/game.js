@@ -6,7 +6,6 @@ var app = app || {};
 
 app.game = (function( w, d, $, _ ){
 
-	// switched to jquery
 	var attributes = {
 		playAgain : $('#play-again'),
 		status : $('.status'),
@@ -24,11 +23,9 @@ app.game = (function( w, d, $, _ ){
 		popup_submit : $('.submit-answer')				
 	};
 
-	//var answers = JSON.parse(localStorage.getItem('answers')) || [];
 	var guesses = [];
 	var hoodsLeft = 310;
 
-	//var correct = false;
 	var guessTemplate = $('.guess-template').text();
 	var compiledTemplate = _.template(guessTemplate);
 
@@ -48,21 +45,16 @@ app.game = (function( w, d, $, _ ){
 				}, guesses).guessCheck().save();				
 				new View(newGuess, attributes.guessList).init();
 				
-				$('.write-answer').val('');				
-				// close the popup if answer is correct?
-				//$('.leaflet-popup-close-button').trigger(L.closePopup);	
-								
-				//location.reload(true);			
+				$('.write-answer').val('');							
 			} 
 		});
 
 		//show hint
 		$('.show-hint').on('click', function(e){
 			e.preventDefault();
-			debugger;
+			// showOneLetter();
 			$('.hint').removeClass('hidden');
 		});
-
 		
 		app.events.subscribe('status:update', updateStatus);
 		//app.events.subscribe('ajax:POSTstatus', updateStatus);
@@ -75,13 +67,8 @@ app.game = (function( w, d, $, _ ){
 			console.log('play-again clicked');
 			//localStorage.clear();			
 			var clearGuesses = new Model({guessBodyText: null, correct: null}, guesses).remove();
-			new View(clearGuesses, attributes.guessList).init();
-			
-			// reset polygon colors
-
+			new View(clearGuesses, attributes.guessList).init();					
 			location.reload(true);
-
-
 		});
 	}
 
@@ -105,15 +92,11 @@ app.game = (function( w, d, $, _ ){
 			if (model.data.correct === true) {				
 				this.$listItem.find('p').addClass('correct');
 			}			
-
-			//addAsFirstChild(attributes.answerList, this.listItem);
 			attributes.guessList.prepend(this.$listItem);			
-
 			attributes.noAnswers.addClass('hidden');
 			attributes.playAgain.removeClass('hidden');
 			attributes.answerListTitle.removeClass('hidden');
 			attributes.status.removeClass('hidden');	
-
 			return this;
 		};
 
@@ -127,7 +110,6 @@ app.game = (function( w, d, $, _ ){
 			return this;
 		}
 
-		// whoot!
 		this.publishStatus = function() {
 			var parsedArray = _.map(guesses, function(item) {
 				return JSON.parse(item.guess);
@@ -306,7 +288,6 @@ app.game = (function( w, d, $, _ ){
 		guesses : guesses,
 		attachEvents : attachEvents,
 		playAgain : playAgain
-		//createPopupContent : createPopupContent()
 	}
 
 })( window, document, jQuery, _ );
