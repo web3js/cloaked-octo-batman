@@ -48,6 +48,7 @@
 				<ul class="guesses">
 					<!-- guesses listed here -->
 				</ul>
+				<!-- guess list item -->
 				<script type="text/template" class="guess-template">
 					<li class="guess">
 						<p>
@@ -65,6 +66,32 @@
 						</li>
 						<%	}); %>						
 					</ul>
+				</script>
+				<!-- leaflet pop-up template -->
+				<script type="text/template">
+					<div class="leaflet-popup-content">
+						<div class="form-container">
+							<h3 class="form-title">
+								What Neighborhood is this?
+							</h3>
+							<form class="write-answer-form">
+								<input type="text" class="write-answer-text">
+								<input type="submit" class="submit-answer" value="Guess">
+							</form>
+						<div class="hint-box">
+							<% _.each(hoods, function(target) {%>
+							<h4 class="hint-title">
+								Need a
+								<span class="show-hint">
+									hint?
+								</span>
+							</h4>
+							<p class="hint hidden">
+								<%= target.feature.properties.neighborho %>
+							</p>
+							<% }); %>
+						</div>
+					</div>
 				</script>
 				<div id="footer">
 					<input type="submit" value="Play Again?" id="play-again" class="hidden">

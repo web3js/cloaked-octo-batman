@@ -59,6 +59,7 @@ app.game = (function( w, d, $, _ ){
 		});
 		
 		app.events.subscribe('status:update', updateStatus);
+		//app.events.subscribe('ajax:POSTstatus', updateStatus);
 		app.events.subscribe('ajax:GETcomplete', initialRender);		
 	};
 
@@ -166,9 +167,14 @@ app.game = (function( w, d, $, _ ){
 		}
 
 		// add function updateGuesses
-		this.updateGuesses = function() {
-			//$.ajax stuff.
-		}
+		// this.updateGuesses = function() {
+		// 	//$.ajax stuff.
+		// 	$.ajax({
+		// 		url: '/api/guesses/',
+		// 		type: 'POST',
+
+		// 	});
+		// }
 
 		// now an ajax call
 		this.save = function() {
@@ -183,7 +189,9 @@ app.game = (function( w, d, $, _ ){
 				data: { guess: stringified },
 				success : function(data, textStatus, jqXHR) {
 					that._id = data._id;
+					console.log('that._id: ', that._id);
 					app.events.publish('ajax:POSTcomplete', data);
+					console.log('ajax data: ', data);
 				},
 				error: function(jqXHR, textStatus, error) {
 					console.log('error', error);
