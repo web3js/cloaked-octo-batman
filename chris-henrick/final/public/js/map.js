@@ -214,7 +214,7 @@ app.map = ( function (w, d, $, _) {
 		console.log('app.map init called');
 		app.events.subscribe('ajax:GETcomplete', runCheck);
 		renderMap();
-		fetchData();		
+		fetchData();			
 	};
 
 	return {

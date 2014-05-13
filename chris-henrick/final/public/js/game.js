@@ -1,6 +1,4 @@
 // TO DO:
-// add a option for a hint
-// add a score counter 
 // add a timer
 // add a start and stop
 
@@ -57,6 +55,14 @@ app.game = (function( w, d, $, _ ){
 				//location.reload(true);			
 			} 
 		});
+
+		//show hint
+		$('.show-hint').on('click', function(e){
+			e.preventDefault();
+			debugger;
+			$('.hint').removeClass('hidden');
+		});
+
 		
 		app.events.subscribe('status:update', updateStatus);
 		//app.events.subscribe('ajax:POSTstatus', updateStatus);
