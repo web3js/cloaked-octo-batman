@@ -1,0 +1,68 @@
+<!doctype html>
+<head>
+	<title>fedBizWar Slots</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="bower_components/modernizr/modernizr.js"></script>
+</head>
+<body>
+
+	<!-- underscore templating -->
+	<script type="text/template" class="gif-tpl">
+		<% _.each(gifs, function(gif) { %>
+			<li>
+				<img src="<%= gif.images.fixed_width.url %>" alt="gif">
+			</li>
+		<% }) %>
+	</script>
+
+	<div id="header">
+	</div>
+	
+	<div class = "divider">
+	</div>
+
+	<div class="container">
+
+		
+			<div class = "slotImage">
+
+				<div class = "images">
+					<ul class="gifs">
+						<!--  content coming from an underscore template -->
+					</ul>
+				</div>
+
+				<button class="spin">Spin</button>
+			
+
+				
+					<div class = "win_loose"> 
+						<p class="winnerStatus"> </p>
+					</div>
+
+
+					<div class = 'contractInfo'>
+						<p class = 'contractInfo' id = 'contractName'></p>
+						<p class = 'contractInfo' id = 'contractDescription'></p>
+						<p class = 'contractInfo' id = 'moneyLost'></p>
+						<p class = 'contractInfo' id = 'source'></p>
+					</div>
+
+
+					<div class ="contractMoney"> 
+						<p class = "contractAmount"></p>
+					</div>
+				
+			</div>
+			
+		</div>
+	
+	<div class = "divider">
+	</div>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+	</body>
+</html>
