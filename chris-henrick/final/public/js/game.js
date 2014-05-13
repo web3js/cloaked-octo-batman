@@ -23,8 +23,10 @@ app.game = (function( w, d, $, _ ){
 		popup_submit : $('.submit-answer')				
 	};
 
-	var guesses = [];
-	var hoodsLeft = 310;
+	var guesses = [],
+		hoodsLeft = 310,
+		correct = 0,
+		guessed = 0;
 
 	var guessTemplate = $('.guess-template').text();
 	var compiledTemplate = _.template(guessTemplate);
@@ -42,7 +44,7 @@ app.game = (function( w, d, $, _ ){
 					correct : false,
 					hood : null,
 					boro : null															
-				}, guesses).guessCheck().save();				
+				}, guesses).guessCheck().save().updateGuesses();				
 				new View(newGuess, attributes.guessList).init();
 				
 				$('.write-answer').val('');							
@@ -56,7 +58,6 @@ app.game = (function( w, d, $, _ ){
 		});
 		
 		app.events.subscribe('status:update', updateStatus);
-		app.events.subscribe('ajax:POSTstatus', updateStatus);
 		app.events.subscribe('ajax:GETcomplete', initialRender);		
 	};
 
@@ -84,7 +85,7 @@ app.game = (function( w, d, $, _ ){
 
 	var View = function(model, containerEl) {
 		var index = guesses.indexOf(model),
-			that = this;
+			that = this;		
 
 		this.render = function() {
 			this.$listItem = $(compiledTemplate({ guess : model.data }));
@@ -109,12 +110,15 @@ app.game = (function( w, d, $, _ ){
 			return this;
 		}
 
-		this.publishStatus = function() {
+		this.publishStatus = function() {			
 			var parsedArray = _.map(guesses, function(item) {
 				return JSON.parse(item.guess);
 			});
+			
 			var correctLen = _.where(parsedArray, {correct : true}).length;
-			app.events.publish('status:update', [guesses.length, correctLen]);			
+			//console.log('correctLen: ', correctLen);
+			app.events.publish('status:update', [guesses.length, correctLen]);
+			console.log([guesses.length, correctLen])			
 			attributes.hoodsToGo.text(hoodsLeft - correctLen);
 			return this;
 		}
@@ -142,26 +146,33 @@ app.game = (function( w, d, $, _ ){
 				//console.log('guess match!', target);				
 				this.data.correct = true;
 				target.feature.properties.guessed = true;				
-				// reduce the number of hoods left to guess
+				// reduce the number of hoods left to guess				
 				hoodsLeft -= 1;
 				attributes.hoodsToGo.text(hoodsLeft);				
 			}
-
 			// grey out polygon, prevent clicking, change cursor to default;
-			styleGeojson(this.data);
-				
+			styleGeojson(this.data);				
 			return this;
 		}
 
 		// add function updateGuesses
-		// this.updateGuesses = function() {
-		// 	//$.ajax stuff.
-		// 	$.ajax({
-		// 		url: '/api/guesses/',
-		// 		type: 'POST',
-
-		// 	});
-		// }
+		this.updateGuesses = function() {
+			$.ajax({
+				url: '/api/guesses/',
+				type: 'GET',
+				dataType: 'json',				
+				success: function(res) {
+					console.log('updateGuesses res: ', res);
+					guesses = _.clone(res);
+					 console.log(guesses);
+					app.events.publish('update:status', guesses);					
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('updateGuesses error: ', error);
+				}
+			});
+			return this;
+		};
 
 		// now an ajax call
 		this.save = function() {
@@ -176,7 +187,7 @@ app.game = (function( w, d, $, _ ){
 				data: { guess: stringified },
 				success : function(data, textStatus, jqXHR) {
 					that._id = data._id;
-					console.log('that._id: ', that._id);
+					//console.log('that._id: ', that._id);
 					app.events.publish('ajax:POSTcomplete', data);
 					console.log('ajax data: ', data);
 				},
@@ -184,7 +195,6 @@ app.game = (function( w, d, $, _ ){
 					console.log('error', error);
 				}
 			});
-
 			return this;			
 		};
 
@@ -219,7 +229,7 @@ app.game = (function( w, d, $, _ ){
 				data = JSON.parse(guess.guess);
 				model = new Model(data, guesses);
 				model._id = guess._id;
-				console.log('initial render created this model: ', model);
+				//console.log('initial render created this model: ', model);
 				new View(model, attributes.guessList).init();				
 			} 
 
@@ -237,7 +247,7 @@ app.game = (function( w, d, $, _ ){
 			success: function(res) {
 				console.log('initialFetch res: ', res);
 				guesses = _.clone(res);
-				// console.log(guesses);
+				//console.log("guesses from initialFetch:", guesses);
 				app.events.publish('ajax:GETcomplete', guesses);
 			},
 			error: function(jqXHR, textStatus, error) {
@@ -252,7 +262,7 @@ app.game = (function( w, d, $, _ ){
       	attributes.answerCount.text(counts[1]);          
   	};
 
-  	// restyle hood geojson if guess is made
+  	// restyle neighborhood geojson if guess is made
 	var styleGeojson = function(data) {
 		var target = app.map.elements.target;
 		var state;
@@ -267,7 +277,7 @@ app.game = (function( w, d, $, _ ){
 			target.unbindPopup();
 			target['_path'].style.cursor = 'default';
 		} else {
-			//target.setStyle(app.map.style.g);
+			//target.setStyle(app.map.style.g); // include another style if area is guessed but not correct
 			target.closePopup();
 		}
 		return this;

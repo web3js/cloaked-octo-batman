@@ -190,6 +190,7 @@ app.map = ( function (w, d, $, _) {
 		})
 	};
 
+	// check to see if any of the hoods have already been guessed
 	var runCheck = function(guesses) {
 		console.log('runCheck!', guesses);
 		var parsedArray = _.map(guesses, function(item) {
@@ -204,9 +205,6 @@ app.map = ( function (w, d, $, _) {
 				correct : guess.correct
 			});
 		}
-		console.log('parsedArray: ', parsedArray);
-		console.log('elements.guessedHoods: ', elements.guessedHoods);
-		
 	};
 
 	// initialize the map

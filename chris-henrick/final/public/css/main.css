@@ -20,6 +20,7 @@ html, body {
 	height: 89%;
 	width: 24.9%;
 	float: left;
+	overflow: auto;
 	/*border: 1px solid blue;*/
 }
 
@@ -81,7 +82,7 @@ html, body {
 	font: 15pt Helvetica, sans-serif;
 	color: hsl(0, 0%, 50%);
 	margin: 0 0 0 10%;
-	padding: 10px 0;	
+	padding: 10px 0 20px 0;	
 }
 
 #answer-count, #guesses-count {
@@ -131,6 +132,7 @@ html, body {
 #footer {
 	position: relative;
 	bottom: 0;
+	margin: 10px 0;
 	width: 100%;
 	/*border: 1px solid orange;*/
 	text-align: center;	
