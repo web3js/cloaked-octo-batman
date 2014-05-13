@@ -48,7 +48,7 @@
 				<ul class="guesses">
 					<!-- guesses listed here -->
 				</ul>
-				<!-- guess list item -->
+				<!-- guess list item template -->
 				<script type="text/template" class="guess-template">
 					<li class="guess">
 						<p>
@@ -56,19 +56,8 @@
 						</p>
 					</li>
 				</script>
-				<script type="text/template" class="guess-list">
-					<ul class="guesses">
-						<%	_.each(guesses, function(guess) { %>
-						<li class="guess">
-							<p>
-							<%= guess.guessBodyText %>
-							</p>
-						</li>
-						<%	}); %>						
-					</ul>
-				</script>
 				<!-- leaflet pop-up template -->
-				<script type="text/template">
+				<script type="text/template" class="leaflet-popup-form">
 					<div class="leaflet-popup-content">
 						<div class="form-container">
 							<h3 class="form-title">
