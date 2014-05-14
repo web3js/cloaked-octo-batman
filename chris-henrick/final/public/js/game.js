@@ -142,7 +142,7 @@ app.game = (function( w, d, $, _ ){
 			this.data.hood = target.feature.properties.neighborho;
 			this.data.boro = target.feature.properties.borough;
 			
-			if (target.feature.properties.neighborho.indexOf(this.data.guessBodyText) !== -1) {
+			if (this.data.hood.toLowerCase().indexOf(this.data.guessBodyText.toLowerCase()) !== -1) {
 				//console.log('guess match!', target);				
 				this.data.correct = true;
 				target.feature.properties.guessed = true;				
@@ -265,8 +265,9 @@ app.game = (function( w, d, $, _ ){
   	// restyle neighborhood geojson if guess is made
 	var styleGeojson = function(data) {
 		var target = app.map.elements.target;
+		var hood = target.feature.properties.neighborho;
 		var state;
-		if (target.feature.properties.neighborho.indexOf(data.guessBodyText) !== -1) {
+		if (hood.toLowerCase().indexOf(data.guessBodyText.toLowerCase()) !== -1) {
 			state = true;
 		} else {
 			state = false;

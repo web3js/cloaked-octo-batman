@@ -80,7 +80,7 @@
 						<% function showHint(target) {
 							var hood = target.properties.neighborho,
 								len = hood.length,
-								beginSlice = Math.random() * len,
+								beginSlice = Math.floor(Math.random() * (len/2 - 1) + 1 ),
 								endSlice = len -1;
 							//console.log(hood.slice(beginSlice, endSlice))
 							hint = hood.slice(beginSlice, endSlice);
