@@ -11,23 +11,11 @@ html, body {
 	position: relative;
 }
 
-.answer-div {
-	margin: 0;
-	padding: 0;
-	position: relative;
-	display: block;
-	top: 10%;
-	height: 89%;
-	width: 24.9%;
-	float: left;
-	overflow: auto;
-	/*border: 1px solid blue;*/
-}
-
+/* title  */
 .title {
-	position: absolute;
+	position: fixed;
 	display: table;
-	height: 6%;
+	height: 8%;
 	width: 25%;
 	float: left;
 	background-color: black;
@@ -45,44 +33,14 @@ html, body {
 	text-align: center;	
 }
 
-#map {
-	height: 100%;
-	width: 75%;
-	float: right;
-	border-left: 1px solid black;
-}
-
-/* pop-up styles */
-
-.form-container {
-	padding: 5px 0 0 0;
-}
-
-.form-title {
-	font: bold 11pt Helvetica, sans-serif;
-	text-align: center;
-	margin-bottom: 5px;
-}
-
-.hint-box {
-	padding: 5px 0 0 0;
-}
-
-.show-hint {
-	color: hsl(200, 80%, 40%);
-}
-
-#answers-title {
-	font: bold 15pt Helvetica, sans-serif;
-	margin: 0 10%;
-	border-bottom: 1px solid black;
-}
-
+/* score counter and hoods to go  */
 .status {
 	font: 15pt Helvetica, sans-serif;
 	color: hsl(0, 0%, 50%);
 	margin: 0 0 0 10%;
-	padding: 10px 0 20px 0;	
+	padding: 10px 0 20px 0;
+	position: fixed;
+
 }
 
 #answer-count, #guesses-count {
@@ -93,6 +51,26 @@ html, body {
 #hoods-to-go {
 	font-weight: bolder;
 	color: hsl(0, 70%,70%);
+}
+
+/* answers get written here */
+.answer-div {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: block;
+	top: 20%;
+	height: 89%;
+	width: 24.9%;
+	float: left;
+	overflow: auto;
+	/*border: 1px solid blue;*/
+}
+
+#answers-title {
+	font: bold 15pt Helvetica, sans-serif;
+	margin: 0 10%;
+	border-bottom: 1px solid black;
 }
 
 .guesses {
@@ -111,6 +89,34 @@ html, body {
 	/*font-weight: bold;*/
 }
 
+/* leaflet base map */
+#map {
+	height: 100%;
+	width: 75%;
+	float: right;
+	border-left: 1px solid black;
+}
+
+/* pop-up styles */
+.form-container {
+	padding: 5px 0 0 0;
+}
+
+.form-title {
+	font: bold 11pt Helvetica, sans-serif;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.hint-box {
+	padding: 5px 0 0 0;
+}
+
+.show-hint {
+	color: hsl(200, 80%, 40%);
+}
+
+/* display if game hasn't started */
 .no-answers-found {
 	font: bold 20pt Helvetica, sans-serif;
 	text-align: center;
@@ -125,10 +131,11 @@ html, body {
 	-o-animation: fadein 1s;	
 }
 
+/* hide elements */
 .hidden {
 	display: none;
 }
-
+/* play again button at bottom */
 #footer {
 	position: relative;
 	bottom: 0;
