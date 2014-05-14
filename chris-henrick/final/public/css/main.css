@@ -13,7 +13,7 @@ html, body {
 
 /* title  */
 .title {
-	position: fixed;
+	position: absolute;
 	display: table;
 	height: 8%;
 	width: 25%;
@@ -39,7 +39,6 @@ html, body {
 	color: hsl(0, 0%, 50%);
 	margin: 0 0 0 10%;
 	padding: 10px 0 20px 0;
-	position: fixed;
 
 }
 
@@ -53,13 +52,13 @@ html, body {
 	color: hsl(0, 70%,70%);
 }
 
-/* answers get written here */
+/* user's guess list */
 .answer-div {
 	margin: 0;
 	padding: 0;
 	position: relative;
 	display: block;
-	top: 20%;
+	top: 8%;
 	height: 89%;
 	width: 24.9%;
 	float: left;
