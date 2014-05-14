@@ -81,9 +81,13 @@
 							var hood = target.properties.neighborho,
 								len = hood.length,
 								beginSlice = Math.floor(Math.random() * (len/2 - 1) + 1 ),
-								endSlice = len -1;
-							//console.log(hood.slice(beginSlice, endSlice))
-							hint = hood.slice(beginSlice, endSlice);
+								endSlice = len - (Math.floor(Math.random() * 3));
+							console.log('beginSlice: ', beginSlice, ' endSlice: ', endSlice);
+							String.prototype.repeat = function( num )
+								{
+								    return new Array( num + 1 ).join( this );
+								};
+							hint = ('-'.repeat(beginSlice)) + hood.slice(beginSlice, endSlice) + ('-'.repeat(len-endSlice));
 						} %>						
 						<% showHint(target); %>
 						<%= hint %>
