@@ -1,0 +1,105 @@
+<!doctype html>
+<head>
+	<title>fedBizWar Slots</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="bower_components/modernizr/modernizr.js"></script>
+</head>
+<body>
+
+	<!-- underscore templating -->
+	<script type="text/template" class="gif-tpl">
+		<% _.each(gifs, function(gif) { %>
+			<li>
+				<img src="<%= gif.images.fixed_width.url %>" alt="gif">
+			</li>
+		<% }) %>
+	</script>
+
+	<div id="header">
+		
+		<p id = 'title'>
+			FedBizWars
+		</P>
+
+		<nav>
+			<a class = 'nav' href = '#about'>About</a>
+			<a class = 'nav' href = '#container'>Play</a>
+			<a class = 'nav' href = 'http://www.nicoleyimessier.com'>Nicole Yi Messier</a>
+
+		</nav>
+	</div>
+
+	<div class = 'divider2'>
+	</div>
+
+	<div class = 'divider'>
+	</div>
+
+	<div id="container">
+
+		
+			<div class = "slotImage">
+
+				<div class = "images">
+					<ul class="gifs">
+						<!--  content coming from an underscore template -->
+					</ul>
+				</div>
+
+				<button class="spin">Spin</button>
+			
+
+				
+					<div class = "win_loose"> 
+						<p class="winnerStatus"> </p>
+						<!-- <p class = 'contractInfo' id = 'moneyLost'></p> -->
+					</div>
+
+
+					<div class = 'contractInfo'>
+						<p class = 'contractInfo' id = 'contractName'></p>
+						<p class = 'contractInfo' id = 'contractDescription'></p>
+						<p class = 'contractInfo' id = 'source'></p>
+					</div>
+
+
+					<div class ="contractMoney"> 
+						<p class = "contractAmount"></p>
+					</div>
+				
+			</div>
+			
+		</div>
+
+	<div class = 'divider'>
+	</div>
+
+	<div class = 'divider2'>
+	</div>
+
+	<div id = "about">
+		<div class = "pusher"></div>
+		<p class = about>
+			The U.S. government claims transparency via a number of systems that are based on algorithms.   Troves of government data and federal business opportunities are released to the public via on-line tools and databases created with algorithms.  These tools and databases provide information publically but also obfuscate how to maneuver such data and opportunities.   U.S. government spending is an abstract world with varied moving parts that are all attached to such tools and abstractness. <br><br>
+
+			fedBizWars is a playful piece that engages the user with information from FedBizOpps.gov, "the single government point-of-entry (GPE) for Federal government procurement opportunities over $25,000. Government buyers are able to publicize their business opportunities by posting information directly to FedBizOpps via the Internet." fedBizWars presents the information within the realm of government spending as information drama, highlighting on the issues of government spending and transparency.  Spin the FedBizOpps Slots!  
+
+		</p>
+	</div>
+
+	<div class = 'divider2'>
+	</div>
+	
+	<div class = "footer">
+
+		<p class = 'fotter'>Copyright 2014.  Made in NYC.</p>
+	</div>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+
+	<script type="text/javascript" src="ion.sound.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+	</body>
+</html>
