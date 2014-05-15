@@ -142,14 +142,13 @@ app.game = (function( w, d, $, _ ){
 			this.data.hood = target.feature.properties.neighborho;
 			this.data.boro = target.feature.properties.borough;
 			
-			if (this.data.hood.toLowerCase().indexOf(this.data.guessBodyText.toLowerCase()) !== -1) {
-				//console.log('guess match!', target);				
+			if (this.data.hood.toLowerCase().indexOf(this.data.guessBodyText.toLowerCase()) !== -1) {								
 				this.data.correct = true;
 				target.feature.properties.guessed = true;				
 				// reduce the number of hoods left to guess				
 				hoodsLeft -= 1;
 				attributes.hoodsToGo.text(hoodsLeft);				
-			}
+			} 
 			// grey out polygon, prevent clicking, change cursor to default;
 			styleGeojson(this.data);				
 			return this;
@@ -266,12 +265,7 @@ app.game = (function( w, d, $, _ ){
 	var styleGeojson = function(data) {
 		var target = app.map.elements.target;
 		var hood = target.feature.properties.neighborho;
-		var state;
-		if (hood.toLowerCase().indexOf(data.guessBodyText.toLowerCase()) !== -1) {
-			state = true;
-		} else {
-			state = false;
-		}
+		var state = data.correct;
 		if (state) {
 			target.setStyle(app.map.style.d);
 			target.closePopup();

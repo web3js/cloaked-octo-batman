@@ -83,10 +83,6 @@
 								beginSlice = Math.floor(Math.random() * (len/2 - 1) + 1 ),
 								endSlice = len - (Math.floor(Math.random() * 3));
 							console.log('beginSlice: ', beginSlice, ' endSlice: ', endSlice);
-							String.prototype.repeat = function( num )
-								{
-								    return new Array( num + 1 ).join( this );
-								};
 							hint = ('-'.repeat(beginSlice)) + hood.slice(beginSlice, endSlice) + ('-'.repeat(len-endSlice));
 						} %>						
 						<% showHint(target); %>
@@ -107,6 +103,11 @@
        	<script src="bower_components/underscore/underscore.js "></script>
 		<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 		<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
+		<script type="text/javascript">
+			String.prototype.repeat = function( num ) {
+				    return new Array( num + 1 ).join( this );
+			};
+		</script>
 		<script src="js/events.js"></script>		
 		<script src="js/map.js"></script>
 		<script src="js/game.js"></script>
