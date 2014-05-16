@@ -6,12 +6,15 @@ var W = canvas.width = document.body.offsetWidth;
 var H = canvas.height = document.body.clientHeight;
 
 // Parameters
-var particleCount = 50;
+var particleCount = 100;
 var particleRadius = 4;
 var vMin = 0.0001;
 var vMax = 3;
 var updateInterval = 1;
 var reduceSpeedOnImpact = false;
+ 
+        
+
 
 
 // Create array of particles
@@ -49,17 +52,29 @@ function init()
       var p = particles[t];
       var d = new Date();
       var n=d.getMilliseconds();
-      var noiseFloat = noise.perlin3(p.x*0.0025, p.y*0.0025, n*0.00000001);
+      var noiseFloat = noise.perlin3(p.x*0.0025, p.y*0.0025, n*0.00001);
       var noiseVecX;
       var noiseVecY;
       noiseVecX = Math.cos(((noiseFloat -0.3) * Math.PI*2) * 10);
       noiseVecY = Math.sin(((noiseFloat - 0.3) * Math.PI*2) * 10);
       
+
+      var r = Math.random()*255>>0;
+      var g = Math.random()*255>>0;
+      var b = Math.random()*255>>0;
       // Draw current particle
       ctx.beginPath();
-      ctx.fillStyle = "white";
+      ctx.fillStyle =  "rgb("+r+", "+g+", "+b+")";
+
       ctx.arc(p.x, p.y, particleRadius, Math.PI*2, false);
       ctx.fill();
+
+       // Contain particle inside canvas
+      if (p.x > W-particleRadius||p.x<particleRadius) {p.vx *= -1;}
+      //if (p.x < 0) p.vx *= -1;
+      if (p.y > H-particleRadius||p.y<particleRadius) {p.vy *= -1;}
+      //if (p.y < 0) p.vy *= -1;
+      
       
       // Position particle according to velocity
       p.vx+=noiseVecX;
@@ -71,11 +86,6 @@ function init()
       p.x += p.vx;
       p.y += p.vy;
       
-       // Contain particle inside canvas
-      if (p.x > W) p.vx *= -1;
-      if (p.x < 0) p.vx *= -1;
-      if (p.y > H) p.vy *= -1;
-      if (p.y < 0) p.vy *= -1;
       
       // Recover lost particles
       // if (p.x > W + particleRadius) p.x = W - particleRadius;
