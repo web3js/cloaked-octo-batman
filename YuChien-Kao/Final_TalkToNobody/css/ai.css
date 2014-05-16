@@ -1,0 +1,121 @@
+/*font-family: 'Special Elite', cursive;*/
+@import url(http://fonts.googleapis.com/css?family=Special+Elite);
+
+article, aside, figure, figcaption, footer, header, hgroup, nav, section, summary, p, h1{   
+  display: block;   
+}
+
+body {
+	margin: 0 auto;
+	padding: 0;
+	background-image: url('../img/bk.png');
+	/*font-family: Helvetica, Arial, 'sans-serif';*/
+	font-family: 'Special Elite', cursive;
+	font-size: 16px;
+}
+
+#container{
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	width: 1280px;
+	height: 650px;
+	
+}
+
+h1{
+	width: 800px;
+	height: 30px;
+	margin-top: 30px;
+	margin-left: 200px;
+	color: #888;
+	font-size: 20px;
+	text-align: center;
+	
+}
+
+h2{
+	width: 500px;
+	height: 30px;
+	margin-top: 0px;
+	margin-left: 350px;
+	color: #666;
+	font-size: 10px;
+	text-align: center;
+	
+}
+
+h3{
+	width: 800px;
+	height: 30px;
+	margin-top: 0px;
+	margin-left: 200px;
+	color: #666;
+	font-size: 10px;
+	text-align: center;
+	
+}
+
+#tvContainer{
+	display: block;
+	width: 650px;
+	height: 432px;
+	margin-left: 280px;
+	background-image: url('../img/tv2.png');
+}
+
+#dialog{
+	display: block;
+	float: left;
+	margin-top: 60px;
+	margin-left: 70px;
+	width: 380px;
+	height: 270px;
+	background:transparent;
+	color: #666;
+	font-size: 10px;
+	/*border: 1px solid #333;*/
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.scrollable-content {
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+.scrollable-content::-webkit-scrollbar {
+    width:10px;
+}
+.scrollable-content::-webkit-scrollbar * {
+    background:transparent;
+}
+.scrollable-content::-webkit-scrollbar-thumb {
+    background:transparent !important;
+}
+
+#inText{
+	display: block;
+	margin-left: 345px;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	width: 500px;
+	height: 30px;
+	background: transparent;
+	outline: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #666;
+	color: #999;
+	font-family: 'Special Elite', cursive;
+}
+
+.us{
+	color:#aaa;
+	font-size: 13px;
+}
+
+.ai{
+	color:#666;
+	font-size: 13px;
+}
