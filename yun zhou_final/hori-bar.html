@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="utf-8">
+		<title>D3: A flexible, scalable bar chart</title>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */
+			body{
+    margin: 0;
+    padding: 0;
+    font-family: georgia, serif;
+    color: #666666;
+  }
+			p{
+				font-size: 16px;
+   				margin-top: 15px;
+  				margin-left: 60px;
+			}
+			.click{
+				float: left;
+				margin-left:600px;
+			}		
+		</style>
+	</head>
+	<body>
+		<div class="click">
+			<p>Click to see the proportion of the population.(*0.00001)</p>
+		</div>
+		
+
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 800;
+			var h = 100;
+			
+			var dataset=[55593,3283,3004,744,630];
+
+			var yScale = d3.scale.ordinal() 
+							.domain(d3.range(dataset.length)) 
+							.rangeRoundBands([0, h], 0.05);
+
+			var xScale = d3.scale.linear()
+							.domain([0, d3.max(dataset)])
+							.range([0, w]);
+			
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w+20)
+						.attr("height", h);
+
+			svg.selectAll("rect")
+			   .data(dataset)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d,i) { 
+			   		return xScale(i);	   
+			   })
+			   .attr("y", function(d,i) {
+			   		return  yScale(i);
+			   })
+			   .attr("height", yScale.rangeBand())
+			   .attr("width", function(d) {
+			   		return xScale(d);
+			   })
+			   .attr("fill", function(d) {
+					return "rgb(255, 150, 192)";
+			   });
+
+			svg.selectAll("text")
+			   .data(dataset)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+			   		return d;
+			   })
+			   .attr("text-anchor", "middle")
+			   .attr("y", function(d, i) {
+			   		return yScale(i) + yScale.rangeBand() / 2+5; 
+			   })
+			   .attr("x", function(d) {
+			   		return xScale(d) + 17;
+			   })
+			   .attr("font-family", "georgia")
+			   .attr("font-size", "11px")
+			   .attr("fill", "#666666");
+
+		    d3.select("p")
+				.on("click", function() {
+				dataset = [ 4.494,0.243,8.612,1.488,0.522 ];
+				var yScale = d3.scale.ordinal() 
+							.domain(d3.range(dataset.length)) 
+							.rangeRoundBands([0, h], 0.05);
+
+			var xScale = d3.scale.linear()
+							.domain([0, d3.max(dataset)])
+							.range([0, w]);
+				svg.selectAll("rect")
+					.data(dataset)
+					. transition() // <-- new
+					.transition()
+					// .delay(function(d, i) {
+					// 	return i * 100; // index is multiplied by 100ms for each bar
+					// })
+					.duration(500)
+				.attr("width", function(d) {
+						return xScale(d);
+					})
+				.attr("fill", function(d) {
+					return "rgb(255, 150, 192)";
+			    	});
+
+				svg.selectAll("text")
+					.data(dataset)
+
+					.transition()
+					 // .attr("fill", "#ff96c0");
+					// .delay(function(d, i) {
+					// 	return i * 100;
+					// })
+					.duration(500)
+					.text(function(d) {
+						return d;
+					})
+					.attr("x", function(d, i) {
+						return xScale(d) + 17;
+					})
+					.attr("y", function(i) {
+						return yScale(d) + yScale.rangeBand()/2+5;
+				});	
+			});
+				var data=[]
+		</script>
+	</body>
+</html>

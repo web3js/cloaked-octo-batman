@@ -1,0 +1,398 @@
+  body{
+    margin: 0;
+    padding: 0;
+    font-family: georgia, serif;
+    color: #666666;
+  }
+  .t{
+    width: 100%;
+    height: 800px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    float: left;
+  }
+  .bg1{
+    background-color: #eeeeee;
+  }
+  .bg2{
+    background-color: #ffffff;
+  }
+  .bg3{
+    background-color: #eeeeee;
+  }
+  .bg4{
+    background-color: #ffffff;
+  }
+  .bg5{
+    background-color: #eeeeee;
+  }
+  .bg6{
+    background-color: #ffffff;
+  }
+  h1{
+    margin-top: 250px;
+    font-family: 'PT Serif', georgia, serif;
+    font-size: 36px;
+    color: #444444;
+    font-weight: bold;
+    text-align: center;
+  }
+ 
+  h2{
+     margin-top: 50px;
+     margin-bottom: 0;
+    text-align: center;
+    /*font-family: 'fredericka the great', fantasy;*/
+    
+    font-family: georgia, serif;
+  font-size: 18px;
+  color: #666666;
+  }
+  .sq{
+    margin-left: 100px;
+  }
+  .d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  /*background: rgba(0, 0, 0, 0.6);
+  color: #fff;*/
+  border-radius: 2px;
+  padding-left: 10px;
+}
+#svg{
+  position: relative;
+  margin-left: 170px;
+  margin-top: 50px;
+}
+p{
+  font-size: 16px;
+  margin-top: 15px;
+  margin-left: 60px;
+  /*font-family: 'patrick hand',cursive;*/
+}
+#name{
+  margin-top: 100px;
+  float:right;
+  margin-right: 50px;
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+li{
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+#x{
+  
+  margin-top: 49px;
+  width: 170px;
+  position: absolute;
+  margin-right: 20px;
+  display: block;
+}
+#x li{
+  width: 170px;
+  padding: 0;
+margin-top: 8px;
+text-align: right;
+
+}
+#y{
+  width: 1400px;
+  margin-left: 120px;
+  position: absolute;
+
+}
+#y li{
+  width: 40px;
+  height: 20px;
+  display:inline-block;
+   -webkit-transform:rotate(315deg);
+  float: left;
+  font-size: 12px;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+.s1{
+width: 50px;
+height: 50px;
+background-color: #eeeeee;
+float: left;
+margin-left: 0px;
+margin-top: 0px;
+color: #ffffff;
+font-size: 32px;
+text-align: center;
+position: absolute;
+display: block;
+}
+.s2{
+width: 50px;
+height: 50px;
+background-color: #ffffff;
+float: left;
+margin-left: 0px;
+margin-top: 0px;
+color: #eeeeee;
+font-size:32px;
+text-align: center;
+position: absolute;
+display: block;
+}
+.pink{
+  width: 8px;
+  height: 25px;
+  background-color: #ff96c0;
+ margin: 0;
+ padding: 0;
+}
+.blue{
+  width: 8px;
+  height:25px;
+  background-color: #0096c0;
+ margin: 0;
+ padding: 0;
+}
+#pink{
+  margin-top: -30px;
+   float: left;
+  margin-left: 1250px;
+  position: absolute;
+}
+#blue{
+  margin-top: 0px;
+   float: left;
+  margin-left: 1250px;
+  position: absolute;
+}
+#blue p {
+margin-top: -18px;
+margin-left: 15px;
+}
+#pink p {
+margin-top: -18px;
+margin-left: 15px;
+}
+
+/*bar chart*/
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #666666;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+/*rect:hover {
+  opacity:.8;
+}*/
+.x.axis path {
+  display: none;
+}
+.x.axis1 path {
+  display: none;
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  /*background: rgba(0, 0, 0, 0.6);*/
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+/*.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}*/
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+.d3-tip2 {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  /*background: rgba(0, 0, 0, 0.6);*/
+  color: #fff;
+  border-radius: 2px;
+}
+.d3-tip2.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+/*.selected{
+  opacity: 1;
+}*/
+
+/*css 2*/
+button {
+    background-color: #ccc;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius:3px;
+    color: #fff;
+    font-family: 'Oswald';
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+}
+
+
+
+button:hover {
+    border: none;
+    background:#98abc5;
+    box-shadow: 0px 0px 1px #777;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar2 {
+  fill: steelblue;
+}
+.axis{
+  width: 50px;
+  background-color: #ffffff;
+  color:#000;
+
+}
+.x.axis path {
+  display: none;
+}
+
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  /*background: rgba(0, 0, 0, 0.6);
+  color: #fff;*/
+  border-radius: 2px;
+  padding-left: 10px;
+}
+
+#button2010{
+
+  float: left;
+  width:43px;
+}
+
+#button2011{
+/*  margin-left: 3px;*/
+  float: left;
+  width:43px;
+}
+
+#button2012{
+/*  margin-left: 5px;*/
+  float: left;
+  width:43px;
+}
+
+#button2013{
+/*  margin-left: 5px;*/
+  float: left;
+  width:43px;
+}
+
+#button2014{
+/*  margin-left: 5px;*/
+  float: left;
+  width:43px;
+}
+
+
+ #button2010-2014{
+/*  margin-left: 5px;*/
+  float: left;
+  width:100px;
+}
+
+.buttons{
+  margin-top: 100px;
+  padding-left:60%;
+}
+
+/*h3{
+  float: right;
+
+  font-size: 150%;
+  opacity: 0.7;
+  margin-top: 5px;
+}*/
+#second{
+  width: 800px;
+  margin: auto;
+  margin-top: 50px;
+}
+#first{
+   width: 800px;
+  margin: auto;
+  margin-top: 50px;
+}
+/*hori-bar*/
+#hori-bar{
+  width:100%;
+  height: 800px;
+  margin-top: 100px;
+  margin-left: 400px;
+}
+#hori_y{
+  position: absolute;
+margin-top: 156px;
+width: 50px;
+margin-right: px;
+display: block;
+}
+#hori_y li{
+ width: 392px;
+padding: 0;
+margin-bottom: 4px;
+text-align: right;
+font-size: 8px;
+
+}
+#india_canada{
+  display: block;
+  position: absolute;
+}
+h3{
+  font-size: 72px;
+  padding: 0;
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
+#text{
+  margin-top: 0;
+  margin-left: 50px;
+  float: left;
+  padding: 0;
+}
