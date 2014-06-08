@@ -1,5 +1,5 @@
 # Guess that NYC 'Hood
-A neighborhood guessing game that runs on Leaflet JS, Node JS via the Express framework and MongoDB.
+A neighborhood guessing game that runs on Leaflet JS, GeoJSON, Node JS via the Express framework and MongoDB.
 
 ## to run:
 You must have Node JS and MongoDB installed with proper permissions set.
