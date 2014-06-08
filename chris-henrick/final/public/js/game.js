@@ -116,7 +116,6 @@ app.game = (function( w, d, $, _ ){
 			});
 			
 			var correctLen = _.where(parsedArray, {correct : true}).length;
-			//console.log('correctLen: ', correctLen);
 			app.events.publish('status:update', [guesses.length, correctLen]);
 			console.log([guesses.length, correctLen])			
 			attributes.hoodsToGo.text(hoodsLeft - correctLen);
@@ -163,7 +162,7 @@ app.game = (function( w, d, $, _ ){
 				success: function(res) {
 					console.log('updateGuesses res: ', res);
 					guesses = _.clone(res);
-					 console.log(guesses);
+					//console.log(guesses);
 					app.events.publish('update:status', guesses);					
 				},
 				error: function(jqXHR, textStatus, error) {

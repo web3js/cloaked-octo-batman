@@ -82,7 +82,7 @@
 								len = hood.length,
 								beginSlice = Math.floor(Math.random() * (len/2 - 1) + 1 ),
 								endSlice = len - (Math.floor(Math.random() * 3));
-							console.log('beginSlice: ', beginSlice, ' endSlice: ', endSlice);
+							//console.log('beginSlice: ', beginSlice, ' endSlice: ', endSlice);
 							hint = ('-'.repeat(beginSlice)) + hood.slice(beginSlice, endSlice) + ('-'.repeat(len-endSlice));
 						} %>						
 						<% showHint(target); %>

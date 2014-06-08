@@ -179,7 +179,7 @@ app.map = ( function (w, d, $, _) {
 	// load the geojson using ajax
 	var fetchData = function(){
 		$.getJSON('./data/nyc-hoods-pediacities.geojson', function(d){
-			console.log('hood data: ', d);
+			//console.log('hood data: ', d);
 			elements.hoods = L.geoJson(d, {
 				style: styleData,
 				onEachFeature: onEachFeature,
