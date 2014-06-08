@@ -1,0 +1,160 @@
+body  {
+  font-size: 30px;
+  font-family: Wade Sans Light LET;
+  color: #2e3641;
+   background-color:  #9dd6c5;
+}
+
+
+div  {
+  /*width: 1600px;
+  height: 1000px;
+  position: relative;
+  
+  background-color:  #9dd6c5;*/
+}
+
+h1  {
+  position:  absolute;
+  font-size: 20px;
+  left:  650px;
+  padding-top: 20px;
+  font-weight: bold;
+}
+
+h1:hover{
+  color: #ffffff;
+}
+
+.clickable {
+  color:  white;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 3px 10px 5px 10px;
+  
+  
+}
+
+.clickable:hover  {
+  color:  #2e3641;
+ 
+  cursor: pointer;
+}
+
+table  {
+  position:  absolute;
+  left:  420px;
+  top:  80px;
+  font-family:  Wade Sans Light LET;
+  font-size:  35px;
+  
+  padding:  10px 10px 10px 10px;
+  background-color:  #ffffff;
+  text-align:  center;
+}
+
+.inactive  {
+  color:#939292;
+}
+
+.currDay  {
+  /*background-image:url(./img/tri.png);
+  background-repeat: no-repeat;*/
+  /*color:#9dd6c5;*/
+  /*background-color:#9dd6c5;*/
+  background-image: url(./img/p.png);
+  
+}
+.currDayHover{
+  background-image: url(./img/b.png);
+ 
+}
+.currDay:hover{
+  background-image: url(./img/b.png);
+}
+
+.weekHeader  {
+  
+  font-color:#2e3641;
+  font-size: 30px;
+  font-family:  Wade Sans Light LET;
+
+}
+th{
+  width: 100px;
+  height:100px;
+}
+td{
+  padding: 30px;
+  
+
+}
+td:hover{
+  background-color: #9dd6c5;
+}
+.detail{
+  position:  absolute;
+  left:  420px;
+  top:  80px;
+  margin-top: 240px;
+  width: 730px;
+  height: 500px;
+  font-family:  Wade Sans Light LET;
+  font-size:  35px;
+  
+  padding:  10px 10px 10px 10px;
+  background-color:  #ffffff;
+  
+   
+
+}
+/*.pre{
+  
+  float: left;
+  
+  width: 35px;
+  height: 74px;
+
+  background-image: url(./img/pre.png);
+}
+.next{
+  
+  float: right;
+  
+  width: 35px;
+  height: 74px;
+
+  background-image: url(./img/next.png);
+}
+.pre:hover{
+  float: left;
+  
+  width: 35px;
+  height: 74px;
+  
+ 
+  background-image: url(./img/pre1.png);
+}
+.next:hover{
+  
+  float: right;
+  
+  width: 35px;
+  height: 74px;
+  background-image: url(./img/next1.png);
+}*/
+.detail p{
+  padding-left: 250px;
+  padding-top: 200px;
+}
+.currDayImg{
+  float:left;
+  width: 500px;
+  height: 375px;
+  margin-left: 115px;
+  margin-top: 75px;
+  background-image:url(./img/pasta.png);
+}
+.currDayImg:hover{
+  background-image:url(./img/p1.png);
+}

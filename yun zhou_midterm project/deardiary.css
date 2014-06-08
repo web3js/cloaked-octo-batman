@@ -1,0 +1,238 @@
+body{
+	background-color: #f3f8f1;
+}
+.bg{
+	float: left;
+	width: 1140px;
+	margin-left: 220px;
+	background-color: #ffffff;
+	margin-top: 0;
+}
+h1{
+	font-family: "Bauhaus 93";
+	font-size: 48px;
+	color: #f07444;
+	margin-left: 20px;
+	margin-top: 50px;
+}
+h2{
+	font-family: Corbel;
+	font-size: 18px;
+	color: #666666;
+	margin-left: 50px;
+	margin-top: 50px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+}
+h3{
+	font-family: Corbel;
+	font-size: 18px;
+	color: #666666;
+	margin-left: 50px;
+	margin-top: 20px;
+	margin-right: 50px;
+	margin-bottom: 50px;
+
+}
+.dearpro{
+	width: 900px;
+	height: 338px;
+	margin-left: 120px;
+	margin-bottom: 100px;
+	background-image: url(./img/dearpro.png);
+}
+
+.mobilepro{
+	width: 500px;
+	height: 750px;
+	margin-left: 320px;
+
+}
+.mobilepro .z1{
+	width: 500px;
+	height: 750px;
+	background-image: url(./img/diary3.png);
+}
+.mobilepro .z2{
+	width: 500px;
+	height: 750px;
+	background-image: url(./img/diary5.png);
+}
+.mobilepro .z3{
+	width: 500px;
+	height: 750px;
+	background-image: url(./img/diary1.png);
+}
+.mobilepro .z4{
+	width: 500px;
+	height: 750px;
+	background-image: url(./img/diary4.png);
+}
+.mobilepro .z5{
+	width: 500px;
+	height: 750px;
+	background-image: url(./img/diary2.png);
+}
+h4{
+	font-family: Corbel;
+	font-size: 18px;
+	color: #f07444;
+	margin-left: 50px;
+	margin-top: 50px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+
+}
+h4:hover{
+	color: #ef5519;
+}
+a{
+	text-decoration: none;
+}
+.dearweb{
+	margin-left: 170px;
+}
+.dearweb img{
+	width: 400px;
+	height: 183px;
+
+}
+
+/*right side bar*/
+
+.name{
+	
+	float: right;
+	margin-right: 130px;
+	width: 75px;
+	height: 75px;
+	background-color: #e63636;
+	font-family:"Bauhaus 93";
+	font-size: 18px; 
+	color: #ffffff;
+	
+	text-align: center;
+	line-height: 4;
+	
+}
+.work{
+	
+	float: right;
+	margin-right: 130px;
+	margin-top: 5px;
+	width: 75px;
+	height: 75px;
+	background-color: #f07444;
+	font-family:"Bauhaus 93";
+	font-size: 18px; 
+	color: #ffffff;
+	
+	text-align: center;
+	line-height: 4;
+	
+}
+.concept{
+	
+	float: right;
+	margin-right: 130px;
+	margin-top: 5px;
+	width: 75px;
+	height: 75px;
+	background-color: #c3b749;
+	font-family:"Bauhaus 93";
+	font-size: 18px; 
+	color: #ffffff;
+
+	text-align: center;
+	line-height: 4;
+}
+.me{
+	
+	float: right;
+	margin-right: 130px;
+	margin-top: 5px;
+	width: 75px;
+	height: 75px;
+	background-color: #90c0c4;
+	font-family:"Bauhaus 93";
+	font-size: 18px; 
+	color: #ffffff;
+
+	text-align: center;
+	line-height: 4;
+}
+.name:hover{
+	background-color: #e61010;
+}
+.work:hover{
+	background-color: #ef642e;
+}
+.concept:hover{
+	background-color: #c4b422;
+}
+.me:hover{
+	background-color: #72bfc5;
+}
+
+.w{
+	float: right;
+	margin-right: 130px;
+	margin-top: 0;
+	width: 75px;
+	height: 38px;
+	background-color: #f07444;
+	
+	font-family:"Bauhaus 93";
+	font-size: 14px; 
+	color: #ffffff;
+	text-align: center;
+	line-height: 2.7;
+	
+}
+.w1{
+	opacity: 0.9;
+}
+.w2{
+	opacity: 0.8;
+}
+.w3{
+	opacity: 0.7;
+}
+.w4{
+	opacity: 0.6;
+}
+.w5{
+	opacity: 0.5;
+}
+.w6{
+	opacity: 0.4;
+}
+.w:hover{
+	opacity: 1;
+	background-color: #ef642e;
+}
+.c{
+	float: right;
+	margin-right: 130px;
+	margin-top: 0;
+	width: 75px;
+	height: 38px;
+	background-color: #c3b749;
+	
+	font-family:"Bauhaus 93";
+	font-size: 14px; 
+	color: #ffffff;
+	text-align: center;
+	line-height: 2.7;
+	
+}
+.c1{
+	opacity: 0.9;
+}		
+.c:hover{
+	opacity: 1;
+	background-color: #c4b422;
+}
+#bar{
+	position: fixed;
+}

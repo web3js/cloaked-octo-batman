@@ -1,0 +1,58 @@
+<!DOCTYPE hmtl>
+<html>
+<head>
+	<title>PERMANENT EMPLOYMENT CERTIFICATION
+	</title>
+	<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+	<style type="text/css">
+	.sq{
+		width: 10px;
+		height: 10px;
+		background-color: red;
+		float:left;
+		margin-left: 1px;
+	}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+	var w = 1560;
+	var h = 2000;
+
+var dataset=[]
+d3.csv("canada.csv", function(data) {
+   dataset = data.map(function(d) { return [ +d["none"],+d["a"], +d["b"], +d["c"], +d["d"], +d["e"], +d["f"], +d["g"], +d["h"], +d["i"], +d["j"], +d["k"], +d["l"], +d["m"], +d["n"], +d["o"], +d["p"], +d["q"], +d["r"], +d["s"], +d["t"], +d["u"], +d["v"], +d["w"], +d["x"], +d["y"], +d["z"], +d["aa"], +d["ab"], +d["ac"], +d["ad"], +d["ae"], +d["af"], +d["ag"], +d["ah"], +d["ai"], +d["aj"], +d["ak"], +d["al"], +d["am"], +d["an"], +d["ao"], +d["ap"], +d["aq"], +d["ar"], +d["as"], +d["at"], +d["au"], +d["av"], +d["aw"], +d["ax"]]; });
+   // console.log(dataset[1]);
+ var svg = d3.select("body")
+ .append("svg")
+ .attr("width",w)
+  .attr("height",h)
+
+   for (var i=0;i < dataset.length ; i++) {
+   	for (var j=1;j < dataset[i].length ; j++) {
+   		
+   		var rect = svg.append("rect")
+   		.attr("x",j*31-30)
+   		.attr("y",i*31)
+   		.attr("width",30)
+   		.attr("height",30)
+   		.attr("class","sq")
+   	
+   		.attr("fill",function(d){
+   			return "rgb(255,"+(dataset[i][j])*255+",100)";
+
+   		})
+  
+   		
+   	
+   	};
+   	
+
+   };
+   
+   
+});
+
+	</script>
+</body>
+</html>

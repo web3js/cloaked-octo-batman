@@ -1,0 +1,1209 @@
+<!DOCTYPE hmtl>
+<html>
+<head>
+	<title>permanent employment certification
+	</title>
+	
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.svg.js"></script> 
+<script type="text/javascript" src="jquery.svganim.js"></script> 
+
+<link rel="stylesheet" type="text/css" href="main.css"/>
+	
+</head>
+<body>
+  <div class="t bg1">
+    <h1>HOW ARE YOU SURROUNDED BY INDIA...AT WORK</h1>
+    <h2>final project for Data Visualisation</h2>
+    <h2>data is from UNITED STATES DEPARTMENT OF LABOR, Employment and Training Administration and WORLD BANK</h2>
+    
+    <p id= "name">by Yun Zhou</p>
+   
+  </div>
+  <ul>
+    <li class="t bg2">
+     <span class="s1">1</span>
+    <p>Who is competing with you for what kind of jobs</p>
+    <h2>Competitors from which country in different professions in first half of 2014</h2>
+    <div id="pink">
+      <div class="pink"></div>
+    <p>some one is competing with you</p>
+    </div>
+    <div id="blue">
+      <div class="blue"></div>
+    <p>no one is competing with you</p>
+    </div>
+    
+    <ul id="x">
+      <li> IT
+</li><li> Advanced Mfg
+</li><li> Other Economic Sector
+</li><li> Educational Services
+</li><li> Finance
+</li><li> Health Care
+</li><li> Aerospace
+</li><li> Blank
+</li><li> Retail
+</li><li> Hospitality
+</li><li> Automotive
+</li><li> Construction
+</li><li> Energy
+</li><li> Transportation
+</li><li> Biotechnology
+</li><li> Agribusiness
+</li><li> Geospatial
+</li><li> Homeland Security</li>
+
+    </ul>
+    
+     <div id="svg"> </div>
+     <ul id="y">
+     <li><span>  INDIA
+</span></li><li><span>  CHINA
+</span></li><li><span>  CANADA
+</span></li><li><span>  SOUTH KOREA
+</span></li><li><span>  PHILIPPINES
+</span></li><li><span>  MEXICO
+</span></li><li><span>  UNITED KINGDOM
+</span></li><li><span>  PAKISTAN
+</span></li><li><span>  TAIWAN
+</span></li><li><span>  RUSSIA
+</span></li><li><span>  FRANCE
+</span></li><li><span>  JAPAN
+</span></li><li><span>  NEPAL
+</span></li><li><span>  GERMANY
+</span></li><li><span>  BRAZIL
+</span></li><li><span>  TURKEY
+</span></li><li><span>  ISRAEL
+</span></li><li><span>  VENEZUELA
+</span></li><li><span>  COLOMBIA
+</span></li><li><span>  ITALY
+</span></li><li><span>  UKRAINE
+</span></li><li><span>  AUSTRALIA
+</span></li><li><span>  SPAIN
+</span></li><li><span>  IRAN
+</span></li><li><span>  ROMANIA
+</span></li><li><span>  MALAYSIA
+</span></li><li><span>  ARGENTINA
+</span></li><li><span>  INDONESIA
+</span></li><li><span>  POLAND
+</span></li><li><span>  EGYPT
+</span></li><li><span>  NIGERIA
+</span></li><li><span>  IRELAND
+</span></li><li><span>  PERU
+</span></li><li><span>  BANGLADESH
+</span></li><li><span>  BULGARIA
+</span></li><li><span>  JAMAICA
+</span></li><li><span>  SINGAPORE
+</span></li><li><span>  THAILAND
+</span></li><li><span>  JORDAN
+</span></li><li><span>  VIETNAM
+</span></li><li><span>  NETHERLANDS
+</span></li><li><span>  SRI LANKA
+</span></li><li><span>  BELARUS
+</span></li><li><span>  GREECE
+</span></li><li><span>  LEBANON
+</span></li><li><span>  SOUTH AFRICA
+</span></li><li><span>  UNITED STATES OF AMERICA
+</span></li><li><span>  CHILE
+</span></li><li><span>  ECUADOR
+</span></li><li><span>  KENYA
+</span></li><li><span>  SYRIA
+</span></li><li><span>  HONG KONG
+</span></li><li><span>  PORTUGAL
+</span></li><li><span>  SWEDEN
+</span></li><li><span>  GHANA
+</span></li><li><span>  HUNGARY
+</span></li><li><span>  NEW ZEALAND
+</span></li><li><span>  DENMARK
+</span></li><li><span>  DOMINICAN REPUBLIC
+</span></li><li><span>  SWITZERLAND
+</span></li><li><span>  TRINIDAD AND TOBAGO
+</span></li><li><span>  AUSTRIA
+</span></li><li><span>  BELGIUM
+</span></li><li><span>  EL SALVADOR
+</span></li><li><span>  SLOVAKIA
+</span></li><li><span>  CAMEROON
+</span></li><li><span>  GUATEMALA
+</span></li><li><span>  HONDURAS
+</span></li><li><span>  BOLIVIA
+</span></li><li><span>  MONGOLIA
+</span></li><li><span>  ARMENIA
+</span></li><li><span>  ETHIOPIA
+</span></li><li><span>  FINLAND
+</span></li><li><span>  ALBANIA
+</span></li><li><span>  COSTA RICA
+</span></li><li><span>  CZECH REPUBLIC
+</span></li><li><span>  MOLDOVA
+</span></li><li><span>  PANAMA
+</span></li><li><span>  MOROCCO
+</span></li><li><span>  SERBIA
+</span></li><li><span>  SERBIA AND MONTENEGRO
+</span></li><li><span>  UGANDA
+</span></li><li><span>  UZBEKISTAN
+</span></li><li><span>  ZIMBABWE
+</span></li><li><span>  BAHAMAS
+</span></li><li><span>  BURMA (MYANMAR)
+</span></li><li><span>  KAZAKHSTAN
+</span></li><li><span>  GRENADA
+</span></li><li><span>  LITHUANIA
+</span></li><li><span>  MACEDONIA
+</span></li><li><span>  AZERBAIJAN
+</span></li><li><span>  BOSNIA AND HERZEGOVINA
+</span></li><li><span>  IRAQ
+</span></li><li><span>  NORWAY
+</span></li><li><span>  TUNISIA
+</span></li><li><span>  URUGUAY
+</span></li><li><span>  BELIZE
+</span></li><li><span>  CYPRUS
+</span></li><li><span>  DOMINICA
+</span></li><li><span>  ICELAND
+</span></li><li><span>  PARAGUAY
+</span></li><li><span>  TANZANIA
+</span></li><li><span>  BARBADOS
+</span></li><li><span>  BENIN
+</span></li><li><span>  KOSOVO
+</span></li><li><span>  PALESTINE
+</span></li><li><span>  SENEGAL
+</span></li><li><span>  TURKMENISTAN
+</span></li><li><span>  ZAMBIA
+</span></li><li><span>  ALGERIA
+</span></li><li><span>  BURKINA FASO
+</span></li><li><span>  CAMBODIA
+</span></li><li><span>  ERITREA
+</span></li><li><span>  IVORY COAST
+</span></li><li><span>  KYRGYZSTAN
+</span></li><li><span>  LIBERIA
+</span></li><li><span>  CROATIA
+</span></li><li><span>  ESTONIA
+</span></li><li><span>  GEORGIA
+</span></li><li><span>  GUYANA
+</span></li><li><span>  HAITI
+</span></li><li><span>  LATVIA
+</span></li><li><span>  MADAGASCAR
+</span></li><li><span>  MALTA
+</span></li><li><span>  MAURITIUS
+</span></li><li><span>  NIGER
+</span></li><li><span>  SAUDI ARABIA
+</span></li><li><span>  ST LUCIA
+</span></li><li><span>  ST VINCENT
+</span></li><li><span>  SUDAN
+</span></li><li><span>  YEMEN
+</span></li><li><span>  ANTIGUA AND BARBUDA
+</span></li><li><span>  BAHRAIN
+</span></li><li><span>  BERMUDA
+</span></li><li><span>  BOTSWANA
+</span></li><li><span>  DEMOCRATIC REPUBLIC OF CONGO
+</span></li><li><span>  GAMBIA
+</span></li><li><span>  GUINEA
+</span></li><li><span>  KUWAIT
+</span></li><li><span>  LAOS
+</span></li><li><span>  MACAU
+</span></li><li><span>  MALDIVES
+</span></li><li><span>  MALI
+</span></li><li><span>  MAURITANIA
+</span></li><li><span>  OMAN
+</span></li><li><span>  PALESTINIAN TERRITORIES
+</span></li><li><span>  QATAR
+</span></li><li><span>  RWANDA
+</span></li><li><span>  SIERRA LEONE
+</span></li><li><span>  ST KITTS AND NEVIS
+</span></li><li><span>  TAJIKISTAN
+</span></li><li><span>  TURKS AND CAICOS ISLANDS
+</span></li><li><span>  VANUATU</span></li>
+
+    </ul>
+    </li>
+
+  <li class="t bg3">
+ 
+   <span class="s2">2</span>
+   <p>Which kind of jobs they prefer more</p>
+   <h2>Permanent employment certification cases from 2010-2014</h2>
+    <div class="buttons">
+    <div id="button2010"> 
+    <button type="button">2010</button>
+    </div>
+    <div id="button2011"> 
+  <button type="button">2011</button>
+  </div>
+  <div id="button2012"> 
+  <button type="button">2012</button>
+  </div>
+  <div id="button2013"> 
+  <button type="button">2013</button>
+  </div>
+  <div id="button2014"> 
+  <button type="button">2014</button>
+  </div>
+  <div id="button20100014"> 
+  <button type="button">2010-2014</button>
+  </div>
+</div>
+<div id="second"></div>
+  </li>
+  <li class="t bg4">
+    <span class="s1">3</span>
+    <p>How in India standing out in top five countries</p>
+    <h2>Permanent employment certification proportion from 2010-2014</h2>
+    <div id="first"></div>
+  </li>
+ <li class="t bg5">
+    <span class="s2">4</span>
+    <p>How large part of India come to US</p>
+    <h2>Permanent employment certification cases VS population</h2>
+    <ul id="hori_y">
+       <li><span>  INDIA
+</span></li><li><span>  CHINA
+</span></li><li><span>  CANADA
+</span></li><li><span>  SOUTH KOREA
+</span></li><li><span>  MEXICO
+</span></li>
+    </ul>
+    <iframe id = "hori-bar" src="hori-bar.html" width="1000" height="600" frameborder="0"></iframe>
+    
+    
+    
+  </li>
+  <li class="t bg6">
+    <iframe id="india_canada"src="india_canada.html" width="1600" height="800" frameborder="0"></iframe>
+    <div id="text">
+      <h3>SO...GO WORK!</h3>
+    <h3>If you are an American, go fight for your jobs! So many competitors are arround you!</h3>
+    <h3>If you are not an American, work harder to compete with natives! So many successful stories are ahead of you!</h3>
+    </div>
+    
+   <!--  <span class="s1">5</span> -->
+  </li>
+  
+  </ul>
+
+	<script type="text/javascript">
+  var margin = {top: 100, right:50, bottom:20, left:10},
+	    w = 1600,
+      h = 468;
+
+var dataset=[]
+d3.csv("data.csv", function(data) {
+   dataset = data.map(function(d) { return [ +d["Sector"], +d["INDIA"], +d["CHINA"], +d["CANADA"], +d["SOUTH KOREA"], +d["PHILIPPINES"], +d["MEXICO"], +d["UNITED KINGDOM"], +d["PAKISTAN"], +d["TAIWAN"], +d["RUSSIA"], +d["FRANCE"], +d["JAPAN"], +d["NEPAL"], +d["GERMANY"], +d["BRAZIL"], +d["TURKEY"], +d["ISRAEL"], +d["VENEZUELA"], +d["COLOMBIA"], +d["ITALY"], +d["UKRAINE"], +d["AUSTRALIA"], +d["SPAIN"], +d["IRAN"], +d["ROMANIA"], +d["MALAYSIA"], +d["ARGENTINA"], +d["INDONESIA"], +d["POLAND"], +d["EGYPT"], +d["NIGERIA"], +d["IRELAND"], +d["PERU"], +d["BANGLADESH"], +d["BULGARIA"], +d["JAMAICA"], +d["SINGAPORE"], +d["THAILAND"], +d["JORDAN"], +d["VIETNAM"], +d["NETHERLANDS"], +d["SRI LANKA"], +d["BELARUS"], +d["GREECE"], +d["LEBANON"], +d["SOUTH AFRICA"], +d["UNITED STATES OF AMERICA"], +d["CHILE"], +d["ECUADOR"], +d["KENYA"], +d["SYRIA"], +d["HONG KONG"], +d["PORTUGAL"], +d["SWEDEN"], +d["GHANA"], +d["HUNGARY"], +d["NEW ZEALAND"], +d["DENMARK"], +d["DOMINICAN REPUBLIC"], +d["SWITZERLAND"], +d["TRINIDAD AND TOBAGO"], +d["AUSTRIA"], +d["BELGIUM"], +d["EL SALVADOR"], +d["SLOVAKIA"], +d["CAMEROON"], +d["GUATEMALA"], +d["HONDURAS"], +d["BOLIVIA"], +d["MONGOLIA"], +d["ARMENIA"], +d["ETHIOPIA"], +d["FINLAND"], +d["ALBANIA"], +d["COSTA RICA"], +d["CZECH REPUBLIC"], +d["MOLDOVA"], +d["PANAMA"], +d["MOROCCO"], +d["SERBIA"], +d["SERBIA AND MONTENEGRO"], +d["UGANDA"], +d["UZBEKISTAN"], +d["ZIMBABWE"], +d["BAHAMAS"], +d["BURMA (MYANMAR)"], +d["KAZAKHSTAN"], +d["GRENADA"], +d["LITHUANIA"], +d["MACEDONIA"], +d["AZERBAIJAN"], +d["BOSNIA AND HERZEGOVINA"], +d["IRAQ"], +d["NORWAY"], +d["TUNISIA"], +d["URUGUAY"], +d["BELIZE"], +d["CYPRUS"], +d["DOMINICA"], +d["ICELAND"], +d["PARAGUAY"], +d["TANZANIA"], +d["BARBADOS"], +d["BENIN"], +d["KOSOVO"], +d["PALESTINE"], +d["SENEGAL"], +d["TURKMENISTAN"], +d["ZAMBIA"], +d["ALGERIA"], +d["BURKINA FASO"], +d["CAMBODIA"], +d["ERITREA"], +d["IVORY COAST"], +d["KYRGYZSTAN"], +d["LIBERIA"], +d["CROATIA"], +d["ESTONIA"], +d["GEORGIA"], +d["GUYANA"], +d["HAITI"], +d["LATVIA"], +d["MADAGASCAR"], +d["MALTA"], +d["MAURITIUS"], +d["NIGER"], +d["SAUDI ARABIA"], +d["ST LUCIA"], +d["ST VINCENT"], +d["SUDAN"], +d["YEMEN"], +d["ANTIGUA AND BARBUDA"], +d["BAHRAIN"], +d["BERMUDA"], +d["BOTSWANA"], +d["DEMOCRATIC REPUBLIC OF CONGO"], +d["GAMBIA"], +d["GUINEA"], +d["KUWAIT"], +d["LAOS"], +d["MACAU"], +d["MALDIVES"], +d["MALI"], +d["MAURITANIA"], +d["OMAN"], +d["PALESTINIAN TERRITORIES"], +d["QATAR"], +d["RWANDA"], +d["SIERRA LEONE"], +d["ST KITTS AND NEVIS"], +d["TAJIKISTAN"], +d["TURKS AND CAICOS ISLANDS"], +d["VANUATU"]]; });
+ 
+
+ var svg6 = d3.select("#svg")
+ .append("svg")
+ .attr("width",w)
+  .attr("height",h)
+
+  // svg.call(tip);
+
+  
+   for (var i=0;i < dataset.length ; i++) {
+   	for (var j=1;j < dataset[i].length ; j++) {
+   		
+   		var rect = svg6.append("rect")
+   		.attr("x",j*9-8)
+   		.attr("y",i*26)
+   		.attr("width",8)
+   		.attr("height",25)
+   		.attr("fill",function(d){
+   			return "rgb("+(dataset[i][j]*255)+",150,192)";
+   		})
+      
+   	};
+   };
+});
+//bar chart
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 800 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+var x0 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var x1 = d3.scale.ordinal();
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var color = d3.scale.ordinal()
+    .range(["#0096c0","#f8c74a","#6a5170","#dbd568","#c3545c","#ff96c0",]);
+
+var xAxis = d3.svg.axis()
+    .scale(x0)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format(".2s"));
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([10, 10])
+  .html(function(d) {
+    return  "<span style='color: #9B843E; font-family: helvetica' >" + d.name + ": " + d.value+"%" +"</span>";
+  })
+
+var svg = d3.select("#first").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.call(tip);
+
+d3.csv("databar.csv", function(error, data) {
+  var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "State"; });
+
+  data.forEach(function(d) {
+    d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
+    console.log(data[1])
+  });
+
+  x0.domain(data.map(function(d) { return d.State; }));
+  x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+  y.domain([0, d3.max(data, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
+
+  svg.append("g")
+      .attr("class", "x axis1")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "1em")
+      .style("text-anchor", "end")
+      .text("Percentage (%)");
+
+  var state = svg.selectAll(".state")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; });
+
+
+  
+
+  state.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      // .attr("id", function(d) { return d.value; })
+      .attr("class", function(d) { return d.name; })
+      .attr("width", x1.rangeBand())
+      .attr("x", function(d) { return x1(d.name); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .style("fill", function(d) { return color(d.name); })
+      // .on('mouseover', tip.show)
+      // .on('mouseout', tip.hide)
+
+  var legend = svg.selectAll(".legend")
+      .data(ageNames.slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("class", function(d) { return d.name; })
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("class", function(d) { return d.name; })
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+// this function will be run everytime we mouse over an element
+      var myMouseoverFunctionindia = function() {
+        // remember how d3 goes through EACH of the selected elements and uses your function for EACH element?
+        // well, everytime the function is used for an element, it has a "secret" variable called 'this' which holds that element.
+        // we use 'this' to increment the current element's radius by 10
+        var circle = d3.select(this);
+        state.selectAll("rect").style("opacity", .2)
+        .data(function(d) { return d.ages; })
+
+        state.selectAll(".India").style("opacity", 1)
+        d3.selectAll(".legend").style("opacity", 1)
+
+      }
+
+      var myMouseoutrFunction = function() {
+        // remember how d3 goes through EACH of the selected elements and uses your function for EACH element?
+        // well, everytime the function is used for an element, it has a "secret" variable called 'this' which holds that element.
+        // we use 'this' to increment the current element's radius by 10
+        d3.selectAll("rect").style("opacity", 1)
+      }
+
+      state.select(".India")
+      .on('mouseover', function(d, i) {
+  tip.show(d, i);
+  myMouseoverFunctionindia(d, i);
+})
+      // .on('mouseout',myMouseoutrFunction)
+      .on('mouseout', function(d, i) {
+  tip.hide(d, i);
+  myMouseoutrFunction(d, i);
+})
+
+
+// this function will be run everytime we mouse over an element
+      var myMouseoverFunctionchina = function() {
+        // remember how d3 goes through EACH of the selected elements and uses your function for EACH element?
+        // well, everytime the function is used for an element, it has a "secret" variable called 'this' which holds that element.
+        // we use 'this' to increment the current element's radius by 10
+        var circle = d3.select(this);
+        d3.selectAll("rect").style("opacity", .2)
+        d3.selectAll(".China").style("opacity", 1)
+        d3.selectAll(".legend").style("opacity", 1)
+        
+      }
+
+      state.select(".China")
+      .on('mouseover', function(d, i) {
+  tip.show(d, i);
+  myMouseoverFunctionchina(d, i);
+})
+      // .on('mouseout',myMouseoutrFunction)
+      .on('mouseout', function(d, i) {
+  tip.hide(d, i);
+  myMouseoutrFunction(d, i);
+})
+
+// this function will be run everytime we mouse over an element
+      var myMouseoverFunctioncanada = function() {
+        // remember how d3 goes through EACH of the selected elements and uses your function for EACH element?
+        // well, everytime the function is used for an element, it has a "secret" variable called 'this' which holds that element.
+        // we use 'this' to increment the current element's radius by 10
+        var circle = d3.select(this);
+        d3.selectAll("rect").style("opacity", .2)
+        d3.selectAll(".Canada").style("opacity", 1)
+        d3.selectAll(".legend").style("opacity", 1)
+
+        
+      }
+
+      state.select(".Canada")
+      .on('mouseover', function(d, i) {
+  tip.show(d, i);
+  myMouseoverFunctioncanada(d, i);
+})
+      // .on('mouseout',myMouseoutrFunction)
+      .on('mouseout', function(d, i) {
+  tip.hide(d, i);
+  myMouseoutrFunction(d, i);
+})
+
+  // this function will be run everytime we mouse over an element
+      var myMouseoverFunctionkorea = function() {
+        // remember how d3 goes through EACH of the selected elements and uses your function for EACH element?
+        // well, everytime the function is used for an element, it has a "secret" variable called 'this' which holds that element.
+        // we use 'this' to increment the current element's radius by 10
+        var circle = d3.select(this);
+        d3.selectAll("rect").style("opacity", .2)
+        d3.selectAll(".SouthKorea").style("opacity", 1)
+        d3.selectAll(".legend").style("opacity", 1)
+        
+      }
+
+      
+      state.select(".SouthKorea")
+      .on('mouseover', function(d, i) {
+  tip.show(d, i);
+  myMouseoverFunctionkorea(d, i);
+})
+      // .on('mouseout',myMouseoutrFunction)
+      .on('mouseout', function(d, i) {
+  tip.hide(d, i);
+ myMouseoutrFunction(d, i);
+})
+
+  // this function will be run everytime we mouse over an element
+      var myMouseoverFunctionphil = function() {
+        var circle = d3.select(this);
+        d3.selectAll("rect").style("opacity", .2)
+        d3.selectAll(".Philippines").style("opacity", 1)
+        d3.selectAll(".legend").style("opacity", 1)
+        
+      }
+
+      state.select(".Philippines")
+      .on('mouseover', function(d, i) {
+  tip.show(d, i);
+  myMouseoverFunctionphil(d, i);
+})
+      // .on('mouseout',myMouseoutrFunction)
+      .on('mouseout', function(d, i) {
+  tip.hide(d, i);
+  myMouseoutrFunction(d, i);
+})
+});
+
+// stack bar chart
+var margin2 = {top: 20, right: -10, bottom: 100, left: 40},
+    width2 = 800 - margin2.left - margin2.right,
+    height2 = 400 - margin2.top - margin2.bottom;
+
+var x2 = d3.scale.ordinal()
+    .rangeRoundBands([0, width2], .2);
+
+var y2 = d3.scale.linear()
+//     .rangeRound([height, 0]);
+.range([height2, 0]);
+
+var color = d3.scale.ordinal()
+    .range(["#0096c0","#f8c74a","#6a5170","#dbd568","#c3545c","#ff96c0",]);
+
+
+
+var xAxis2 = d3.svg.axis()
+    .scale(x2)
+    .orient("bottom");
+
+var yAxis2 = d3.svg.axis()
+    .scale(y2)
+    .orient("left")
+    .tickFormat(d3.format(".2s"));
+
+
+var tip2 = d3.tip()
+  .attr('class', 'd3-tip2')
+  .offset([0, 50])
+  .html(function(d) {
+    return  "<span style='color: #9B843E; font-family: helvetica' >" + d.name + ": " + (d.y1-d.y0) +"</span>";
+
+  })
+
+
+var svg2 = d3.select("#second").append("svg")
+    .attr("width", width2 + margin2.left + margin2.right)
+    .attr("height", height2 + margin2.top + margin2.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+
+
+svg2.call(tip2);
+
+
+d3.csv("data1.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Sector"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  // console.log("data", data);
+
+  x2.domain(data.map(function(d) { return d.Sector; }));
+  y2.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg2.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2)
+      .selectAll("text") 
+         .attr("class","shouldhide") 
+     .style("text-anchor", "end")
+     .attr("x", '0em')
+     .attr("y", ".15em")
+     .attr("transform", function(d) {
+         return "rotate(-30)" 
+     });
+
+  svg2.append("g")
+      .attr("class", "y axis")
+      .call(yAxis2)
+      .selectAll('text')
+         .attr("class","shouldhide")
+      .attr("dy", "1.5em")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "1em")
+      .style("text-anchor", "end")
+      .text("Certified Application");
+
+  var Sector = svg2.selectAll(".Sector")
+      .data(data)
+      .enter().append("g")
+      .attr("class", "barcharts")
+      .attr("transform", function(d) { return "translate(" + x2(d.Sector) + ",0)"; });
+
+  Sector.selectAll("rect")
+      .data(function(d) { return d.ages; })
+      .enter().append("rect")
+      .attr("class", "bar2")
+      .attr("width", x2.rangeBand())
+      .attr("y", function(d) { return y2(d.y1); })
+      .attr("height", function(d) { return y2(d.y0) - y2(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide)
+
+  var legend2 = svg2.selectAll(".legend2")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend2")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend2.append("rect")
+      .attr("x", width2 - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend2.append("text")
+      .attr("x", width2 - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+
+
+// button
+var bt1=document.getElementById('button2014');
+bt1.onclick = function(){
+  $('.barcharts').hide();
+  $('.shouldhide').hide();
+  $('.axis line').hide();
+  
+ d3.csv("data2014.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Sector"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  // console.log("data", data);
+
+  x2.domain(data.map(function(d) { return d.Sector; }));
+  y2.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg2.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2)
+      .selectAll("text") 
+         .attr("class","shouldhide") 
+     .style("text-anchor", "end")
+     .attr("x", '0em')
+     .attr("y", ".15em")
+     .attr("transform", function(d) {
+         return "rotate(-30)" 
+     });
+
+  svg2.append("g")
+      .attr("class", "y axis")
+      .call(yAxis2)
+      .selectAll('text')
+         .attr("class","shouldhide")
+      .attr("dy", ".15em")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "1em")
+      .style("text-anchor", "end")
+      .text("Certified Application");
+
+  var Sector = svg2.selectAll(".Sector")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x2(d.Sector) + ",0)"; });
+
+  Sector.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("width", x2.rangeBand())
+      .attr("y", function(d) { return y2(d.y1); })
+      .attr("height", function(d) { return y2(d.y0) - y2(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide)
+
+  var legend2 = svg2.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend2.append("rect")
+      .attr("x", width2 - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend2.append("text")
+      .attr("x", width2 - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+}
+
+var bt2=document.getElementById('button2013');
+bt2.onclick = function(){
+  $('.barcharts').hide();
+  $('.shouldhide').hide();
+  $('.axis line').hide();
+  
+ d3.csv("data2013.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Sector"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  // console.log("data", data);
+
+  x2.domain(data.map(function(d) { return d.Sector; }));
+  y2.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg2.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2)
+      .selectAll("text") 
+         .attr("class","shouldhide") 
+     .style("text-anchor", "end")
+     .attr("x", '0em')
+     .attr("y", ".15em")
+     .attr("transform", function(d) {
+         return "rotate(-30)" 
+     });
+
+  svg2.append("g")
+      .attr("class", "y axis")
+      .call(yAxis2)
+      .selectAll('text')
+         .attr("class","shouldhide")
+      .attr("dy", ".15em")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "1em")
+      .style("text-anchor", "end")
+      .text("Certified Application");
+
+  var Sector = svg2.selectAll(".Sector")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x2(d.Sector) + ",0)"; });
+
+  Sector.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("width", x2.rangeBand())
+      .attr("y", function(d) { return y2(d.y1); })
+      .attr("height", function(d) { return y2(d.y0) - y2(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide)
+
+  var legend2 = svg2.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend2.append("rect")
+      .attr("x", width2 - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend2.append("text")
+      .attr("x", width2 - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+}
+var bt3=document.getElementById('button2012');
+bt3.onclick = function(){
+  $('.barcharts').hide();
+  $('.shouldhide').hide();
+  $('.axis line').hide();
+  
+ d3.csv("data2012.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Sector"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  // console.log("data", data);
+
+  x2.domain(data.map(function(d) { return d.Sector; }));
+  y2.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg2.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2)
+      .selectAll("text") 
+         .attr("class","shouldhide") 
+     .style("text-anchor", "end")
+     .attr("x", '0em')
+     .attr("y", ".15em")
+     .attr("transform", function(d) {
+         return "rotate(-30)" 
+     });
+
+  svg2.append("g")
+      .attr("class", "y axis")
+      .call(yAxis2)
+      .selectAll('text')
+         .attr("class","shouldhide")
+      .attr("dy", ".15em")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "1em")
+      .style("text-anchor", "end")
+      .text("Certified Application");
+
+  var Sector = svg2.selectAll(".Sector")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x2(d.Sector) + ",0)"; });
+
+  Sector.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("width", x2.rangeBand())
+      .attr("y", function(d) { return y2(d.y1); })
+      .attr("height", function(d) { return y2(d.y0) - y2(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide)
+
+  var legend2 = svg2.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend2.append("rect")
+      .attr("x", width2 - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend2.append("text")
+      .attr("x", width2 - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+}
+var bt4=document.getElementById('button2011');
+bt4.onclick = function(){
+  $('.barcharts').hide();
+  $('.shouldhide').hide();
+  $('.axis line').hide();
+  
+ d3.csv("data2011.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Sector"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  // console.log("data", data);
+
+  x2.domain(data.map(function(d) { return d.Sector; }));
+  y2.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg2.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2)
+      .selectAll("text") 
+         .attr("class","shouldhide") 
+     .style("text-anchor", "end")
+     .attr("x", '0em')
+     .attr("y", ".15em")
+     .attr("transform", function(d) {
+         return "rotate(-30)" 
+     });
+
+  svg2.append("g")
+      .attr("class", "y axis")
+      .call(yAxis2)
+      .selectAll('text')
+         .attr("class","shouldhide")
+      .attr("dy", ".15em")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "1em")
+      .style("text-anchor", "end")
+      .text("Certified Application");
+
+  var Sector = svg2.selectAll(".Sector")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x2(d.Sector) + ",0)"; });
+
+  Sector.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("width", x2.rangeBand())
+      .attr("y", function(d) { return y2(d.y1); })
+      .attr("height", function(d) { return y2(d.y0) - y2(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide)
+
+  var legend2 = svg2.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend2.append("rect")
+      .attr("x", width2 - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend2.append("text")
+      .attr("x", width2 - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+}
+
+var bt5=document.getElementById('button2010');
+bt5.onclick = function(){
+  $('.barcharts').hide();
+  $('.shouldhide').hide();
+  $('.axis line').hide();
+  
+ d3.csv("data2010.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Sector"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  // console.log("data", data);
+
+  x2.domain(data.map(function(d) { return d.Sector; }));
+  y2.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg2.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2)
+      .selectAll("text") 
+         .attr("class","shouldhide") 
+     .style("text-anchor", "end")
+     .attr("x", '0em')
+     .attr("y", ".15em")
+     .attr("transform", function(d) {
+         return "rotate(-30)" 
+     });
+
+  svg2.append("g")
+      .attr("class", "y axis")
+      .call(yAxis2)
+      .selectAll('text')
+         .attr("class","shouldhide")
+      .attr("dy", ".15em")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "1em")
+      .style("text-anchor", "end")
+      .text("Certified Application");
+
+  var Sector = svg2.selectAll(".Sector")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x2(d.Sector) + ",0)"; });
+
+  Sector.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("width", x2.rangeBand())
+      .attr("y", function(d) { return y2(d.y1); })
+      .attr("height", function(d) { return y2(d.y0) - y2(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide)
+
+  var legend2 = svg2.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend2.append("rect")
+      .attr("x", width2 - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend2.append("text")
+      .attr("x", width2 - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+}
+
+var bt6=document.getElementById('button20100014');
+bt6.onclick = function(){
+  $('.barcharts').hide();
+  $('.shouldhide').hide();
+  $('.axis line').hide();
+  
+ d3.csv("data1.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Sector"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  // console.log("data", data);
+
+  x2.domain(data.map(function(d) { return d.Sector; }));
+  y2.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg2.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2)
+      .selectAll("text") 
+         .attr("class","shouldhide") 
+     .style("text-anchor", "end")
+     .attr("x", '0em')
+     .attr("y", ".15em")
+     .attr("transform", function(d) {
+         return "rotate(-30)" 
+     });
+
+  svg2.append("g")
+      .attr("class", "y axis")
+      .call(yAxis2)
+      .selectAll('text')
+         .attr("class","shouldhide")
+      .attr("dy", ".15em")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "1em")
+      .style("text-anchor", "end")
+      .text("Certified Application");
+
+  var Sector = svg2.selectAll(".Sector")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x2(d.Sector) + ",0)"; });
+
+  Sector.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("width", x2.rangeBand())
+      .attr("y", function(d) { return y2(d.y1); })
+      .attr("height", function(d) { return y2(d.y0) - y2(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide)
+
+  var legend2 = svg2.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend2.append("rect")
+      .attr("x", width2 - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend2.append("text")
+      .attr("x", width2 - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+}
+
+	</script>
+</body>
+</html>
