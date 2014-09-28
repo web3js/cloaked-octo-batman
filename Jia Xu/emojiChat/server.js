@@ -6,7 +6,7 @@ var express = require('express'),
 
 app.use('/', express.static(__dirname + '/www'));
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 30000);
 io.sockets.on('connection', function(socket) {
     //new user login
     socket.on('login', function(nickname) {
